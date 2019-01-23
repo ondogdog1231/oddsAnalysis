@@ -1,0 +1,307 @@
+{
+  "archive": "1",
+  "matchID": "fb99977e-e471-47ba-a28f-0058de362147",
+  "matchIDinofficial": "20180130TUE4",
+  "matchNum": "4",
+  "matchDate": "2018-01-30+08:00",
+  "matchDay": "TUE",
+  "coupon": {
+    "couponID": "4",
+    "couponShortName": "TUE",
+    "couponNameCH": "周二賽事",
+    "couponNameEN": "Tuesday Matches"
+  },
+  "league": {
+    "leagueID": "17",
+    "leagueShortName": "PFL",
+    "leagueNameCH": "葡萄牙超級聯賽",
+    "leagueNameEN": "Portuguese Premier"
+  },
+  "homeTeam": {
+    "teamID": "292",
+    "teamNameCH": "布拉加",
+    "teamNameEN": "Braga"
+  },
+  "awayTeam": {
+    "teamID": "828",
+    "teamNameCH": "艾維斯",
+    "teamNameEN": "Aves"
+  },
+  "matchStatus": "ResultIn",
+  "matchTime": "2018-01-31T03:00:00+08:00",
+  "statuslastupdated": "2018-01-31T05:04:01+08:00",
+  "inplaydelay": "false",
+  "liveEvent": {
+    "ilcLiveDisplay": true,
+    "hasLiveInfo": true,
+    "isIncomplete": false,
+    "matchIDbetradar": "11971900",
+    "matchstate": "EndedAfterFT",
+    "stateTS": "2018-01-31T04:05:04+08:00",
+    "liveevent": [
+      {
+        "order": 1,
+        "minutesElasped": "8",
+        "actionType": "Regular",
+        "playerNameCH": "",
+        "playerNameEN": "Raul Silva",
+        "homeaway": "Home"
+      },
+      {
+        "order": 2,
+        "minutesElasped": "47",
+        "actionType": "Regular",
+        "playerNameCH": "艾斯圭奧",
+        "playerNameEN": "Ricardo Esgaio",
+        "homeaway": "Home"
+      },
+      {
+        "order": 3,
+        "minutesElasped": "59",
+        "actionType": "YellowCard",
+        "playerNameCH": "迪桑尼",
+        "playerNameEN": "Fernando Tissone",
+        "homeaway": "Away"
+      }
+    ]
+  },
+  "accumulatedscore": [
+    {
+      "periodvalue": "FirstHalf",
+      "periodstatus": "ResultFinal",
+      "home": "1",
+      "away": "0"
+    },
+    {
+      "periodvalue": "SecondHalf",
+      "periodstatus": "ResultFinal",
+      "home": "2",
+      "away": "0"
+    }
+  ],
+  "livescore": {
+    "home": "2",
+    "away": "0"
+  },
+  "cornerresult": "",
+  "Cur": "1",
+  "hasWebTV": false,
+  "hadodds": {
+    "D": "100@3.75",
+    "A": "100@5.00",
+    "H": "100@1.52",
+    "ID": "5ef9b978-6601-48b6-ba85-94bff9850de9",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "fhaodds": {
+    "A": "100@4.80",
+    "D": "100@2.23",
+    "H": "100@2.12",
+    "ID": "269fb114-468e-4f58-b747-85dd32ea07f8",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "crsodds": {
+    "S0200": "100@6.50",
+    "S0005": "100@700.0",
+    "S0302": "100@22.00",
+    "S0400": "100@21.00",
+    "S0205": "100@500.0",
+    "S0202": "100@15.00",
+    "S0402": "100@40.00",
+    "S0105": "100@500.0",
+    "S0500": "100@45.00",
+    "S0001": "100@12.00",
+    "S0502": "100@80.00",
+    "S0303": "100@60.00",
+    "S0003": "100@70.00",
+    "S0401": "100@23.00",
+    "SM1MH": "100@30.00",
+    "S0501": "100@45.00",
+    "S0104": "100@150.0",
+    "S0204": "100@150.0",
+    "S0103": "100@40.00",
+    "S0100": "100@6.75",
+    "S0102": "100@14.00",
+    "S0201": "100@7.25",
+    "S0002": "100@27.00",
+    "S0004": "100@250.0",
+    "S0000": "100@12.50",
+    "S0301": "100@12.00",
+    "SM1MD": "100@400.0",
+    "S0203": "100@50.00",
+    "S0300": "100@10.50",
+    "S0101": "100@7.10",
+    "SM1MA": "100@150.0",
+    "ID": "1aa24873-4987-4920-aaf3-1fef73b8a2f7",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "fcsodds": {
+    "S0301": "100@45.00",
+    "S0502": "100@1000",
+    "S0300": "100@22.00",
+    "S0100": "100@3.30",
+    "S0005": "100@4000",
+    "S0002": "100@27.00",
+    "S0302": "100@150.0",
+    "S0000": "100@2.95",
+    "S0102": "100@35.00",
+    "S0401": "100@100.0",
+    "SM1MA": "100@1500",
+    "S0500": "100@150.0",
+    "S0200": "100@7.25",
+    "S0303": "100@600.0",
+    "S0104": "100@700.0",
+    "SM1MD": "100@5000",
+    "S0105": "100@4000",
+    "S0103": "100@125.0",
+    "S0402": "100@500.0",
+    "S0501": "100@300.0",
+    "SM1MH": "100@300.0",
+    "S0003": "100@125.0",
+    "S0001": "100@6.50",
+    "S0400": "100@55.00",
+    "S0205": "100@4000",
+    "S0204": "100@800.0",
+    "S0004": "100@700.0",
+    "S0203": "100@250.0",
+    "S0201": "100@17.00",
+    "S0101": "100@7.25",
+    "S0202": "100@60.00",
+    "ID": "f8468419-9d3f-4fa1-bf92-3753168ef200",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "ftsodds": {
+    "H": "100@1.43",
+    "A": "100@2.85",
+    "N": "100@12.50",
+    "ID": "40e2366a-3917-4249-8eed-aeac32a1b66d",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "ooeodds": {
+    "E": "100@1.80",
+    "O": "100@1.90",
+    "ID": "0ad38ce3-b6a7-4dac-9585-630e5f7c7707",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "ttgodds": {
+    "P1": "100@5.00",
+    "P6": "100@15.00",
+    "P5": "100@8.50",
+    "P0": "100@12.50",
+    "P3": "100@3.80",
+    "P4": "100@5.00",
+    "M7": "100@20.00",
+    "P2": "100@3.60",
+    "ID": "a97503b6-b8b1-4325-a22f-1d0bf02dc4e0",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "hftodds": {
+    "HA": "100@35.00",
+    "DD": "100@6.00",
+    "HD": "100@15.00",
+    "AH": "100@20.00",
+    "DA": "100@11.00",
+    "HH": "100@2.30",
+    "DH": "100@4.20",
+    "AD": "100@15.00",
+    "AA": "100@8.75",
+    "ID": "722d4323-fd54-4187-ba01-293fb8dd55c0",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "hhaodds": {
+    "D": "100@3.45",
+    "H": "100@2.52",
+    "A": "100@2.27",
+    "ID": "8bb28d91-c3ec-4fdc-8190-c503da44c285",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "HG": "-1",
+    "AG": "+1",
+    "Cur": "1"
+  },
+  "hdcodds": {
+    "H": "100@1.85",
+    "A": "100@1.99",
+    "ID": "f136880a-a9e2-423a-be8d-74b4c0c800b0",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "HG": "-0.5/-1.0",
+    "AG": "+0.5/+1.0",
+    "Cur": "1"
+  },
+  "hilodds": {
+    "LINELIST": [
+      {
+        "LINENUM": "1",
+        "MAINLINE": "true",
+        "LINESTATUS": "1",
+        "LINEORDER": "1",
+        "LINE": "2.5/3.0",
+        "L": "100@1.75",
+        "H": "100@1.95"
+      }
+    ],
+    "ID": "134dd507-a07a-4acb-baa3-cba01c6b754b",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "fhlodds": {
+    "LINELIST": [
+      {
+        "LINENUM": "1",
+        "MAINLINE": "true",
+        "LINESTATUS": "1",
+        "LINEORDER": "1",
+        "LINE": "1.5/1.5",
+        "H": "100@2.45",
+        "L": "100@1.48"
+      }
+    ],
+    "ID": "1d661627-b333-44e3-a265-36aa465b5306",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "hasExtraTimePools": false,
+  "results": {
+    "OOE": "E",
+    "FHA": "H",
+    "FTS": "H",
+    "HFT": "H:H",
+    "CRS": "02:00",
+    "TTG": "+2",
+    "FCS": "01:00",
+    "HAD": "H"
+  },
+  "definedPools": [],
+  "inplayPools": []
+}

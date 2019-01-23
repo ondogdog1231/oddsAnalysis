@@ -1,0 +1,295 @@
+{
+  "archive": "1",
+  "matchID": "1b431034-2e8a-4e92-89ce-34d088dce442",
+  "matchIDinofficial": "20180130TUE13",
+  "matchNum": "13",
+  "matchDate": "2018-01-30+08:00",
+  "matchDay": "TUE",
+  "coupon": {
+    "couponID": "4",
+    "couponShortName": "TUE",
+    "couponNameCH": "周二賽事",
+    "couponNameEN": "Tuesday Matches"
+  },
+  "league": {
+    "leagueID": "29",
+    "leagueShortName": "ED1",
+    "leagueNameCH": "英格蘭冠軍聯賽",
+    "leagueNameEN": "Eng Championship"
+  },
+  "homeTeam": {
+    "teamID": "15",
+    "teamNameCH": "米杜士堡",
+    "teamNameEN": "Middlesbrough"
+  },
+  "awayTeam": {
+    "teamID": "434",
+    "teamNameCH": "錫周三",
+    "teamNameEN": "Sheff Wednesday"
+  },
+  "matchStatus": "ResultIn",
+  "matchTime": "2018-01-31T03:45:00+08:00",
+  "statuslastupdated": "2018-01-31T06:03:10+08:00",
+  "inplaydelay": "false",
+  "liveEvent": {
+    "ilcLiveDisplay": true,
+    "hasLiveInfo": false,
+    "isIncomplete": false,
+    "matchIDbetradar": "",
+    "matchstate": "EndedAfterFT",
+    "stateTS": "2018-01-31T06:03:10+08:00",
+    "liveevent": [
+      {
+        "order": 1,
+        "minutesElasped": "11",
+        "actionType": "YellowCard",
+        "playerNameCH": "",
+        "playerNameEN": "Jordan Thorniley",
+        "homeaway": "Away"
+      },
+      {
+        "order": 2,
+        "minutesElasped": "87",
+        "actionType": "YellowCard",
+        "playerNameCH": "阿當列亞治",
+        "playerNameEN": "Adam Reach",
+        "homeaway": "Away"
+      }
+    ]
+  },
+  "accumulatedscore": [
+    {
+      "periodvalue": "FirstHalf",
+      "periodstatus": "ResultFinal",
+      "home": "0",
+      "away": "0"
+    },
+    {
+      "periodvalue": "SecondHalf",
+      "periodstatus": "ResultFinal",
+      "home": "0",
+      "away": "0"
+    }
+  ],
+  "cornerresult": "",
+  "Cur": "1",
+  "hasWebTV": false,
+  "hadodds": {
+    "A": "100@5.30",
+    "H": "100@1.55",
+    "D": "100@3.45",
+    "ID": "d3224a39-fee1-4019-9af3-13eceeaed6a2",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "fhaodds": {
+    "H": "100@2.15",
+    "A": "100@5.30",
+    "D": "100@2.10",
+    "ID": "29070119-11a8-4912-a9e3-b2cefa12f606",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "crsodds": {
+    "S0003": "100@80.00",
+    "SM1MD": "100@600.0",
+    "S0303": "100@80.00",
+    "S0005": "100@900.0",
+    "S0200": "100@6.20",
+    "S0500": "100@60.00",
+    "S0402": "100@65.00",
+    "S0203": "100@55.00",
+    "S0000": "100@8.50",
+    "S0400": "100@23.00",
+    "S0302": "100@29.00",
+    "S0004": "100@300.0",
+    "S0401": "100@30.00",
+    "S0103": "100@50.00",
+    "S0204": "100@250.0",
+    "S0501": "100@70.00",
+    "SM1MA": "100@250.0",
+    "S0102": "100@16.00",
+    "S0104": "100@200.0",
+    "S0202": "100@17.00",
+    "S0201": "100@7.50",
+    "S0105": "100@700.0",
+    "S0002": "100@27.00",
+    "S0001": "100@11.00",
+    "SM1MH": "100@50.00",
+    "S0101": "100@6.30",
+    "S0100": "100@5.20",
+    "S0300": "100@10.50",
+    "S0502": "100@150.0",
+    "S0205": "100@700.0",
+    "S0301": "100@13.00",
+    "ID": "1b92d5e5-5d53-466b-b271-154fbc3179d9",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "fcsodds": {
+    "SM1MD": "100@5000",
+    "S0104": "100@900.0",
+    "S0400": "100@100.0",
+    "S0401": "100@250.0",
+    "S0004": "100@800.0",
+    "S0501": "100@800.0",
+    "SM1MH": "100@900.0",
+    "S0502": "100@2000",
+    "S0001": "100@6.50",
+    "S0202": "100@80.00",
+    "S0300": "100@30.00",
+    "S0303": "100@900.0",
+    "S0201": "100@20.00",
+    "S0000": "100@2.40",
+    "S0100": "100@3.05",
+    "S0200": "100@7.75",
+    "S0203": "100@400.0",
+    "S0402": "100@700.0",
+    "S0005": "100@5000",
+    "S0101": "100@8.00",
+    "S0204": "100@1000",
+    "S0002": "100@35.00",
+    "S0500": "100@500.0",
+    "S0205": "100@5000",
+    "S0103": "100@250.0",
+    "S0105": "100@5000",
+    "S0302": "100@250.0",
+    "S0003": "100@200.0",
+    "SM1MA": "100@5000",
+    "S0102": "100@45.00",
+    "S0301": "100@60.00",
+    "ID": "f30529bf-a882-49bf-a1b5-9f5f1da9569d",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "ftsodds": {
+    "N": "100@8.50",
+    "A": "100@3.10",
+    "H": "100@1.45",
+    "ID": "c25079d4-6722-43f9-8062-27991d818526",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "ooeodds": {
+    "O": "100@1.90",
+    "E": "100@1.80",
+    "ID": "1ab11769-db58-456c-868f-e90651de7b5c",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "ttgodds": {
+    "P2": "100@3.15",
+    "P3": "100@3.90",
+    "M7": "100@40.00",
+    "P0": "100@8.50",
+    "P6": "100@23.00",
+    "P1": "100@3.90",
+    "P5": "100@12.50",
+    "P4": "100@6.20",
+    "ID": "14cec65c-aecb-4dda-ac78-d6408ca53fba",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "hftodds": {
+    "AD": "100@15.00",
+    "HD": "100@15.00",
+    "DD": "100@5.10",
+    "DH": "100@4.20",
+    "AA": "100@8.50",
+    "DA": "100@11.00",
+    "HA": "100@50.00",
+    "AH": "100@28.00",
+    "HH": "100@2.35",
+    "ID": "dac8a352-6d14-426b-bb10-bfea9df29cfc",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "hhaodds": {
+    "D": "100@3.15",
+    "H": "100@2.75",
+    "A": "100@2.23",
+    "ID": "d79fd620-adc0-43ad-aeee-c1e71f6b16ad",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "HG": "-1",
+    "AG": "+1",
+    "Cur": "1"
+  },
+  "hdcodds": {
+    "A": "100@1.94",
+    "H": "100@1.90",
+    "ID": "b3931242-61d6-49bd-ae93-f04567b66829",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "HG": "-0.5/-1.0",
+    "AG": "+0.5/+1.0",
+    "Cur": "1"
+  },
+  "hilodds": {
+    "LINELIST": [
+      {
+        "LINENUM": "1",
+        "MAINLINE": "true",
+        "LINESTATUS": "1",
+        "LINEORDER": "1",
+        "LINE": "2.5/2.5",
+        "L": "100@1.65",
+        "H": "100@2.10"
+      }
+    ],
+    "ID": "993d50ac-b92b-4f3b-bfbd-888e29f32f62",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "fhlodds": {
+    "LINELIST": [
+      {
+        "LINENUM": "1",
+        "MAINLINE": "true",
+        "LINESTATUS": "1",
+        "LINEORDER": "1",
+        "LINE": "1.5/1.5",
+        "H": "100@3.08",
+        "L": "100@1.32"
+      }
+    ],
+    "ID": "ed447d71-a0e0-4446-847b-abce77462cad",
+    "POOLSTATUS": "Payout",
+    "INPLAY": "false",
+    "ALLUP": "true",
+    "Cur": "1"
+  },
+  "hasExtraTimePools": false,
+  "results": {
+    "CRS": "00:00",
+    "HFT": "D:D",
+    "TTG": "+0",
+    "HAD": "D",
+    "OOE": "E",
+    "FCS": "00:00",
+    "FTS": "N",
+    "FHA": "D"
+  },
+  "definedPools": [],
+  "inplayPools": []
+}
