@@ -19,7 +19,7 @@ from random import randint
 
 
 
-with codecs.open("20180101_20180131_result.json", 'r', encoding='utf8') as f:
+with codecs.open("20180301_20180331_result.json", 'r', encoding='utf8') as f:
     text = f.read()
 
 a = json.loads(text)
@@ -63,8 +63,8 @@ def accessUrl(url, failCount):
 
 for i in range(11, pageTotal + 1):
     failCount = 0
-    startDate = "20180101"
-    endDate = "20180131"
+    startDate = "20180301"
+    endDate = "20180331"
     url = "https://bet.hkjc.com/football/getJSON.aspx?jsontype=search_result.aspx&startdate=%s&enddate=%s&teamid=default&pageno=%s" % (
         startDate, endDate, i)
     returnResult = accessUrl(url, failCount)

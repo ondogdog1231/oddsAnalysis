@@ -43,22 +43,19 @@ def accessUrl(url, failCount):
         print "FailCount now is %s :(" % failCount
         print "-----------"
         if failCount > 5:
-            return "Fail"
+            return 2
         failCount = failCount + 1
         time.sleep(randint(9, 20))
         return accessUrl(url, failCount)
 
 
 for fileNames in os.listdir("./matchResult"):
-    print fileNames
-    if fileNames == "20180101_20180131_page_26.json":
+    if "20180101" in fileNames or "20180201" in fileNames:
         continue
-
     matchList = []
     with codecs.open("./matchResult/%s" % fileNames, 'r', encoding='utf8') as f:
         text = f.read()
     a = json.loads(text)
-
     for i in a[0]["matches"]:
         print i["matchID"]
         matchList.append(i["matchID"])
@@ -68,9 +65,11 @@ for fileNames in os.listdir("./matchResult"):
         url = "https://bet.hkjc.com/football/getJSON.aspx?jsontype=last_odds.aspx&matchid=%s" % (id)
         returnResult = accessUrl(url, failCount)
         print returnResult
-        pathName = "./matchDetailResult/%s.json" % (id,)
+        if returnResult is 2:
+            print "It is fail"
+            continue
+        pathName = "./matchDetailResult/2018-03/%s.json" % (id,)
         f = open(pathName, "w+")
         print "----------------------"
-        print returnResult
         f.write(returnResult)
         f.close()
