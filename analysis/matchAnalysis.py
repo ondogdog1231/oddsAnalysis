@@ -1,3 +1,4 @@
+# coding=utf-8
 import sys
 import os
 
@@ -55,6 +56,7 @@ drawScoreOddlist = {
 }
 upCount = 0
 downCount = 0
+runCount = 0
 fileCount = 0
 hot_1_5_Count = 0
 hot_1_6_Count = 0
@@ -62,6 +64,50 @@ hot_1_7_Count = 0
 hot_1_8_Count = 0
 fileNameList = []
 probList = []
+probCountList = {
+    "c_0.81" : 0,
+    "c_0.82" : 0,
+    "c_0.83" : 0,
+    "c_0.84" : 0,
+    "c_0.85" : 0,
+    "c_0.86" : 0,
+    "c_0.87" : 0,
+    "c_0.88" : 0,
+    "c_0.89" : 0,
+    "c_0.9" : 0,
+    "c_0.91" : 0,
+    "c_0.92" : 0,
+    "c_0.93" : 0,
+    "c_0.94" : 0,
+    "c_0.95" : 0,
+    "c_0.96" : 0,
+    "c_0.97" : 0,
+    "c_0.98" : 0,
+    "c_0.99" : 0,
+    "c_1.0" : 0,
+    "c_1.01" : 0,
+    "c_1.02" : 0,
+    "c_1.03" : 0,
+    "c_1.04" : 0,
+    "c_1.05" : 0,
+    "c_1.06" : 0,
+    "c_1.07" : 0,
+    "c_1.08" : 0,
+    "c_1.09" : 0,
+    "c_1.10" : 0,
+    "c_1.11" : 0,
+    "c_1.12" : 0,
+    "c_1.13" : 0,
+    "c_1.14" : 0,
+    "c_1.15" : 0,
+    "c_1.16" : 0,
+    "c_1.17" : 0,
+    "c_1.18" : 0,
+    "c_1.19" : 0,
+    "c_1.2" : 0,
+    "c_1.21" : 0,
+    "c_1.23" : 0,
+}
 
 for root, subdirs, files in os.walk("../matchDetailResult"):
 
@@ -140,53 +186,63 @@ for filenames in fileNameList:
         "homeScore": int(matchJson["accumulatedscore"][1]["home"]),
         "awayScore": int(matchJson["accumulatedscore"][1]["away"]),
     }
+    customHandicap = 0.25
     if summary["asia"] is not None:
-        if summary["asia"]["homeHandicap"] == -1.0:
-            if summary["homeScore"] + -1.0 - summary["awayScore"] > 0.0:
+        if summary["asia"]["homeHandicap"] == -customHandicap:
+            if summary["homeScore"] + -customHandicap - summary["awayScore"] > 0.0:
                 summary["asiaResult"] = "UP"
+            elif summary["homeScore"] + -customHandicap - summary["awayScore"] == 0.0:
+                summary["asiaResult"] = "RUN"
             else:
                 summary["asiaResult"] = "DOWN"
 
-        if summary["asia"]["homeHandicap"] == 1.0:
-            if summary["homeScore"] + 1.0 - summary["awayScore"] > 0.0:
+        if summary["asia"]["homeHandicap"] == customHandicap:
+            if summary["homeScore"] + customHandicap - summary["awayScore"] > 0.0:
                 summary["asiaResult"] = "DOWN"
+            elif summary["homeScore"] + customHandicap - summary["awayScore"] == 0.0:
+                summary["asiaResult"] = "RUN"
             else:
                 summary["asiaResult"] = "UP"
-    fileCount = fileCount + 1
-    if summary["asia"] is not None and abs(summary["asia"]["homeHandicap"]) == 1.0:
+    # fileCount = fileCount + 1
+    if summary["asia"] is not None and abs(summary["asia"]["homeHandicap"]) == customHandicap:
         # print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
 
         if max(summary["prob"]["home"],summary["prob"]["away"]) not in probList:
             probList.append(max(summary["prob"]["home"],summary["prob"]["away"]))
-        # fileCount = fileCount + 1
-
-
-
+        # print probCountList["c_%s" % round(max(summary["prob"]["home"],summary["prob"]["away"]),2)]
+        # probCountList["c_%s" % round(max(summary["prob"]["home"],summary["prob"]["away"]),2)] = probCountList["c_%s" % round(max(summary["prob"]["home"],summary["prob"]["away"]),2)]+ 1
+        fileCount = fileCount + 1
+        continue
 
         """ 0.75 """
-        # lowerLimit = 0.86
-        # upperLimit = 0.87
-        # # if (float(summary["prob"]["draw"]) >= 0.3):
-        #
-        # if ((lowerLimit  <= float(summary["prob"]["home"]) <= upperLimit) or (lowerLimit <= float(summary["prob"]["away"]) <= upperLimit)) \
-        #         and \
-        #     ((0.25 <= float(summary["prob"]["home"]) <= 0.28) or (0.25 <= float(summary["prob"]["away"]) <= 0.28)):
-        #      # and \
-        #         # ((1.51 <= float(summary["euro"]["home"]) <= 1.53) or (1.51 <= float(summary["euro"]["away"]) <= 1.53))\
-        #
-        #     # print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
-        #
-        #     if summary["asiaResult"] is "UP":
-        #         upCount = upCount + 1
-        #         # print "%s-%s" % (summary["homeScore"],summary["awayScore"])
-        #
-        #     if summary["asiaResult"] is "DOWN":
-        #         downCount = downCount + 1
-        #     print filenames
-        #     print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
+        lowerLimit = 0.83
+        upperLimit = 0.84
+        # if (float(summary["prob"]["draw"]) >= 0.3):
+
+        if ((lowerLimit  <= float(summary["prob"]["home"]) <= upperLimit) or (lowerLimit <= float(summary["prob"]["away"]) <= upperLimit))\
+                and \
+            ((0.29 <= float(summary["prob"]["home"]) <= 0.30) or (0.29 <= float(summary["prob"]["away"]) <= 0.30)):
+             # and \
+                # ((1.51 <= float(summary["euro"]["home"]) <= 1.53) or (1.51 <= float(summary["euro"]["away"]) <= 1.53))\
+
+            # print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
+
+            if summary["asiaResult"] is "UP":
+                upCount = upCount + 1
+                # print "%s-%s" % (summary["homeScore"],summary["awayScore"])
+
+            if summary["asiaResult"] is "DOWN":
+                downCount = downCount + 1
+            if summary["asiaResult"] is "RUN":
+                runCount = runCount + 1
+            fileCount = fileCount + 1
+            print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
 
 print "File count: %s" % fileCount
-print "Up count: %s" % upCount
-print "Down count: %s" % downCount
+print "Up count(上盤): %s" % upCount
+print "Down count(下盤): %s" % downCount
+print "Run count: %s" % runCount
 probList.sort()
 print json.dumps(probList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
+# probCountList.sort()
+# print probCountList

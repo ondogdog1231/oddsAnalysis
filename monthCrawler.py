@@ -19,7 +19,7 @@ from random import randint
 
 
 
-with codecs.open("20180301_20180331_result.json", 'r', encoding='utf8') as f:
+with codecs.open("20180401_20180430_result.json", 'r', encoding='utf8') as f:
     text = f.read()
 
 a = json.loads(text)
@@ -55,21 +55,24 @@ def accessUrl(url, failCount):
         print "FailCount now is %s :(" % failCount
         print "-----------"
         if failCount > 5:
-            return "Fail"
+            return 2
         failCount = failCount + 1
         time.sleep(randint(0, 9))
         return accessUrl(url, failCount)
 
 
-for i in range(11, pageTotal + 1):
+for i in range(1, pageTotal + 1):
     failCount = 0
-    startDate = "20180301"
-    endDate = "20180331"
+    startDate = "20180401"
+    endDate = "20180430"
     url = "https://bet.hkjc.com/football/getJSON.aspx?jsontype=search_result.aspx&startdate=%s&enddate=%s&teamid=default&pageno=%s" % (
         startDate, endDate, i)
     returnResult = accessUrl(url, failCount)
+    if returnResult is 2:
+        print "page %s is fail" % i
+        continue
     print returnResult
-    pathName = "./matchResult/20180101_20180131_page_%s.json" % (i)
+    pathName = "./matchResult/20180401_20180430_page_%s.json" % (i)
     f = open(pathName, "w+")
     print "----------------------"
     print returnResult
