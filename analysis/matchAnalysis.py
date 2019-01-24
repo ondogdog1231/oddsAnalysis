@@ -150,7 +150,7 @@ for filenames in fileNameList:
         # print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
 
         fileCount = fileCount + 1
-        lowerLimit = 0.888
+        lowerLimit = 0.89
         upperLimit = 0.90
         # if (float(summary["prob"]["draw"]) >= 0.3):
 
