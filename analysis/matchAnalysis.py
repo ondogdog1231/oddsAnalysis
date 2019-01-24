@@ -147,8 +147,8 @@ for filenames in fileNameList:
 
     # Asia Handicap
     if "hdcodds" in matchJson:
-        handicap["HomeOdds"] = re.findall("@(\d+.\d{1,2})", matchJson["hdcodds"]["H"])[0]
-        handicap["AwayOdds"] = re.findall("@(\d+.\d{1,2})", matchJson["hdcodds"]["A"])[0]
+        handicap["home"] = re.findall("@(\d+.\d{1,2})", matchJson["hdcodds"]["H"])[0]
+        handicap["away"] = re.findall("@(\d+.\d{1,2})", matchJson["hdcodds"]["A"])[0]
         # Handicap["Handicap"] = matchJson["hdcodds"]["AG"]
         HG = str(matchJson["hdcodds"]["HG"]).split("/")
         handicap["homeHandicap"] = float((float(HG[0]) + float(HG[1])) / 2)
@@ -186,7 +186,7 @@ for filenames in fileNameList:
         "homeScore": int(matchJson["accumulatedscore"][1]["home"]),
         "awayScore": int(matchJson["accumulatedscore"][1]["away"]),
     }
-    customHandicap = 0.25
+    customHandicap = 0.75
     if summary["asia"] is not None:
         if summary["asia"]["homeHandicap"] == -customHandicap:
             if summary["homeScore"] + -customHandicap - summary["awayScore"] > 0.0:
@@ -212,16 +212,22 @@ for filenames in fileNameList:
         # print probCountList["c_%s" % round(max(summary["prob"]["home"],summary["prob"]["away"]),2)]
         # probCountList["c_%s" % round(max(summary["prob"]["home"],summary["prob"]["away"]),2)] = probCountList["c_%s" % round(max(summary["prob"]["home"],summary["prob"]["away"]),2)]+ 1
         fileCount = fileCount + 1
-        continue
+        # continue
 
         """ 0.75 """
         lowerLimit = 0.83
         upperLimit = 0.84
+        secondLowerLimit = 0.29
+        secondUpperLimit = 0.30
         # if (float(summary["prob"]["draw"]) >= 0.3):
 
         if ((lowerLimit  <= float(summary["prob"]["home"]) <= upperLimit) or (lowerLimit <= float(summary["prob"]["away"]) <= upperLimit))\
                 and \
-            ((0.29 <= float(summary["prob"]["home"]) <= 0.30) or (0.29 <= float(summary["prob"]["away"]) <= 0.30)):
+            ((secondLowerLimit <= float(summary["prob"]["home"]) <= secondUpperLimit) or (secondLowerLimit <= float(summary["prob"]["away"]) <= secondUpperLimit)):
+            # and\
+            # ((1.68 <= float(summary["asia"]["home"]) <= 1.54) or (1.50 <= float(summary["asia"]["away"]) <= 1.7)):
+
+
              # and \
                 # ((1.51 <= float(summary["euro"]["home"]) <= 1.53) or (1.51 <= float(summary["euro"]["away"]) <= 1.53))\
 
@@ -242,7 +248,7 @@ print "File count: %s" % fileCount
 print "Up count(上盤): %s" % upCount
 print "Down count(下盤): %s" % downCount
 print "Run count: %s" % runCount
-probList.sort()
-print json.dumps(probList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
+# probList.sort()
+# print json.dumps(probList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
 # probCountList.sort()
 # print probCountList
