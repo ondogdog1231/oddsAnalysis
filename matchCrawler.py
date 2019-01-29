@@ -45,12 +45,12 @@ def accessUrl(url, failCount):
         if failCount > 5:
             return 2
         failCount = failCount + 1
-        time.sleep(randint(9, 20))
+        time.sleep(randint(1, 5))
         return accessUrl(url, failCount)
 
 
 for fileNames in os.listdir("./matchResult"):
-    if "20180501" not in fileNames:
+    if "20180801" not in fileNames:
         continue
 
     matchList = []
@@ -62,7 +62,7 @@ for fileNames in os.listdir("./matchResult"):
         matchList.append(i["matchID"])
 
     for id in matchList:
-        path = "./matchDetailResult/2018-05/%s.json" % id
+        path = "./matchDetailResult/2018-08/%s.json" % id
         if os.path.isfile(path):
             print "%s is exist." % id
             continue
@@ -74,8 +74,9 @@ for fileNames in os.listdir("./matchResult"):
         if returnResult is 2:
             print "It is fail"
             continue
-        pathName = "./matchDetailResult/2018-05/%s.json" % (id,)
+        pathName = "./matchDetailResult/2018-08/%s.json" % (id,)
         f = open(pathName, "w+")
         print "----------------------"
         f.write(returnResult)
         f.close()
+print "It is finished."
