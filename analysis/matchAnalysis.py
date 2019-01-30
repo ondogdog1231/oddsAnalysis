@@ -204,7 +204,7 @@ for filenames in fileNameList:
         "awayScore": int(matchJson["accumulatedscore"][1]["away"]),
     }
     if summary["asia"] is not None:
-        if summary["asia"]["homeHandicap"] == -customHandicap:
+        if summary["asia"]["homeHandicap"] == -customHandicap and summary["asia"]["homeHandicap"] != 0:
             if summary["homeScore"] + -customHandicap - summary["awayScore"] > 0.0:
                 summary["asiaResult"] = "UP"
                 if customHandicap == 0.75 and summary["homeScore"] + -customHandicap - summary["awayScore"] < 1.0:
@@ -214,8 +214,8 @@ for filenames in fileNameList:
             else:
                 summary["asiaResult"] = "DOWN"
 
-        if summary["asia"]["homeHandicap"] == customHandicap:
-            # if summary["matchId"] == "fcbe1a28-d600-4345-bc6b-7c1e02527b55":
+        if summary["asia"]["homeHandicap"] == customHandicap and summary["asia"]["homeHandicap"] != 0:
+            # if summary["matchId"] == "9a532de0-e9d0-4846-9152-e1d2d7593301":
             #     print summary
             #     print summary["homeScore"]
             #     print summary["awayScore"]
@@ -232,10 +232,17 @@ for filenames in fileNameList:
                 summary["asiaResult"] = "UP"
                 if customHandicap == 0.75 and 0 < summary["homeScore"] + customHandicap - summary["awayScore"] < 1.0:
                     summary["asiaResult"] = "UP_HALF"
-                    # if customHandicap == 0.75 and summary["homeScore"] + customHandicap - summary["awayScore"] < 1.0:
-            #         summary["asiaResult"] = "UP_HALF"
-            # else:
-            #     summary["asiaResult"] = "UP"
+
+         # 0 handicap
+        if summary["asia"]["homeHandicap"] == 0:
+            if summary["homeScore"] - summary["awayScore"] > 0:
+                summary["asiaResult"] = "UP"
+            if summary["homeScore"] - summary["awayScore"] < 0:
+                summary["asiaResult"] = "DOWN"
+            if summary["homeScore"] - summary["awayScore"] == 0:
+                summary["asiaResult"] = "RUN"
+
+
     # fileCount = fileCount + 1
     if summary["asia"] is not None and abs(summary["asia"]["homeHandicap"]) == customHandicap:
         # print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
