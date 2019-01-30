@@ -127,6 +127,13 @@ lowerLimit = float(raw_input("lower Limit ?"))
 upperLimit = float(raw_input("Upper Limit ?"))
 secondLowerLimit = float(raw_input("Second Lower Limit ?"))
 secondUpperLimit = float(raw_input("Second Upper Limit ?"))
+#Odds
+asiaOddsLowerLimit = float(raw_input("Asia Odds Lower Limit ?"))
+asiaOddsUpperLimit = float(raw_input("Asia Odds Upper Limit ?"))
+#Odds
+euroOddsLowerLimit = float(raw_input("Euro Odds Lower Limit ?"))
+euroOddsUpperLimit = float(raw_input("Euro Odds Upper Limit ?"))
+
 
 for filenames in fileNameList:
 
@@ -243,10 +250,7 @@ for filenames in fileNameList:
 
         # if (float(summary["prob"]["draw"]) >= 0.3):
 
-        if ((lowerLimit <= float(summary["prob"]["home"]) <= upperLimit) or (lowerLimit <= float(summary["prob"]["away"]) <= upperLimit)) and ((secondLowerLimit <= float(summary["prob"]["home"]) <= secondUpperLimit) or ((secondLowerLimit <= float(summary["prob"]["away"]) <= secondUpperLimit))) :
-                # and ((1.62 <= float(summary["euro"]["home"]) <= 1.66) or (1.62 <= float(summary["euro"]["away"]) <= 1.66)):
-                # and ((1.91 <= float(summary["asia"]["home"]) <= 1.91) or (
-                #                 1.91 <= float(summary["asia"]["away"]) <= 1.91)):
+        if ((lowerLimit <= float(summary["prob"]["home"]) <= upperLimit) or (lowerLimit <= float(summary["prob"]["away"]) <= upperLimit)) and ((secondLowerLimit <= float(summary["prob"]["home"]) <= secondUpperLimit) or ((secondLowerLimit <= float(summary["prob"]["away"]) <= secondUpperLimit))) and ((asiaOddsLowerLimit <= float(summary["asia"]["home"]) <= asiaOddsUpperLimit) or (asiaOddsLowerLimit <= float(summary["asia"]["away"]) <= asiaOddsUpperLimit)) and ((euroOddsLowerLimit <= float(summary["euro"]["home"]) <= euroOddsUpperLimit) or (euroOddsLowerLimit <= float(summary["euro"]["away"]) <= euroOddsUpperLimit)):
 
 
 

@@ -38,13 +38,15 @@ dateList = [
     # ["20180301", "20180331"],
     # ["20180401", "20180430"],
     # ["20180501", "20180531"],
-    ["20180601", "20180630"],
+    # ["20180601", "20180630"],
     # ["20180701", "20180731"],
-    ["20180801", "20180831"],
-    ["20180901", "20180930"],
-    ["20181001", "20181031"],
-    ["20181101", "20181130"],
-    ["20181201", "20181231"],
+    # ["20180801", "20180831"],
+    # ["20180901", "20180930"],
+    # ["20181001", "20181031"],
+    # ["20181101", "20181130"],
+    # ["20181201", "20181231"],
+    # ["20181201", "20181231"],
+    ["20190101", "20190128"],
 ]
 
 # for i in dateList:
@@ -90,7 +92,7 @@ for i in dateList:
     url = "https://bet.hkjc.com/football/getJSON.aspx?jsontype=search_result.aspx&startdate=%s&enddate=%s&teamid=default" % (startDate,endDate)
     returnResult = accessUrl(url,0)
 
-    pathName = "./%s_%s_result.txt" % (startDate,endDate)
+    pathName = "./pageJson/%s_%s_result.json" % (startDate,endDate)
     f = open(pathName, "w+")
     print "----------------------"
     print returnResult

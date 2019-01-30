@@ -97,8 +97,8 @@ scoreOdds = {
 }
 euroOdds = {}
 matchJson = json.loads(returnResult)
-print json.dumps(matchJson)
-exit()
+# print json.dumps(matchJson)
+# exit()
 homeScoreProb, drawScoreProb, awayScoreProb = 0.00, 0.00, 0.00
 
 # Euro
