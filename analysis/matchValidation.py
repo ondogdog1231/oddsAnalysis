@@ -15,6 +15,7 @@ import datetime
 import codecs
 import collections
 from predictionModel import predictionModel
+import math
 
 
 homeScoreOddlist = {
@@ -55,10 +56,15 @@ drawScoreOddlist = {
     "SM1MD": "others",
 }
 
+def round_down(n, decimals=0):
+    multiplier = 10 ** decimals
+    return math.floor(n * multiplier) / multiplier
 
-p = predictionModel(0.75,0.85,0.86,0.28,0.29,0,1000,0,1000)
-print p.prediction()
-exit()
+
+# p = predictionModel(0.75,0.74,0.75,0.37,0.38,0,1000,0,1000)
+# returnResult = p.prediction()
+# print returnResult["fileCount"]
+# exit()
 
 """
     1. Get the result, probability,odds
@@ -158,8 +164,29 @@ for root, subdirs, files in os.walk("../matchDetailResult/2019-01"):
             },
             "homeScore": int(matchJson["accumulatedscore"][1]["home"]),
             "awayScore": int(matchJson["accumulatedscore"][1]["away"]),
-            "bigSamll": "big" if float(int(matchJson["accumulatedscore"][1]["home"]) + int(matchJson["accumulatedscore"][1]["home"])) > 2.5 else "small"
+            "bigSamll": "big" if float(int(matchJson["accumulatedscore"][1]["home"]) + int(matchJson["accumulatedscore"][1]["away"])) > 2.5 else "small"
         }
+
+
+
+        print json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
+        if summary["asia"] is None:
+            continue
+
+        p = predictionModel(
+            summary["asia"]["homeHandicap"],
+            round_down(summary["prob"]["home"],2),
+            round_down(summary["prob"]["home"],2)+0.01,
+            round_down(summary["prob"]["away"], 2),
+            round_down(summary["prob"]["home"], 2) + 0.01,
+            0,1000,0,1000)
+        returnResult = p.prediction()
+        print returnResult
+        print float(returnResult["small"]) / float(returnResult["fileCount"])
+        print float(returnResult["big"]) / float(returnResult["fileCount"])
+
+
+        exit()
         testFileNameList.append(summary)
 
 print(json.dumps(testFileNameList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))

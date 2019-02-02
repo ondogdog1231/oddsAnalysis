@@ -20,7 +20,7 @@ import collections
 
 class predictionModel():
 
-    def __init__(self,customHandicap, upperLimit,lowerLimit,secondUpperLimit,secondLowerLimit,asiaOddsLowerLimit,asiaOddsUpperLimit,euroOddsUpperLimit,euroOddsLowerLimit):
+    def __init__(self,customHandicap, lowerLimit,upperLimit,secondLowerLimit,secondUpperLimit,asiaOddsLowerLimit,asiaOddsUpperLimit,euroOddsLowerLimit,euroOddsUpperLimit):
         self.upperLimit = float(upperLimit)
         self.lowerLimit = float(lowerLimit)
         self.secondUpperLimit = float(secondUpperLimit)
@@ -167,6 +167,7 @@ class predictionModel():
             }
 
             if summary["asia"] is not None:
+
                 if summary["asia"]["homeHandicap"] == -self.customHandicap:
                     if summary["homeScore"] + -self.customHandicap - summary["awayScore"] > 0.0:
                         summary["asiaResult"] = "UP"
@@ -200,13 +201,21 @@ class predictionModel():
                     if summary["homeScore"] - summary["awayScore"] == 0:
                         summary["asiaResult"] = "RUN"
 
-                print self.lowerLimit
-                print float(summary["prob"]["home"])
-                print self.lowerLimit <= float(summary["prob"]["home"])
-                if ((self.lowerLimit <= float(summary["prob"]["home"]) <= self.upperLimit) or (self.lowerLimit <= float(summary["prob"]["away"]) <= self.upperLimit)):
-                    print "ww"
-                    exit()
 
+
+                if ((self.lowerLimit <= float(summary["prob"]["home"]) <= self.upperLimit) or (self.lowerLimit <= float(summary["prob"]["away"]) <= self.upperLimit)) \
+                        and ((self.secondLowerLimit <= float(summary["prob"]["home"]) <= self.secondUpperLimit) or (
+                    (self.secondLowerLimit <= float(summary["prob"]["away"]) <= self.secondUpperLimit))) \
+                        and ((summary["asia"]["homeHandicap"] == self.customHandicap) or (
+                    summary["asia"]["homeHandicap"] == -self.customHandicap))\
+                        and ((self.asiaOddsLowerLimit <= float(summary["asia"]["home"]) <= self.asiaOddsUpperLimit) or (
+                            self.asiaOddsLowerLimit <= float(summary["asia"]["away"]) <= self.asiaOddsUpperLimit))\
+                        and ((self.euroOddsLowerLimit <= float(summary["euro"]["home"]) <= self.euroOddsUpperLimit) or (
+                                        self.euroOddsLowerLimit <= float(summary["euro"]["away"]) <= self.euroOddsUpperLimit)):
+                    #     and ((summary["asia"]["homeHandicap"] == self.customHandicap) or (
+                    # summary["asia"]["homeHandicap"] == -self.customHandicap)):
+
+                    # print summary
                     if summary["asiaResult"] is "UP":
                         upCount = upCount + 1
                     if summary["asiaResult"] is "UP_HALF":
@@ -225,28 +234,43 @@ class predictionModel():
                     fileCount = fileCount + 1
                     # print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
 
-        print "File count: %s" % fileCount
-        print "Up count(上盤): %s, %s" % (upCount, ((float(upCount) / float(fileCount)) * 100)) + "%"
-        print "HALF count(上盤): %s, %s " % (up_half, ((float(up_half) / float(fileCount)) * 100)) + "%"
-        print "Down count(下盤): %s, %s " % (downCount, ((float(downCount) / float(fileCount)) * 100)) + "%"
-        print "Down_WIN_HALF count(下盤): %s ,%s" % (downWinHalf, ((float(downWinHalf) / float(fileCount)) * 100)) + "%"
-        print "Run count: %s, %s" % (runCount, ((float(runCount) / float(fileCount)) * 100)) + "%"
-
+        # print "File count: %s" % fileCount
+        # print "Up count(上盤): %s, %s" % (upCount, ((float(upCount) / float(fileCount)) * 100)) + "%"
+        # print "HALF count(上盤): %s, %s " % (up_half, ((float(up_half) / float(fileCount)) * 100)) + "%"
+        # print "Down count(下盤): %s, %s " % (downCount, ((float(downCount) / float(fileCount)) * 100)) + "%"
+        # print "Down_WIN_HALF count(下盤): %s ,%s" % (downWinHalf, ((float(downWinHalf) / float(fileCount)) * 100)) + "%"
+        # print "Run count: %s, %s" % (runCount, ((float(runCount) / float(fileCount)) * 100)) + "%"
+        #
         totalBigSmallCount = sum(bigSmallCount.values())
-        print "--------------------"
-
-        for (k, v) in bigSmallCount.iteritems():
-            print "Score %s: %s " % (k, float(float(v) / float(totalBigSmallCount)) * 100) + "%"
-
-        smallPercentage = (
-        float(bigSmallCount["score_0"] + bigSmallCount["score_1"] + bigSmallCount["score_2"]) / float(
-            totalBigSmallCount) * 100)
-
-        bigPercentage = (float(
-            bigSmallCount["score_3"] + bigSmallCount["score_4"] + bigSmallCount["score_5"] + bigSmallCount[
-                "score_6"]) / float(
-            totalBigSmallCount) * 100)
-
-        print "Small: %s" % smallPercentage
-        print "Big: %s" % bigPercentage
+        # print "--------------------"
+        #
+        # for (k, v) in bigSmallCount.iteritems():
+        #     print "Score %s: %s " % (k, float(float(v) / float(totalBigSmallCount)) * 100) + "%"
+        #
+        # smallPercentage = (
+        # float(bigSmallCount["score_0"] + bigSmallCount["score_1"] + bigSmallCount["score_2"]) / float(
+        #     totalBigSmallCount) * 100)
+        #
+        # bigPercentage = (float(
+        #     bigSmallCount["score_3"] + bigSmallCount["score_4"] + bigSmallCount["score_5"] + bigSmallCount[
+        #         "score_6"]) / float(
+        #     totalBigSmallCount) * 100)
+        #
+        # print "Small: %s" % smallPercentage
+        # print "Big: %s" % bigPercentage
+        if fileCount == 0:
+            return {}
+        predictionSummary = {
+            "fileCount": fileCount,
+            "upCount": upCount,
+            "upHalf":up_half,
+            "downCount": downCount,
+            "downWinHalf": downWinHalf,
+            "runCount": runCount,
+            # "totalBigSmall": totalBigSmallCount,
+            "small": (bigSmallCount["score_0"] + bigSmallCount["score_1"] + bigSmallCount["score_2"]),
+            "big": (bigSmallCount["score_3"] + bigSmallCount["score_4"] + bigSmallCount["score_5"] + bigSmallCount[
+                "score_6"])
+        }
+        return predictionSummary
 
