@@ -17,7 +17,6 @@ import collections
 from predictionModel import predictionModel
 import math
 
-
 homeScoreOddlist = {
     "S0100": "1_0",
     "S0200": "2_0",
@@ -56,6 +55,7 @@ drawScoreOddlist = {
     "SM1MD": "others",
 }
 
+
 def round_down(n, decimals=0):
     multiplier = 10 ** decimals
     return math.floor(n * multiplier) / multiplier
@@ -65,6 +65,44 @@ def round_down(n, decimals=0):
 # returnResult = p.prediction()
 # print returnResult["fileCount"]
 # exit()
+
+with codecs.open('./prediction201901.json', 'r', encoding='utf8') as f:
+    text = f.read()
+
+resultJson = json.loads(text)
+handicapCount = 0
+handicapCountWin = 0
+handicapCountLose = 0
+bigSmallCount = 0
+bigSmallCountWin = 0
+bigSmallCountLose = 0
+print len(resultJson)
+for item in resultJson:
+    # print json.dumps(item["prediction"])
+    if abs(item["asia"]["homeHandicap"]) != 0.75:
+        continue
+
+    if item["prediction"]["result"]["handicap"] is not None:
+        handicapCount += 1
+    if item["prediction"]["result"]["handicap"] == True:
+        handicapCountWin +=1
+    if item["prediction"]["result"]["handicap"] == False:
+        handicapCountLose +=1
+
+    if item["prediction"]["result"]["smallBig"] is not None:
+        bigSmallCount += 1
+    if item["prediction"]["result"]["smallBig"] == True:
+        bigSmallCountWin +=1
+    if item["prediction"]["result"]["smallBig"] == False:
+        bigSmallCountLose +=1
+
+
+
+
+print "Win %s, Lose %s / %s" %(bigSmallCountWin,bigSmallCountLose,bigSmallCount)
+print "Win %s, Lose%s / %s" %(handicapCountWin,handicapCountLose,handicapCount)
+
+exit()
 
 """
     1. Get the result, probability,odds
@@ -118,7 +156,6 @@ for root, subdirs, files in os.walk("../matchDetailResult/2019-01"):
         # print re.findall("@(\d+.\d{1,2})", matchJson["hadodds"]["H"])[0]
         # exit()
         if "hadodds" in matchJson:
-
             euroOdds["home"] = re.findall("@(\d+.\d{1,2})", matchJson["hadodds"]["H"])[0]
             euroOdds["draw"] = re.findall("@(\d+.\d{1,2})", matchJson["hadodds"]["D"])[0]
             euroOdds["away"] = re.findall("@(\d+.\d{1,2})", matchJson["hadodds"]["A"])[0]
@@ -164,37 +201,80 @@ for root, subdirs, files in os.walk("../matchDetailResult/2019-01"):
             },
             "homeScore": int(matchJson["accumulatedscore"][1]["home"]),
             "awayScore": int(matchJson["accumulatedscore"][1]["away"]),
-            "bigSamll": "big" if float(int(matchJson["accumulatedscore"][1]["home"]) + int(matchJson["accumulatedscore"][1]["away"])) > 2.5 else "small"
+            "bigSamll": "big" if float(int(matchJson["accumulatedscore"][1]["home"]) + int(
+                matchJson["accumulatedscore"][1]["away"])) > 2.5 else "small"
         }
 
+        # print json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
 
-
-        print json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
         if summary["asia"] is None:
             continue
 
         p = predictionModel(
             summary["asia"]["homeHandicap"],
-            round_down(summary["prob"]["home"],2),
-            round_down(summary["prob"]["home"],2)+0.01,
-            round_down(summary["prob"]["away"], 2),
-            round_down(summary["prob"]["home"], 2) + 0.01,
-            0,1000,0,1000)
+            round_down(summary["prob"]["home"], 3),
+            round_down(summary["prob"]["home"], 3) + 0.01,
+            round_down(summary["prob"]["away"], 3),
+            round_down(summary["prob"]["away"], 3) + 0.01,
+            0, 1000, 0, 1000)
         returnResult = p.prediction()
-        print returnResult
-        print float(returnResult["small"]) / float(returnResult["fileCount"])
-        print float(returnResult["big"]) / float(returnResult["fileCount"])
+        if returnResult is None:
+            # print returnResult
+            continue
+        if int(returnResult["fileCount"]) < 9:
+            continue
+        # print returnResult
+        smallPrediction = float(returnResult["small"]) / float(returnResult["fileCount"])
+        bigPrediction = float(returnResult["big"]) / float(returnResult["fileCount"])
+        summary["prediction"] = {
+            "smallBig":None,
+            "handicap":None,
+            "result":{
+                "smallBig":None,
+                "handicap":None
+            }
+        }
+        if smallPrediction > 0.68 or bigPrediction > 0.68:
+            summary["prediction"]["smallBig"] = "small" if smallPrediction > bigPrediction else "big"
+            if summary["prediction"]["smallBig"] == summary["bigSamll"]:
+                summary["prediction"]["result"]["smallBig"] = True
+            else:
+                summary["prediction"]["result"]["smallBig"] = False
 
 
-        exit()
-        testFileNameList.append(summary)
+        upPrediction = float(returnResult["upHalf"]+returnResult["upCount"])/float(returnResult["fileCount"])
+        downPrediction = float(returnResult["downWinHalf"]+returnResult["downCount"])/float(returnResult["fileCount"])
+        # print upPrediction
+        # print downPrediction
+        if upPrediction > 0.65 or downPrediction > 0.65:
+            result = None
+            summary["prediction"]["handicap"] = "up" if upPrediction > smallPrediction else "down"
+            if float(summary["asia"]["homeHandicap"]) < 0.0:
+                if summary["homeScore"] + summary["asia"]["homeHandicap"] - summary["awayScore"]:
+                    result = "up"
+                else:
+                    result = "down"
+            if float(summary["asia"]["homeHandicap"]) > 0.0:
+                if summary["homeScore"] + summary["asia"]["homeHandicap"] - summary["awayScore"]:
+                    result = "down"
+                else:
+                    result = "up"
+            if summary["asia"]["homeHandicap"] == 0.0:
+                if summary["homeScore"] - summary["awayScore"]:
+                    result = "up"
+                else:
+                    result = "down"
 
-print(json.dumps(testFileNameList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
+            if result == summary["prediction"]["handicap"]:
+                summary["prediction"]["result"]["handicap"] = True
+            else:
+                summary["prediction"]["result"]["handicap"] = False
 
+        if summary["prediction"]["smallBig"] is not None or summary["prediction"]["handicap"] is not None:
+            print json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
+            testFileNameList.append(summary)
 
-
-
-
-
-
-
+fileName = "./%s.json" % "prediction201901"
+f = open(fileName, "w+")
+f.write(str(json.dumps(testFileNameList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False).encode('utf-8')))
+f.close()

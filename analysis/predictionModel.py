@@ -31,7 +31,6 @@ class predictionModel():
         self.euroOddsUpperLimit = float(euroOddsUpperLimit)
         self.euroOddsLowerLimit = float(euroOddsLowerLimit)
 
-
     def prediction(self):
         homeScoreOddlist = {
             "S0100": "1_0",
@@ -97,9 +96,11 @@ class predictionModel():
 
             for fileName in files:
                 path = "%s/%s" % (root, fileName)
-                # if "2018-03" not in path:
-                #     continue
+
+                if "2019-01" in path:
+                    continue
                 fileNameList.append(path)
+
         for filenames in fileNameList:
             handicap = {}
             scoreOdds = {
@@ -202,7 +203,6 @@ class predictionModel():
                         summary["asiaResult"] = "RUN"
 
 
-
                 if ((self.lowerLimit <= float(summary["prob"]["home"]) <= self.upperLimit) or (self.lowerLimit <= float(summary["prob"]["away"]) <= self.upperLimit)) \
                         and ((self.secondLowerLimit <= float(summary["prob"]["home"]) <= self.secondUpperLimit) or (
                     (self.secondLowerLimit <= float(summary["prob"]["away"]) <= self.secondUpperLimit))) \
@@ -232,7 +232,7 @@ class predictionModel():
                     else:
                         bigSmallCount["score_6"] += 1
                     fileCount = fileCount + 1
-                    # print(json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False))
+                    # print(json.dumps(summary, indent=4, sort_keys= False, encoding='UTF-8', ensure_ascii=False))
 
         # print "File count: %s" % fileCount
         # print "Up count(上盤): %s, %s" % (upCount, ((float(upCount) / float(fileCount)) * 100)) + "%"
@@ -259,7 +259,7 @@ class predictionModel():
         # print "Small: %s" % smallPercentage
         # print "Big: %s" % bigPercentage
         if fileCount == 0:
-            return {}
+            return None
         predictionSummary = {
             "fileCount": fileCount,
             "upCount": upCount,

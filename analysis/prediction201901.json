@@ -1,0 +1,2722 @@
+[
+    {
+        "awayScore": 0, 
+        "homeTeam": "圖盧茲", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-28 03:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.15", 
+            "draw": "3.00", 
+            "away": "3.10"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "1.98", 
+            "away": "1.86", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "昂熱", 
+        "prob": {
+            "home": 0.641063492063492, 
+            "draw": 0.3980591133004926, 
+            "away": 0.42033333333333334
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "拿根亞", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": true, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-28 08:06", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.95", 
+            "draw": "3.05", 
+            "away": "3.55"
+        }, 
+        "league": "MXL", 
+        "asia": {
+            "home": "1.79", 
+            "away": "2.06", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "瓜達拉哈拉", 
+        "prob": {
+            "home": 0.6577581699346403, 
+            "draw": 0.3877142857142857, 
+            "away": 0.4078333333333334
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "白禮頓", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "big", 
+            "result": {
+                "handicap": false, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-26 23:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.57", 
+            "draw": "3.60", 
+            "away": "4.80"
+        }, 
+        "league": "EFA", 
+        "asia": {
+            "home": "1.86", 
+            "away": "1.96", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "西布朗", 
+        "prob": {
+            "home": 0.8011156235069278, 
+            "draw": 0.35068783068783066, 
+            "away": 0.3043060996974041
+        }
+    }, 
+    {
+        "awayScore": 4, 
+        "homeTeam": "弗賴堡", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-26 22:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "3.30", 
+            "draw": "3.65", 
+            "away": "1.83"
+        }, 
+        "league": "GSL", 
+        "asia": {
+            "home": "2.19", 
+            "away": "1.70", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "賀芬咸", 
+        "prob": {
+            "home": 0.42719264069264073, 
+            "draw": 0.33199265913261855, 
+            "away": 0.7001511413432194
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "墨爾本勝利", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-26 16:50", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.25", 
+            "draw": "3.45", 
+            "away": "2.58"
+        }, 
+        "league": "AD1", 
+        "asia": {
+            "home": "2.10", 
+            "away": "1.76", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "FC悉尼", 
+        "prob": {
+            "home": 0.6192982456140351, 
+            "draw": 0.35768042746303613, 
+            "away": 0.480712481962482
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "迪安", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-27 03:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "3.20", 
+            "draw": "3.20", 
+            "away": "2.00"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "2.00", 
+            "away": "1.84", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "摩納哥", 
+        "prob": {
+            "home": 0.45090339354132464, 
+            "draw": 0.36817982456140347, 
+            "away": 0.639452976592936
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "米禾爾", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-27 01:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "4.70", 
+            "draw": "3.60", 
+            "away": "1.58"
+        }, 
+        "league": "EFA", 
+        "asia": {
+            "home": "1.96", 
+            "away": "1.86", 
+            "homeHandicap": 0.75
+        }, 
+        "awayTeam": "愛華頓", 
+        "prob": {
+            "home": 0.32415349143610017, 
+            "draw": 0.33874338624338624, 
+            "away": 0.7963661066602242
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "尼卡沙", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-27 11:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.00", 
+            "draw": "3.15", 
+            "away": "3.30"
+        }, 
+        "league": "MXL", 
+        "asia": {
+            "home": "1.84", 
+            "away": "2.00", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "莫雷利亞", 
+        "prob": {
+            "home": 0.6622985347985348, 
+            "draw": 0.37166578045610305, 
+            "away": 0.4193137254901962
+        }
+    }, 
+    {
+        "awayScore": 3, 
+        "homeTeam": "阿度斯維", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-27 08:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "4.20", 
+            "draw": "3.15", 
+            "away": "1.76"
+        }, 
+        "league": "APL", 
+        "asia": {
+            "home": "1.73", 
+            "away": "2.15", 
+            "homeHandicap": 0.75
+        }, 
+        "awayTeam": "競賽會", 
+        "prob": {
+            "home": 0.3255488721804511, 
+            "draw": 0.37283333333333335, 
+            "away": 0.7600056265573507
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "葛度爾古斯", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-26 06:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.15", 
+            "draw": "2.85", 
+            "away": "3.25"
+        }, 
+        "league": "APL", 
+        "asia": {
+            "home": "1.95", 
+            "away": "1.89", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "拉魯斯", 
+        "prob": {
+            "home": 0.6276595901518504, 
+            "draw": 0.4172463768115942, 
+            "away": 0.41345767195767197
+        }
+    }, 
+    {
+        "awayScore": 3, 
+        "homeTeam": "阿仙奴", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-26 03:55", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.05", 
+            "draw": "3.60", 
+            "away": "2.88"
+        }, 
+        "league": "EFA", 
+        "asia": {
+            "home": "1.87", 
+            "away": "1.97", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "曼聯", 
+        "prob": {
+            "home": 0.6115116316432107, 
+            "draw": 0.3352380952380952, 
+            "away": 0.5101664514822409
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "珀斯光輝", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-23 19:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.95", 
+            "draw": "3.40", 
+            "away": "3.15"
+        }, 
+        "league": "AD1", 
+        "asia": {
+            "home": "1.83", 
+            "away": "2.01", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "阿德萊德聯", 
+        "prob": {
+            "home": 0.6908605099780235, 
+            "draw": 0.34609956709956713, 
+            "away": 0.4218251128479962
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "尼姆", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": true, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-24 02:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.05", 
+            "draw": "3.05", 
+            "away": "3.25"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "1.90", 
+            "away": "1.94", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "昂熱", 
+        "prob": {
+            "home": 0.657259818162455, 
+            "draw": 0.39115958725706274, 
+            "away": 0.40704326993955475
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "帕丘卡", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-24 11:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.57", 
+            "draw": "3.65", 
+            "away": "4.70"
+        }, 
+        "league": "MXC", 
+        "asia": {
+            "home": "1.80", 
+            "away": "2.03", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "迪祖亞拿", 
+        "prob": {
+            "home": 0.8103620321992114, 
+            "draw": 0.33285714285714285, 
+            "away": 0.31082234432234435
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "澳洲", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-21 22:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.60", 
+            "draw": "3.35", 
+            "away": "5.00"
+        }, 
+        "league": "ASC", 
+        "asia": {
+            "home": "1.94", 
+            "away": "1.88", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "烏茲別克", 
+        "prob": {
+            "home": 0.8065861513687601, 
+            "draw": 0.3584803921568627, 
+            "away": 0.2871297868797869
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "華拿古斯", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-23 11:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "3.05", 
+            "draw": "3.05", 
+            "away": "2.15"
+        }, 
+        "league": "MXC", 
+        "asia": {
+            "home": "1.88", 
+            "away": "1.93", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "盧保斯", 
+        "prob": {
+            "home": 0.4588015873015874, 
+            "draw": 0.3877564102564102, 
+            "away": 0.6048286647992531
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "普埃布拉", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-23 09:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.95", 
+            "draw": "3.10", 
+            "away": "3.50"
+        }, 
+        "league": "MXC", 
+        "asia": {
+            "home": "1.78", 
+            "away": "2.05", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "祖亞雷斯", 
+        "prob": {
+            "home": 0.7054100529100528, 
+            "draw": 0.3793809523809524, 
+            "away": 0.36916726084373147
+        }
+    }, 
+    {
+        "awayScore": 3, 
+        "homeTeam": "賓菲加", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": true, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-23 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.82", 
+            "draw": "2.90", 
+            "away": "2.35"
+        }, 
+        "league": "PLC", 
+        "asia": {
+            "home": "1.71", 
+            "away": "2.18", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "波圖", 
+        "prob": {
+            "home": 0.4514786535303777, 
+            "draw": 0.4086297922467338, 
+            "away": 0.5956116275029318
+        }
+    }, 
+    {
+        "awayScore": 3, 
+        "homeTeam": "紐倫堡", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-20 22:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.82", 
+            "draw": "3.30", 
+            "away": "2.15"
+        }, 
+        "league": "GSL", 
+        "asia": {
+            "home": "1.83", 
+            "away": "2.01", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "哈化柏林", 
+        "prob": {
+            "home": 0.4684928356244146, 
+            "draw": 0.36130158730158723, 
+            "away": 0.6268902074936559
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "雷恩", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-20 22:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.98", 
+            "draw": "3.00", 
+            "away": "3.50"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "1.78", 
+            "away": "2.07", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "蒙彼利埃", 
+        "prob": {
+            "home": 0.6641463821518266, 
+            "draw": 0.4009158829676071, 
+            "away": 0.3921696402901337
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "普馬斯", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-21 02:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.87", 
+            "draw": "3.30", 
+            "away": "3.50"
+        }, 
+        "league": "MXL", 
+        "asia": {
+            "home": "1.74", 
+            "away": "2.13", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "阿特拿斯", 
+        "prob": {
+            "home": 0.70849376114082, 
+            "draw": 0.35384615384615387, 
+            "away": 0.3947222222222223
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "史浩克04", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-21 01:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.00", 
+            "draw": "3.05", 
+            "away": "3.40"
+        }, 
+        "league": "GSL", 
+        "asia": {
+            "home": "1.84", 
+            "away": "2.00", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "禾夫斯堡", 
+        "prob": {
+            "home": 0.6577581699346403, 
+            "draw": 0.3877142857142857, 
+            "away": 0.4109047619047619
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "拿玻里", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-21 03:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.90", 
+            "draw": "3.40", 
+            "away": "3.30"
+        }, 
+        "league": "ISA", 
+        "asia": {
+            "home": "1.78", 
+            "away": "2.07", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "拉素", 
+        "prob": {
+            "home": 0.7182416529830321, 
+            "draw": 0.3609090909090909, 
+            "away": 0.3783386496544392
+        }
+    }, 
+    {
+        "awayScore": 3, 
+        "homeTeam": "狼隊", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 4, 
+        "matchTime": "2019-01-19 20:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.12", 
+            "draw": "2.95", 
+            "away": "3.30"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.92", 
+            "away": "1.92", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "李斯特城", 
+        "prob": {
+            "home": 0.6314537529782712, 
+            "draw": 0.41233100233100234, 
+            "away": 0.4139072249589491
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "朗斯", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-19 21:55", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.71", 
+            "draw": "3.25", 
+            "away": "4.35"
+        }, 
+        "league": "FF2", 
+        "asia": {
+            "home": "2.13", 
+            "away": "1.74", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "南錫", 
+        "prob": {
+            "home": 0.8048467636810965, 
+            "draw": 0.3684486941021468, 
+            "away": 0.2858373015873016
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "蘭斯", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-20 03:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.03", 
+            "draw": "2.90", 
+            "away": "3.50"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "1.85", 
+            "away": "1.99", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "尼斯", 
+        "prob": {
+            "home": 0.6554669344991926, 
+            "draw": 0.40721911515030457, 
+            "away": 0.39492857142857146
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "烏甸尼斯", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-20 01:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.00", 
+            "draw": "2.95", 
+            "away": "3.55"
+        }, 
+        "league": "ISA", 
+        "asia": {
+            "home": "1.82", 
+            "away": "2.02", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "帕爾馬", 
+        "prob": {
+            "home": 0.6608093396573872, 
+            "draw": 0.40675324675324676, 
+            "away": 0.3916593257992853
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "皇家馬德里", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-19 23:15", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.58", 
+            "draw": "3.90", 
+            "away": "4.25"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "1.84", 
+            "away": "2.00", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "西維爾", 
+        "prob": {
+            "home": 0.7816027965169842, 
+            "draw": 0.3275517598343685, 
+            "away": 0.349504329004329
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "阿仙奴", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-20 01:30", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.85", 
+            "draw": "3.35", 
+            "away": "2.15"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.86", 
+            "away": "1.98", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "車路士", 
+        "prob": {
+            "home": 0.49302795031055907, 
+            "draw": 0.35635164835164834, 
+            "away": 0.6101686348120116
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "丹保殊", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-19 03:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.53", 
+            "draw": "3.85", 
+            "away": "4.80"
+        }, 
+        "league": "DF2", 
+        "asia": {
+            "home": "1.78", 
+            "away": "2.07", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "奧斯", 
+        "prob": {
+            "home": 0.8227273287951038, 
+            "draw": 0.32648033126293996, 
+            "away": 0.3102142857142857
+        }
+    }, 
+    {
+        "awayScore": 3, 
+        "homeTeam": "國民隊", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-19 02:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "3.70", 
+            "draw": "3.45", 
+            "away": "1.78"
+        }, 
+        "league": "PFL", 
+        "asia": {
+            "home": "1.69", 
+            "away": "2.21", 
+            "homeHandicap": 0.75
+        }, 
+        "awayTeam": "布拉加", 
+        "prob": {
+            "home": 0.3494805194805195, 
+            "draw": 0.3426097573923661, 
+            "away": 0.7644149579666821
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "CF 阿美利加", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-20 09:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.65", 
+            "draw": "3.60", 
+            "away": "4.20"
+        }, 
+        "league": "MXL", 
+        "asia": {
+            "home": "2.00", 
+            "away": "1.84", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "帕丘卡", 
+        "prob": {
+            "home": 0.8090476190476192, 
+            "draw": 0.3410590858416946, 
+            "away": 0.30690476190476196
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "切爾達", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-20 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.93", 
+            "draw": "3.08", 
+            "away": "2.18"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "1.87", 
+            "away": "1.97", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "華倫西亞", 
+        "prob": {
+            "home": 0.4709290834613416, 
+            "draw": 0.3935035366931919, 
+            "away": 0.5944787807651584
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "諾域治", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-19 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.73", 
+            "draw": "3.45", 
+            "away": "3.90"
+        }, 
+        "league": "ED1", 
+        "asia": {
+            "home": "2.13", 
+            "away": "1.74", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "伯明翰", 
+        "prob": {
+            "home": 0.7767099753916022, 
+            "draw": 0.34444139194139195, 
+            "away": 0.33802813852813857
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "日本", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-17 21:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.65", 
+            "draw": "3.35", 
+            "away": "4.55"
+        }, 
+        "league": "ASC", 
+        "asia": {
+            "home": "1.99", 
+            "away": "1.83", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "烏茲別克", 
+        "prob": {
+            "home": 0.8223876767355028, 
+            "draw": 0.3392899159663866, 
+            "away": 0.29578454878454885
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "中岸水手", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-16 16:50", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "4.20", 
+            "draw": "3.75", 
+            "away": "1.62"
+        }, 
+        "league": "AD1", 
+        "asia": {
+            "home": "1.84", 
+            "away": "2.00", 
+            "homeHandicap": 0.75
+        }, 
+        "awayTeam": "墨爾本城", 
+        "prob": {
+            "home": 0.3200952380952381, 
+            "draw": 0.3149553349875931, 
+            "away": 0.8226456083157974
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "修咸頓", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-17 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.65", 
+            "draw": "3.60", 
+            "away": "4.15"
+        }, 
+        "league": "EFA", 
+        "asia": {
+            "home": "1.97", 
+            "away": "1.85", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "打比郡", 
+        "prob": {
+            "home": 0.802182153733878, 
+            "draw": 0.33481481481481484, 
+            "away": 0.3193246601218506
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "愛斯賓奴", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-18 03:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.92", 
+            "draw": "3.30", 
+            "away": "3.35"
+        }, 
+        "league": "SFC", 
+        "asia": {
+            "home": "1.77", 
+            "away": "2.09", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "維拉利爾", 
+        "prob": {
+            "home": 0.6843053034886065, 
+            "draw": 0.3410995670995671, 
+            "away": 0.43149144921126353
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "華拉度列", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-16 02:30", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.40", 
+            "draw": "2.85", 
+            "away": "2.80"
+        }, 
+        "league": "SFC", 
+        "asia": {
+            "home": "1.70", 
+            "away": "2.19", 
+            "homeHandicap": 0.0
+        }, 
+        "awayTeam": "基達菲", 
+        "prob": {
+            "home": 0.5319224500989206, 
+            "draw": 0.4100436720142603, 
+            "away": 0.5162710622710622
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "費倫斯", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-17 04:45", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "6.20", 
+            "draw": "3.95", 
+            "away": "1.41"
+        }, 
+        "league": "PFC", 
+        "asia": {
+            "home": "1.86", 
+            "away": "1.98", 
+            "homeHandicap": 1.25
+        }, 
+        "awayTeam": "士砵亭", 
+        "prob": {
+            "home": 0.21883333333333335, 
+            "draw": 0.30869047619047624, 
+            "away": 0.931663059163059
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "尼卡沙", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-16 09:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "3.30", 
+            "draw": "3.20", 
+            "away": "1.97"
+        }, 
+        "league": "MXC", 
+        "asia": {
+            "home": "1.99", 
+            "away": "1.83", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "CF 阿美利加", 
+        "prob": {
+            "home": 0.4010060690943044, 
+            "draw": 0.3684911772814999, 
+            "away": 0.6857929325576385
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "皇家蘇斯達", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-15 04:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.93", 
+            "draw": "3.05", 
+            "away": "3.60"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "1.78", 
+            "away": "2.07", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "愛斯賓奴", 
+        "prob": {
+            "home": 0.6712301587301587, 
+            "draw": 0.39329720853858785, 
+            "away": 0.392936507936508
+        }
+    }, 
+    {
+        "awayScore": 6, 
+        "homeTeam": "多德勒支", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-13 21:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.95", 
+            "draw": "3.50", 
+            "away": "2.00"
+        }, 
+        "league": "DF2", 
+        "asia": {
+            "home": "1.99", 
+            "away": "1.85", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "丹保殊", 
+        "prob": {
+            "home": 0.4868571428571429, 
+            "draw": 0.34772575250836124, 
+            "away": 0.6221797100277577
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "圖盧茲", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-14 00:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.10", 
+            "draw": "3.00", 
+            "away": "3.20"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "1.89", 
+            "away": "1.95", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "斯特拉斯堡", 
+        "prob": {
+            "home": 0.6143225671706147, 
+            "draw": 0.4042167487684729, 
+            "away": 0.43856893760119575
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "般尼", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-12 23:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.20", 
+            "draw": "3.10", 
+            "away": "2.95"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "2.02", 
+            "away": "1.83", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "富咸", 
+        "prob": {
+            "home": 0.6063714528256124, 
+            "draw": 0.3839132104454685, 
+            "away": 0.46914511669684084
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "水晶宮", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-12 23:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.15", 
+            "draw": "3.15", 
+            "away": "3.00"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.98", 
+            "away": "1.86", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "屈福特", 
+        "prob": {
+            "home": 0.6215474476790266, 
+            "draw": 0.36801956815114706, 
+            "away": 0.46671015371322666
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "卡迪夫城", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-12 23:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.03", 
+            "draw": "3.05", 
+            "away": "3.40"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.82", 
+            "away": "2.03", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "哈特斯菲爾德", 
+        "prob": {
+            "home": 0.6464555327713224, 
+            "draw": 0.4044258639910814, 
+            "away": 0.4054805194805195
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "李斯特城", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": "big", 
+            "result": {
+                "handicap": true, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-12 23:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.81", 
+            "draw": "3.30", 
+            "away": "3.90"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "2.22", 
+            "away": "1.69", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "修咸頓", 
+        "prob": {
+            "home": 0.7323295929135752, 
+            "draw": 0.3625, 
+            "away": 0.358424963924964
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "基羅納", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-13 01:30", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.97", 
+            "draw": "3.00", 
+            "away": "3.55"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "1.73", 
+            "away": "2.14", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "艾拉維斯", 
+        "prob": {
+            "home": 0.6324977530031978, 
+            "draw": 0.42102841781874045, 
+            "away": 0.4048913519430761
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "韋根", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-12 23:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.62", 
+            "draw": "3.35", 
+            "away": "2.25"
+        }, 
+        "league": "ED1", 
+        "asia": {
+            "home": "1.78", 
+            "away": "2.07", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "阿士東維拉", 
+        "prob": {
+            "home": 0.5031411927089676, 
+            "draw": 0.35080500658761526, 
+            "away": 0.6037866055513116
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "帕丘卡", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 3, 
+        "matchTime": "2019-01-13 09:06", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.62", 
+            "draw": "3.60", 
+            "away": "4.35"
+        }, 
+        "league": "MXL", 
+        "asia": {
+            "home": "1.92", 
+            "away": "1.92", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "克雷塔羅", 
+        "prob": {
+            "home": 0.7661020217105409, 
+            "draw": 0.34501165501165504, 
+            "away": 0.34296085074345944
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "墨爾本城", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "big", 
+            "result": {
+                "handicap": false, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-11 16:50", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.52", 
+            "draw": "3.85", 
+            "away": "4.85"
+        }, 
+        "league": "AD1", 
+        "asia": {
+            "home": "1.79", 
+            "away": "2.06", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "布里斯班獅吼", 
+        "prob": {
+            "home": 0.849912717825632, 
+            "draw": 0.3099553349875931, 
+            "away": 0.29794179894179895
+        }
+    }, 
+    {
+        "awayScore": 3, 
+        "homeTeam": "卡昂", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-12 02:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "3.40", 
+            "draw": "2.95", 
+            "away": "2.04"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "1.97", 
+            "away": "1.87", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "里爾", 
+        "prob": {
+            "home": 0.4034761904761905, 
+            "draw": 0.4089258639910814, 
+            "away": 0.6447479864299016
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "尼卡沙", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-13 11:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.38", 
+            "draw": "3.05", 
+            "away": "2.67"
+        }, 
+        "league": "MXL", 
+        "asia": {
+            "home": "1.82", 
+            "away": "2.02", 
+            "homeHandicap": 0.0
+        }, 
+        "awayTeam": "普馬斯", 
+        "prob": {
+            "home": 0.5603012711925756, 
+            "draw": 0.39003284072249594, 
+            "away": 0.5026070815594142
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "華歷簡奴", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 4, 
+        "matchTime": "2019-01-12 04:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.23", 
+            "draw": "3.20", 
+            "away": "2.75"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "2.06", 
+            "away": "1.79", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "切爾達", 
+        "prob": {
+            "home": 0.5994297108532735, 
+            "draw": 0.36926315789473685, 
+            "away": 0.4899047619047619
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "樸迪莫倫斯", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-11 04:15", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "3.40", 
+            "draw": "3.45", 
+            "away": "1.85"
+        }, 
+        "league": "PFL", 
+        "asia": {
+            "home": "2.16", 
+            "away": "1.72", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "布拉加", 
+        "prob": {
+            "home": 0.39822919672919677, 
+            "draw": 0.3360277468103555, 
+            "away": 0.721173746843936
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "羅連安特", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-12 03:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.60", 
+            "draw": "3.40", 
+            "away": "4.85"
+        }, 
+        "league": "FF2", 
+        "asia": {
+            "home": "1.94", 
+            "away": "1.90", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "查多魯", 
+        "prob": {
+            "home": 0.8393404046824514, 
+            "draw": 0.35875448028673834, 
+            "away": 0.2606772030651341
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "沙特阿拉伯", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 4, 
+        "matchTime": "2019-01-09 00:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.62", 
+            "draw": "3.25", 
+            "away": "5.00"
+        }, 
+        "league": "ASC", 
+        "asia": {
+            "home": "1.94", 
+            "away": "1.90", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "北韓", 
+        "prob": {
+            "home": 0.8209400382226467, 
+            "draw": 0.3639255189255189, 
+            "away": 0.27291788766788766
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "波爾多", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-10 04:05", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.77", 
+            "draw": "3.25", 
+            "away": "4.00"
+        }, 
+        "league": "FFC", 
+        "asia": {
+            "home": "2.20", 
+            "away": "1.68", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "勒哈弗爾", 
+        "prob": {
+            "home": 0.7397930613447854, 
+            "draw": 0.39027056277056277, 
+            "away": 0.3268663324979114
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "卡塔爾", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-10 00:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.54", 
+            "draw": "3.30", 
+            "away": "5.80"
+        }, 
+        "league": "ASC", 
+        "asia": {
+            "home": "1.77", 
+            "away": "2.07", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "黎巴嫩", 
+        "prob": {
+            "home": 0.8786743300559089, 
+            "draw": 0.3500125313283208, 
+            "away": 0.23022863247863248
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "維拉利爾", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-10 03:30", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.07", 
+            "draw": "3.00", 
+            "away": "3.25"
+        }, 
+        "league": "SFC", 
+        "asia": {
+            "home": "1.90", 
+            "away": "1.91", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "愛斯賓奴", 
+        "prob": {
+            "home": 0.6649221910986616, 
+            "draw": 0.3937087912087912, 
+            "away": 0.3957997198879552
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "南特", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-09 02:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.32", 
+            "draw": "2.90", 
+            "away": "2.88"
+        }, 
+        "league": "FFL", 
+        "asia": {
+            "home": "2.07", 
+            "away": "1.78", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "蒙彼利埃", 
+        "prob": {
+            "home": 0.5885642071279895, 
+            "draw": 0.41113299663299663, 
+            "away": 0.45651853295445977
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "修安聯", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-09 03:45", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.95", 
+            "draw": "3.25", 
+            "away": "3.30"
+        }, 
+        "league": "ELT", 
+        "asia": {
+            "home": "1.73", 
+            "away": "2.12", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "樸茨茅夫", 
+        "prob": {
+            "home": 0.6375, 
+            "draw": 0.39098039215686275, 
+            "away": 0.4297631257631258
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "狼隊", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-08 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "3.15", 
+            "draw": "3.25", 
+            "away": "2.05"
+        }, 
+        "league": "EFA", 
+        "asia": {
+            "home": "1.92", 
+            "away": "1.89", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "利物浦", 
+        "prob": {
+            "home": 0.38736507936507947, 
+            "draw": 0.36216117216117216, 
+            "away": 0.7094356620391103
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "比蘭倫斯", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-06 23:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.80", 
+            "draw": "2.95", 
+            "away": "2.35"
+        }, 
+        "league": "PFL", 
+        "asia": {
+            "home": "2.18", 
+            "away": "1.71", 
+            "homeHandicap": 0.0
+        }, 
+        "awayTeam": "甘馬雷斯", 
+        "prob": {
+            "home": 0.4939255399772642, 
+            "draw": 0.3935035366931919, 
+            "away": 0.5722861794049671
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "雷恩", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-06 21:15", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.56", 
+            "draw": "3.50", 
+            "away": "5.10"
+        }, 
+        "league": "FFA", 
+        "asia": {
+            "home": "1.89", 
+            "away": "1.92", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "比斯特", 
+        "prob": {
+            "home": 0.8240235018027092, 
+            "draw": 0.35158424908424907, 
+            "away": 0.27995253820253824
+        }
+    }, 
+    {
+        "awayScore": 4, 
+        "homeTeam": "布里斯班獅吼", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-06 16:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.67", 
+            "draw": "3.40", 
+            "away": "2.20"
+        }, 
+        "league": "AD1", 
+        "asia": {
+            "home": "1.81", 
+            "away": "2.03", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "珀斯光輝", 
+        "prob": {
+            "home": 0.49396911396137405, 
+            "draw": 0.3406893106893107, 
+            "away": 0.623262703861102
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "切爾達", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": false, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-08 04:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.28", 
+            "draw": "2.95", 
+            "away": "2.90"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "2.06", 
+            "away": "1.79", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "畢爾包", 
+        "prob": {
+            "home": 0.592479760219112, 
+            "draw": 0.39192307692307693, 
+            "away": 0.4728795840175151
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "華拉度列", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-05 20:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.95", 
+            "draw": "3.15", 
+            "away": "3.40"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "1.77", 
+            "away": "2.09", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "華歷簡奴", 
+        "prob": {
+            "home": 0.7015567765567765, 
+            "draw": 0.381236291031373, 
+            "away": 0.3751507936507936
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "阿德萊德聯", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-05 14:35", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.75", 
+            "draw": "3.55", 
+            "away": "3.70"
+        }, 
+        "league": "AD1", 
+        "asia": {
+            "home": "2.18", 
+            "away": "1.71", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "威靈頓鳳凰", 
+        "prob": {
+            "home": 0.7623353096179183, 
+            "draw": 0.32258974358974357, 
+            "away": 0.37227015640808747
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "波爾多", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-07 00:15", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.65", 
+            "draw": "3.40", 
+            "away": "4.50"
+        }, 
+        "league": "FFA", 
+        "asia": {
+            "home": "1.99", 
+            "away": "1.83", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "勒哈弗爾", 
+        "prob": {
+            "home": 0.8230919080919081, 
+            "draw": 0.3531598793363499, 
+            "away": 0.2778992673992674
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "查爾頓", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-05 23:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.60", 
+            "draw": "3.10", 
+            "away": "2.40"
+        }, 
+        "league": "ED2", 
+        "asia": {
+            "home": "2.05", 
+            "away": "1.80", 
+            "homeHandicap": 0.0
+        }, 
+        "awayTeam": "新特蘭", 
+        "prob": {
+            "home": 0.5218571428571429, 
+            "draw": 0.381669110459433, 
+            "away": 0.5541169962934671
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "紅星", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": "small", 
+            "result": {
+                "handicap": true, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-06 01:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.80", 
+            "draw": "3.00", 
+            "away": "2.30"
+        }, 
+        "league": "FFA", 
+        "asia": {
+            "home": "1.75", 
+            "away": "2.09", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "卡昂", 
+        "prob": {
+            "home": 0.45108668730650153, 
+            "draw": 0.4044844720496894, 
+            "away": 0.5960335111973483
+        }
+    }, 
+    {
+        "awayScore": 0, 
+        "homeTeam": "查維斯", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-04 00:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.82", 
+            "draw": "3.10", 
+            "away": "4.00"
+        }, 
+        "league": "PFL", 
+        "asia": {
+            "home": "1.65", 
+            "away": "2.28", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "費倫斯", 
+        "prob": {
+            "home": 0.7046417112299463, 
+            "draw": 0.39301074462768615, 
+            "away": 0.36155555555555563
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "侯爾斯卡", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-06 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "3.20", 
+            "draw": "3.20", 
+            "away": "2.00"
+        }, 
+        "league": "SFL", 
+        "asia": {
+            "home": "1.96", 
+            "away": "1.88", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "貝迪斯", 
+        "prob": {
+            "home": 0.4259780503294436, 
+            "draw": 0.36130158730158723, 
+            "away": 0.671005536608985
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "普埃布拉", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-05 11:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "3.30", 
+            "draw": "3.15", 
+            "away": "2.00"
+        }, 
+        "league": "MXL", 
+        "asia": {
+            "home": "1.97", 
+            "away": "1.87", 
+            "homeHandicap": 0.25
+        }, 
+        "awayTeam": "藍十字", 
+        "prob": {
+            "home": 0.3946372549019608, 
+            "draw": 0.3798809523809524, 
+            "away": 0.6775994397759104
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "紐卡素", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-06 01:30", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.75", 
+            "draw": "3.25", 
+            "away": "4.10"
+        }, 
+        "league": "EFA", 
+        "asia": {
+            "home": "2.18", 
+            "away": "1.70", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "布力般流浪", 
+        "prob": {
+            "home": 0.7999491249491251, 
+            "draw": 0.34051282051282056, 
+            "away": 0.3191471861471861
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "里奧艾維", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-03 04:15", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.00", 
+            "draw": "3.30", 
+            "away": "3.15"
+        }, 
+        "league": "PFL", 
+        "asia": {
+            "home": "1.84", 
+            "away": "2.00", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "摩里倫斯", 
+        "prob": {
+            "home": 0.7086850027367267, 
+            "draw": 0.35641758241758237, 
+            "away": 0.3934827586206897
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "愛華頓", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "big", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-01 20:30", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "1.82", 
+            "draw": "3.30", 
+            "away": "3.85"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "2.25", 
+            "away": "1.67", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "李斯特城", 
+        "prob": {
+            "home": 0.7334574684574685, 
+            "draw": 0.36521367521367526, 
+            "away": 0.36104761904761906
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "哈特斯菲爾德", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": false
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-03 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "2.17", 
+            "draw": "2.95", 
+            "away": "3.20"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.99", 
+            "away": "1.85", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "般尼", 
+        "prob": {
+            "home": 0.6520819656668553, 
+            "draw": 0.4029266136162688, 
+            "away": 0.39924654377880187
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "狼隊", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-03 03:45", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.03", 
+            "draw": "3.00", 
+            "away": "3.50"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.87", 
+            "away": "1.97", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "水晶宮", 
+        "prob": {
+            "home": 0.673313725490196, 
+            "draw": 0.3914814814814815, 
+            "away": 0.39163305322128855
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "紐卡素", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 0, 
+        "matchTime": "2019-01-03 04:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "5.70", 
+            "draw": "4.05", 
+            "away": "1.45"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.88", 
+            "away": "1.96", 
+            "homeHandicap": 1.0
+        }, 
+        "awayTeam": "曼聯", 
+        "prob": {
+            "home": 0.24924999999999997, 
+            "draw": 0.3215207780725022, 
+            "away": 0.8875567028430806
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "韋斯咸", 
+        "prediction": {
+            "handicap": "up", 
+            "smallBig": null, 
+            "result": {
+                "handicap": true, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-03 03:45", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.87", 
+            "draw": "3.30", 
+            "away": "3.65"
+        }, 
+        "league": "EPL", 
+        "asia": {
+            "home": "1.71", 
+            "away": "2.18", 
+            "homeHandicap": -0.25
+        }, 
+        "awayTeam": "白禮頓", 
+        "prob": {
+            "home": 0.7119437608867895, 
+            "draw": 0.3618803418803419, 
+            "away": 0.3840565428723323
+        }
+    }, 
+    {
+        "awayScore": 1, 
+        "homeTeam": "賓福特", 
+        "prediction": {
+            "handicap": null, 
+            "smallBig": "small", 
+            "result": {
+                "handicap": null, 
+                "smallBig": true
+            }
+        }, 
+        "homeScore": 1, 
+        "matchTime": "2019-01-01 23:00", 
+        "bigSamll": "small", 
+        "euro": {
+            "home": "2.30", 
+            "draw": "3.30", 
+            "away": "2.60"
+        }, 
+        "league": "ED1", 
+        "asia": {
+            "home": "1.82", 
+            "away": "2.02", 
+            "homeHandicap": 0.0
+        }, 
+        "awayTeam": "諾域治", 
+        "prob": {
+            "home": 0.5960307966103693, 
+            "draw": 0.3550137607963695, 
+            "away": 0.507561806507787
+        }
+    }, 
+    {
+        "awayScore": 2, 
+        "homeTeam": "阿士東維拉", 
+        "prediction": {
+            "handicap": "down", 
+            "smallBig": null, 
+            "result": {
+                "handicap": false, 
+                "smallBig": null
+            }
+        }, 
+        "homeScore": 2, 
+        "matchTime": "2019-01-01 23:00", 
+        "bigSamll": "big", 
+        "euro": {
+            "home": "1.72", 
+            "draw": "3.50", 
+            "away": "3.90"
+        }, 
+        "league": "ED1", 
+        "asia": {
+            "home": "2.10", 
+            "away": "1.76", 
+            "homeHandicap": -0.75
+        }, 
+        "awayTeam": "昆士柏流浪", 
+        "prob": {
+            "home": 0.7678304896966155, 
+            "draw": 0.3391046698872786, 
+            "away": 0.3457878787878788
+        }
+    }
+]
