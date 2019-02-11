@@ -98,10 +98,18 @@ pageTotal = int(math.ceil(float(matchCount / 20.0)))
 for i in listResult[0]["matches"]:
     if i["matchStatus"] != "ResultIn":
         continue
-    print "ID: %s, %s vs %s, %s:%s  " % (
-    i["matchID"], i["homeTeam"]["teamNameCH"], i["awayTeam"]["teamNameCH"], i["accumulatedscore"][1]["home"],
-    i["accumulatedscore"][1]["away"])
 
+    if len(i['accumulatedscore']) > 0:
+        print "ID: %s, %s vs %s, %s:%s  " % (
+        i["matchID"], i["homeTeam"]["teamNameCH"], i["awayTeam"]["teamNameCH"], i["accumulatedscore"][1]["home"],
+        i["accumulatedscore"][1]["away"])
+    else:
+        print "ID: %s, %s vs %s, Live" % (
+        i["matchID"], i["homeTeam"]["teamNameCH"], i["awayTeam"]["teamNameCH"])
+    # print len(i['accumulatedscore'])
+    # if i["matchID"] == "b542854d-4dcc-4a9d-b6ab-a3fcfcd03cbb":
+    #     print json.dumps(i)
+    #     exit()
 
 if pageTotal > 1:
     for i in range(2,pageTotal +1):
