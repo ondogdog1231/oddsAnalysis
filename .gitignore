@@ -1,3 +1,6 @@
 .idea
 .idea/
 .idea/*
+analysis/alipayJan.sql
+analysis/alipayJanTransaction.json
+analysis/alipayTransaction.py
