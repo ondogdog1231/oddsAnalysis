@@ -26,8 +26,8 @@ print(int(time.mktime(datetime.datetime.strptime(currentDate, "%Y-%m-%d 23:59:59
 currentDateUnixDate = int(time.mktime(datetime.datetime.strptime(currentDate, "%Y-%m-%d 23:59:59").timetuple()))
 
 # Custom date
-startTime = int(time.mktime(datetime.datetime.strptime("2021-05-20 00:00", "%Y-%m-%d %H:%M").timetuple()))
-endTime = int(time.mktime(datetime.datetime.strptime("2023-10-27 23:59", "%Y-%m-%d %H:%M").timetuple()))
+startTime = int(time.mktime(datetime.datetime.strptime("2022-08-06 00:00", "%Y-%m-%d %H:%M").timetuple()))
+endTime = int(time.mktime(datetime.datetime.strptime("2023-05-28 23:59", "%Y-%m-%d %H:%M").timetuple()))
 
 currentDate = datetime.datetime.now().strftime(f"%Y-%m-%d %H:00:00")
 last7Days = (datetime.datetime.today() - datetime.timedelta(2)).strftime("%Y-%m-%d 23:59:59")
@@ -38,10 +38,10 @@ todayUnixTime = int(time.mktime(datetime.datetime.strptime(currentDate, "%Y-%m-%
 
 
 c = connector.config()
-matchResult = c.getMatchWithIn(currentDateUnixDate)
+# matchResult = c.getMatchWithIn(currentDateUnixDate)
 # matchResult = c.getMatchByLeagueId(75)
 # matchResult = c.getMatchByLeagueIdAndSeason(279, "2021-2022")
-# matchResult = c.getMatchByLeagueIdAndTime(279,startTime,endTime)
+matchResult = c.getMatchByLeagueIdAndTime(36,startTime,endTime)
 # matchResult = c.getMatchByBetweenTime(startTime, endTime)
 # matchResult = c.getMatchByID(41027)
 
@@ -49,10 +49,6 @@ headers = {
     'referer': "http://live.titan007.com/indexall_big.aspx",
     'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
 }
-
-def getContent(url):
-    return url
-
 
 for match in matchResult:
     print("match Date:", match[2], "match ID:", match[0])
@@ -73,30 +69,24 @@ for match in matchResult:
     url = f"https://vip.titan007.com/AsianOdds_n.aspx?id={outsideMatchId}"
 
     # result = requests.get(url, headers=headers)
-    print(getContent(url))
     print(url)
 
 
     result = requests.get(url, headers=headers)
     # print(result.text)
-    # exit()
-    # print(result.text)
-    time.sleep(2)
+    time.sleep(1)
     # grab all odds
-    oddsRegex = r"<tr align=\"center\" bgcolor=\"#ffffff\">(.*?)<\/tr>"
+    oddsRegex = r"<tr align=\"center\">(.*?)<\/tr>"
     oddsPattern = re.compile(oddsRegex, re.S)
     oddsResult = oddsPattern.findall(result.text)
     details = []
     for i in oddsResult:
-        # print(i)
-        # exit()
-        # companyOddRegex = r"<td\s+style\=.*?>(.*?)<br\s\/>.*?<span.*?>(.*?)<\/span>.*?<span.*?>(.*?)<\/span><\/td>.*?(?:<td[\s|\s+]?.*?>(\d+-\d+)<\/td>.*?<td>(\d+-\d+)<br\/>(.*?)<\/td>|<td>(\d+-\d+)<br\/>(.*?)<\/td>)"
         companyOddRegex = r"<td.*?>(.*?)<\/td>"
         companyOddPattern = re.compile(companyOddRegex, re.S)
         companyOddResult = companyOddPattern.findall(i)
-        # print(companyOddResult)
+        print(companyOddResult)
         details.append(companyOddResult)
-
+    print("Details companyOddResult", details)
     for record in details:
         companyID = None
         handicap = None
@@ -112,6 +102,10 @@ for match in matchResult:
                 singleOddRowRegex = r"(.*?)<br\s+\/>.*?<span.*?>(.*?)<\/span>.*?<span.*?>(.*?)<\/span>"
                 singleOddRowPattern = re.compile(singleOddRowRegex, re.S)
                 singleOddRowResult = singleOddRowPattern.findall(record[i])
+                print("singleOddRowResult")
+                print(len(singleOddRowResult))
+                if len(singleOddRowResult)<1:
+                    continue
                 handicap = singleOddRowResult[0][0]
                 homeOdds = singleOddRowResult[0][1]
                 awayOdds = singleOddRowResult[0][2]
@@ -120,23 +114,26 @@ for match in matchResult:
                     decimalHandicap = h.handicapDict[handicap]
                 else:
                     continue
-
+        if len(record) <2:
+            continue
         result = record[12]
         if len(result)<1:
             result = None
         # print(record[13])
         rowDateRegex = r"(.*?)<br\s*\/>(.*?)$"
         rowDatePattern = re.compile(rowDateRegex, re.S)
-        rowDateResult = rowDatePattern.findall(record[13])
+        # rowDateResult = rowDatePattern.findall(record[13])
+        rawDateResult = record[13]
+        dateResult = re.split('\s', rawDateResult)
         # print(rowDateResult)
-        oddUpdateDateTime = f"{matchYear}-{rowDateResult[0][0]} {rowDateResult[0][1]}"
+        oddUpdateDateTime = f"{matchYear}-{dateResult[0]} {dateResult[1]}"
 
         # print(oddUpdateDateTime)
         unixOddUpdateDateTime = int(time.mktime(datetime.datetime.strptime(oddUpdateDateTime, "%Y-%m-%d %H:%M").timetuple()))
 
         if unixOddUpdateDateTime > match[2] and result is None:
             newMatchYear = season[0]
-            oddUpdateDateTime = f"{newMatchYear}-{rowDateResult[0][0]} {rowDateResult[0][1]}"
+            oddUpdateDateTime = f"{newMatchYear}-{dateResult[0]} {dateResult[1]}"
             unixOddUpdateDateTime = int(time.mktime(datetime.datetime.strptime(oddUpdateDateTime, "%Y-%m-%d %H:%M").timetuple()))
 
 
