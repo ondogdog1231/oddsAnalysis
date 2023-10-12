@@ -6,45 +6,22 @@ projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(projectPath)
 sys.stdout.reconfigure(encoding='utf-8')
 
-
 import requests
 import datetime
 import re
-import json
 import time
 from config import connector
 import utils.handicap as h
+import argparse
 
-
-# get matchID
-currentDate = datetime.datetime.today().strftime("%Y-%m-%d 23:59:59")
-print(currentDate)
-print(type(currentDate))
-# print(datetime.today().strftime("%Y-%m-%d 23:59:59").timetuple())
-# int(time.mktime(datetime.strptime(match[3], "%Y-%m-%d %H:%M").timetuple()))
-print(int(time.mktime(datetime.datetime.strptime(currentDate, "%Y-%m-%d 23:59:59").timetuple())))
-currentDateUnixDate = int(time.mktime(datetime.datetime.strptime(currentDate, "%Y-%m-%d 23:59:59").timetuple()))
-
-# Custom date
-startTime = int(time.mktime(datetime.datetime.strptime("2022-08-06 00:00", "%Y-%m-%d %H:%M").timetuple()))
-endTime = int(time.mktime(datetime.datetime.strptime("2023-05-28 23:59", "%Y-%m-%d %H:%M").timetuple()))
-
-currentDate = datetime.datetime.now().strftime(f"%Y-%m-%d %H:00:00")
-last7Days = (datetime.datetime.today() - datetime.timedelta(2)).strftime("%Y-%m-%d 23:59:59")
-last7DaysUnixTime = int(time.mktime(datetime.datetime.strptime(last7Days, "%Y-%m-%d %H:%M:%S").timetuple()))
-
-todayUnixTime = int(time.mktime(datetime.datetime.strptime(currentDate, "%Y-%m-%d %H:%M:%S").timetuple()))
-
-
+parser = argparse.ArgumentParser(description='Asian Odds')
+parser.add_argument('leagueId', type=int, help="League ID")
+args = parser.parse_args()
 
 c = connector.config()
-# matchResult = c.getMatchWithIn(currentDateUnixDate)
-# matchResult = c.getMatchByLeagueId(75)
-# matchResult = c.getMatchByLeagueIdAndSeason(279, "2021-2022")
-matchResult = c.getMatchByLeagueIdAndTime(36,startTime,endTime)
-# matchResult = c.getMatchByBetweenTime(startTime, endTime)
-# matchResult = c.getMatchByID(41027)
-
+league_id = args.leagueId
+matchResult = c.getMatchByLeagueId(league_id)
+# matchResult = c.getMatchByLeagueIdAndSeason(league_id,"2023-2024")
 headers = {
     'referer': "http://live.titan007.com/indexall_big.aspx",
     'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
@@ -71,7 +48,6 @@ for match in matchResult:
     # result = requests.get(url, headers=headers)
     print(url)
 
-
     result = requests.get(url, headers=headers)
     # print(result.text)
     time.sleep(1)
@@ -96,7 +72,7 @@ for match in matchResult:
         result = None
         dateTime = None
         for i in range(len(record)):
-            if(i<12 and len(record[i])>1):
+            if (i < 12 and len(record[i]) > 1):
                 companyID = i
                 # print(record[i])
                 singleOddRowRegex = r"(.*?)<br\s+\/>.*?<span.*?>(.*?)<\/span>.*?<span.*?>(.*?)<\/span>"
@@ -104,7 +80,7 @@ for match in matchResult:
                 singleOddRowResult = singleOddRowPattern.findall(record[i])
                 print("singleOddRowResult")
                 print(len(singleOddRowResult))
-                if len(singleOddRowResult)<1:
+                if len(singleOddRowResult) < 1:
                     continue
                 handicap = singleOddRowResult[0][0]
                 homeOdds = singleOddRowResult[0][1]
@@ -114,10 +90,10 @@ for match in matchResult:
                     decimalHandicap = h.handicapDict[handicap]
                 else:
                     continue
-        if len(record) <2:
+        if len(record) < 2:
             continue
         result = record[12]
-        if len(result)<1:
+        if len(result) < 1:
             result = None
         # print(record[13])
         rowDateRegex = r"(.*?)<br\s*\/>(.*?)$"
@@ -129,13 +105,14 @@ for match in matchResult:
         oddUpdateDateTime = f"{matchYear}-{dateResult[0]} {dateResult[1]}"
 
         # print(oddUpdateDateTime)
-        unixOddUpdateDateTime = int(time.mktime(datetime.datetime.strptime(oddUpdateDateTime, "%Y-%m-%d %H:%M").timetuple()))
+        unixOddUpdateDateTime = int(
+            time.mktime(datetime.datetime.strptime(oddUpdateDateTime, "%Y-%m-%d %H:%M").timetuple()))
 
         if unixOddUpdateDateTime > match[2] and result is None:
             newMatchYear = season[0]
             oddUpdateDateTime = f"{newMatchYear}-{dateResult[0]} {dateResult[1]}"
-            unixOddUpdateDateTime = int(time.mktime(datetime.datetime.strptime(oddUpdateDateTime, "%Y-%m-%d %H:%M").timetuple()))
-
+            unixOddUpdateDateTime = int(
+                time.mktime(datetime.datetime.strptime(oddUpdateDateTime, "%Y-%m-%d %H:%M").timetuple()))
 
         list = (
             match[0],
@@ -168,8 +145,8 @@ for match in matchResult:
 
     c.insertManyOdd(forSaveOddList)
 
-        # oddResult = c.checkOddsExist(match[0],companyID,decimalHandicap, unixOddUpdateDateTime, homeOdds, awayOdds)
-        # if oddResult is not None:
-        #     continue
-        # # exit()
-        # c.insertOdd(list)
+    # oddResult = c.checkOddsExist(match[0],companyID,decimalHandicap, unixOddUpdateDateTime, homeOdds, awayOdds)
+    # if oddResult is not None:
+    #     continue
+    # # exit()
+    # c.insertOdd(list)

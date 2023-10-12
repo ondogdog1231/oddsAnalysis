@@ -24,8 +24,8 @@ last7DaysUnixTime = int(time.mktime(datetime.datetime.strptime(last7Days, "%Y-%m
 
 todayUnixTime = int(time.mktime(datetime.datetime.strptime(currentDate, "%Y-%m-%d %H:%M:%S").timetuple()))
 
-startTime = int(time.mktime(datetime.datetime.strptime("2022-10-23 00:00", "%Y-%m-%d %H:%M").timetuple()))
-endTime = int(time.mktime(datetime.datetime.strptime("2022-10-24 23:59", "%Y-%m-%d %H:%M").timetuple()))
+startTime = int(time.mktime(datetime.datetime.strptime("2023-09-01 00:00", "%Y-%m-%d %H:%M").timetuple()))
+endTime = int(time.mktime(datetime.datetime.strptime("2023-10-30 23:59", "%Y-%m-%d %H:%M").timetuple()))
 
 
 c = connector.config()

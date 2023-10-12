@@ -2,7 +2,7 @@ import sys
 import os
 
 projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-r= sys.path.append(projectPath)
+r = sys.path.append(projectPath)
 sys.stdout.reconfigure(encoding='utf-8')
 
 import requests
@@ -11,6 +11,9 @@ import re
 import json
 import time
 from config import connector
+import argparse
+import subprocess
+
 c = connector.config()
 
 
@@ -56,12 +59,11 @@ class getLeague:
             subLeague.append(j[0])
         return subLeague
 
-    def generateSubClassUrl(self,subClassId):
+    def generateSubClassUrl(self, subClassId):
         now = datetime.now()
         dateFormat = "%Y%m%d%H"
         currentDate = now.strftime(dateFormat)
         return f"https://zq.titan007.com/jsData/matchResult/{self.season}/s{self.league}_{subClassId}.js?version={currentDate}"
-
 
     def getMatch(self):
         now = datetime.now()
@@ -128,19 +130,22 @@ class getLeague:
             except Exception as e:
                 print("In exception")
                 print(str(e))
-                print("newItem1",newItem1)
+                print("newItem1", newItem1)
                 print(newItem)
         return matchList
 
     def checkExist(self, match):
+        # if match[0] != 2397002:
+        #     exit("in match 2397002")
+        #     return False
         getMatch = c.getMatch(match[0])
-        if getMatch[0] != 1301:
-            return False
+
         halfTimeResult = len(match[7]) > 0 and match[7] or None
         fullTimeResult = len(match[6]) > 0 and match[6] or None
+        print(f"halfTime: {halfTimeResult}, fullTime: {fullTimeResult}")
+
         raw_date_time = match[3]
-        print("Match in check exist: ",match)
-        exit()
+
         unix_time = int(time.mktime(datetime.strptime(match[3], "%Y-%m-%d %H:%M").timetuple()))
         if getMatch is not None:
             # if getMatch[0] == 41027:
@@ -149,8 +154,8 @@ class getLeague:
             #     exit()
             #     return False
             c.updateMatchResultAndTime(getMatch[0], match[4],
-            match[5],halfTimeResult, fullTimeResult,raw_date_time,
-            unix_time)
+                                       match[5], halfTimeResult, fullTimeResult, raw_date_time,
+                                       unix_time)
             return True
         else:
             return False
@@ -162,6 +167,7 @@ class getLeague:
             print("index", i)
             print("Len: ", len(match))
             print("match in checkMatchExistAndInsert", match)
+            print("match in checkMatchExistAndInsert", match[0])
             # print("self.checkExist(match)", self.checkExist(match))
             # print("halfTimeResult:", match[7])
             # print("fullTimeResult:", match[6])
@@ -183,10 +189,11 @@ class getLeague:
     def insertMatch(self, match):
         print("time.mktime(datetime.strptime(match[3]")
         print(time.mktime(datetime.strptime(match[3], "%Y-%m-%d %H:%M").timetuple()))
-        # print("halfTimeResult:", match[7])
-        # print("fullTimeResult:", match[6])
+        print("halfTimeResult:", match[7])
+        print("fullTimeResult:", match[6])
+
         halfTimeResult = len(match[7]) > 0 and match[7] or None
-        fullTimeResult = len(match[6]) > 0 and match[7] or None
+        fullTimeResult = len(match[6]) > 0 and match[6] or None
 
         list = (
             match[0],
@@ -201,7 +208,11 @@ class getLeague:
             int(time.time()),
             int(time.time())
         )
-        c.inserMatch(list)
+        # if match[0] is "2397002":
+        #     print("list")
+        #     print(list)
+        #     exit()
+        c.insertMatch(list)
 
     def main(self):
         self.url = self.getMatch()
@@ -226,13 +237,13 @@ class getLeague:
                     for match in item:
                         i += 1
                         print("index: ", i)
-                        print("match in subClass:",match)
+                        print("match in subClass:", match)
                         newMatchList.append(match)
                 print(f"len(newMatchList): {len(newMatchList)}")
                 self.checkMatchExistAndInsert(newMatchList)
 
             return
-                # exit()
+            # exit()
         else:
             regexResult = self.getMatchDeatilFromRegex(content)
             matchList = self.formatMatch(regexResult)
@@ -252,6 +263,7 @@ class getLeague:
                 newMatchList.append(item)
         self.checkMatchExistAndInsert(newMatchList)
 
+
 # JLeague
 # seasons = [
 #     "2017",
@@ -263,28 +275,38 @@ class getLeague:
 #     "2023",
 # ]
 
-seasons = [
-    # "2017-2018",
-    # "2018-2019",
-    # "2019-2020",
-    # "2020-2021",
-    # "2021-2022",
-    "2022-2023",
-]
+parser = argparse.ArgumentParser(description='New League')
+parser.add_argument('leagueId', type=int, help="League ID")
+parser.add_argument('seasonByYearOrRange', type=str, help="season or year")
+parser.add_argument('matchType', type=str, help="Match type")
 
-# seasons = [
-#     # "2010",
-#     # "2014",
-#     # "2018",
-#     "2022",
-# ]
+args = parser.parse_args()
 
+league = args.leagueId
+seasonByYearOrRange = args.seasonByYearOrRange
+matchType = args.matchType
 
-league = 36
-leagueType = "league"
+if seasonByYearOrRange == "1":
+    seasons = [
+        # "2017-2018",
+        "2018-2019",
+        "2019-2020",
+        "2020-2021",
+        "2021-2022",
+        "2022-2023",
+        "2023-2024",
+    ]
+else:
+    seasons = range(2017, 2023 + 1)
+    # seasons = range(2023,2024)
+
+leagueType = "league" if matchType == "1" else "Cup"
+
 subClass = 0
 
 for season in seasons:
     crawler = getLeague(leagueType, league, season)
     crawler.main()
     time.sleep(5)
+odds_command = f"asian_odds.py"
+subprocess.run(["python", odds_command, str(league)])
