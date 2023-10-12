@@ -17,7 +17,7 @@ import utils.handicap as h
 
 print(f"start time: {datetime.datetime.now()}")
 # get matchID
-start_time = (datetime.datetime.now() - datetime.timedelta(hours=96)).strftime("%Y-%m-%d %H:00:00")
+start_time = (datetime.datetime.now() - datetime.timedelta(hours=24)).strftime("%Y-%m-%d %H:00:00")
 
 # start_time = datetime.datetime.today().strftime("%Y-%m-%d 00:00:00")
 end_time = (datetime.datetime.today() + datetime.timedelta(days=0)).strftime("%Y-%m-%d 23:59:59")
@@ -36,10 +36,9 @@ print(unix_start_time,unix_end_time)
 result = c.getMatchBetweenTime(unix_start_time,unix_end_time)
 
 
-
 for match in result:
 
-    url = f"http://zq.titan007.com/default/getScheduleInfo?sid={match[1]}&t=${todayUnixTime}000"
+    url = f"http://zq.titan007.com/default/getScheduleInfo?sid={match[1]}&t={todayUnixTime}000"
     referer = f"http://zq.titan007.com/analysis/{match[1]}.htm"
     headers = {
         'referer': referer,
@@ -57,4 +56,5 @@ for match in result:
     details = regexResult[0].split(",")
     fullTime = f"{details[1]}-{details[2]}"
     halfTime = f"{details[3]}-{details[4]}"
+    # print(f"{match[1]} halftime: {halfTime}, fullTime {fullTime}")
     c.updateMatchResult(match[0], halfTime, fullTime)

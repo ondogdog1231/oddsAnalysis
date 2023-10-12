@@ -6,8 +6,6 @@ projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(projectPath)
 sys.stdout.reconfigure(encoding='utf-8')
 
-
-
 import requests
 # from datetime import datetime
 import datetime
@@ -25,8 +23,6 @@ print(f"start time: {record_start_time}")
 
 asian_odd_config_classifiers = asianOddsConfig.config().model_list()
 
-
-
 # print(asian_odd_config)
 # Asian odds
 """
@@ -41,25 +37,25 @@ c = connector.config()
 matchList = []
 # schedulerResult = c.findScheduleJobsByNameAndStatus("asianPrediction")
 
-works = c.findWorkBeforeTimeAndStatus(int(time.time()),0)
-for work in works:
-    print(work)
-    matchList.append(work[2])
-if len(matchList) <1:
-    print("No match")
-    exit()
-
+# works = c.findWorkBeforeTimeAndStatus(int(time.time()), 0)
+# for work in works:
+#     print(work)
+#     matchList.append(work[2])
+# if len(matchList) < 1:
+#     print("No match")
+#     exit()
+matchList = [1914]
 matchDetails = c.getMatchDetailsByIdIn(matchList)
 predictionMatchList = {}
 for matchDetail in matchDetails:
-    set = {
-        "league_id":matchDetail[5],
+    matchDetailsSet = {
+        "league_id": matchDetail[5],
         "time": matchDetail[7],
         "home_team": matchDetail[8],
         "away_team": matchDetail[9],
         "prediction": []
     }
-    predictionMatchList[matchDetail[0]] = set
+    predictionMatchList[matchDetail[0]] = matchDetailsSet
 
 company_id = 1
 
@@ -88,7 +84,8 @@ for oddRow in oddsResult:
         "awayOdd": awayOdd
     }
 
-fibonacciList = [5, 10, 15, 25, 40, 65, 105, 170, 275, 445, 720]
+# fibonacciList = [5, 10, 15, 25, 40, 65, 105, 170, 275, 445, 720]
+fibonacciList = [10, 15, 25, 40, 65, 105, 170, 275, 445, 720]
 svmMatchList = {}
 for matchId in oddSummaryList.keys():
     league_id = predictionMatchList[matchId]["league_id"]
@@ -114,6 +111,8 @@ for matchId in oddSummaryList.keys():
         }
 print("svmMatchList")
 print(json.dumps(svmMatchList))
+print(predictionMatchList)
+exit()
 
 svmTrainList = {}
 svmMatchIDList = {}
@@ -132,10 +131,6 @@ for league_id, matchItem in svmMatchList.items():
             ])
         svmTrainList[league_id].append(matchItem)
         svmMatchIDList[league_id].append(match_id)
-
-
-
-
 
 modelProbiList = {}
 modelPredictList = {}
@@ -215,7 +210,8 @@ for match_id, match_details in predictionMatchList.items():
     away_team = team_list[match_details['away_team']]['tc_name']
     temp_time = match_details["time"]
     dateFormat = "%Y-%m-%d %H:%M"
-    match_time = datetime.datetime.fromtimestamp(temp_time, datetime.timezone(datetime.timedelta(hours=8))).strftime(dateFormat)
+    match_time = datetime.datetime.fromtimestamp(temp_time, datetime.timezone(datetime.timedelta(hours=8))).strftime(
+        dateFormat)
     # match_time = match_details["time"]
     prediction_string = ""
     for prediction in match_details["prediction"]:
@@ -236,7 +232,7 @@ for match_id, match_details in predictionMatchList.items():
             predicted_probability_string = f"主: {home_team_probability}%, 客: <b>{away_team_probability}</b>%"
 
         string = f"\nModel: {prediction['model_name']}, \n預測: {predicted_team}, \n機會率: {predicted_probability_string} \n\n"
-        prediction_string = "".join((prediction_string,string))
+        prediction_string = "".join((prediction_string, string))
 
     message = f"{league_list[match_details['league_id']]['tc_name']} {match_time} \n {home_team} vs {away_team}\n {prediction_string}"
     print("Message")
@@ -245,13 +241,7 @@ for match_id, match_details in predictionMatchList.items():
     if len(work) == 0:
         continue
     if work[0][4] == 0:
-        c.updateSchedule(message,4,work[0][0])
-
+        c.updateSchedule(message, 4, work[0][0])
 
 record_end_time = datetime.datetime.now()
 print(f"time use: {record_end_time - record_start_time}")
-
-
-
-
-

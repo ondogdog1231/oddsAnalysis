@@ -202,7 +202,7 @@ class getLeague:
             int(time.time()),
             int(time.time())
         )
-        c.inserMatch(list)
+        c.insertMatch(list)
 
     def main(self):
         self.url = self.getMatch()
@@ -256,11 +256,12 @@ class getLeague:
         self.checkMatchExistAndInsert(newMatchList)
 
 allLeagues = c.getAllFieldsInLeagues()
+exit(allLeagues)
 
 # current_year = datetime.now().strftime(f"%Y")
 # end_year = int(current_year) + 1
-current_year = 2022
-end_year = 2023
+current_year = 2023
+end_year = 2024
 
 print(current_year)
 print(end_year)

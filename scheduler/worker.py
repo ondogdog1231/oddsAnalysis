@@ -6,13 +6,10 @@ projectPath = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(projectPath)
 sys.stdout.reconfigure(encoding='utf-8')
 
-import requests
-# from datetime import datetime
 import datetime
-import re
-import json
 import time
 from config import connector
+
 # scheduler
 """
 1. select all match in coming 3 hours
@@ -21,6 +18,8 @@ from config import connector
 
 """
 c = connector.config()
+
+print(f"start time: {datetime.datetime.now()}")
 
 current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:00:00")
 end_time = (datetime.datetime.now() + datetime.timedelta(hours=3)).strftime("%Y-%m-%d %H:59:59")
@@ -43,21 +42,19 @@ if len(matches) == 0:
 list = []
 for match in matches:
     list.append(match[0])
-result = c.getMatchDetailsByIdIn(list)
+result = c.getMatchDetailsAllByIdIn(list)
 # print(result)
 
 for match in result:
     print(match)
     match_in_worker = c.findWorkByMatchId(match[0])
-    if len(match_in_worker) >0:
+    if len(match_in_worker) > 0:
         continue
     match_para_list = (
-        match[7] - 5 * 60,
+        match[7] - 10 * 60,
         match[0],
         0,
         int(time.time()),
         int(time.time())
     )
     c.insertSchedule(match_para_list)
-
-
