@@ -76,7 +76,8 @@ handicapCountLose = 0
 bigSmallCount = 0
 bigSmallCountWin = 0
 bigSmallCountLose = 0
-print len(resultJson)
+print
+len(resultJson)
 for item in resultJson:
     # print json.dumps(item["prediction"])
     if abs(item["asia"]["homeHandicap"]) != 0.75:
@@ -85,22 +86,19 @@ for item in resultJson:
     if item["prediction"]["result"]["handicap"] is not None:
         handicapCount += 1
     if item["prediction"]["result"]["handicap"] == True:
-        handicapCountWin +=1
+        handicapCountWin += 1
     if item["prediction"]["result"]["handicap"] == False:
-        handicapCountLose +=1
+        handicapCountLose += 1
 
     if item["prediction"]["result"]["smallBig"] is not None:
         bigSmallCount += 1
     if item["prediction"]["result"]["smallBig"] == True:
-        bigSmallCountWin +=1
+        bigSmallCountWin += 1
     if item["prediction"]["result"]["smallBig"] == False:
-        bigSmallCountLose +=1
+        bigSmallCountLose += 1
 
-
-
-
-print "Win %s, Lose %s / %s" %(bigSmallCountWin,bigSmallCountLose,bigSmallCount)
-print "Win %s, Lose%s / %s" %(handicapCountWin,handicapCountLose,handicapCount)
+print("Win %s, Lose %s / %s" % (bigSmallCountWin, bigSmallCountLose, bigSmallCount))
+print("Win %s, Lose%s / %s" % (handicapCountWin, handicapCountLose, handicapCount))
 
 exit()
 
@@ -159,7 +157,6 @@ for root, subdirs, files in os.walk("../matchDetailResult/2019-01"):
             euroOdds["home"] = re.findall("@(\d+.\d{1,2})", matchJson["hadodds"]["H"])[0]
             euroOdds["draw"] = re.findall("@(\d+.\d{1,2})", matchJson["hadodds"]["D"])[0]
             euroOdds["away"] = re.findall("@(\d+.\d{1,2})", matchJson["hadodds"]["A"])[0]
-
 
             # Asia Handicap
         if "hdcodds" in matchJson:
@@ -227,11 +224,11 @@ for root, subdirs, files in os.walk("../matchDetailResult/2019-01"):
         smallPrediction = float(returnResult["small"]) / float(returnResult["fileCount"])
         bigPrediction = float(returnResult["big"]) / float(returnResult["fileCount"])
         summary["prediction"] = {
-            "smallBig":None,
-            "handicap":None,
-            "result":{
-                "smallBig":None,
-                "handicap":None
+            "smallBig": None,
+            "handicap": None,
+            "result": {
+                "smallBig": None,
+                "handicap": None
             }
         }
         if smallPrediction > 0.68 or bigPrediction > 0.68:
@@ -241,9 +238,9 @@ for root, subdirs, files in os.walk("../matchDetailResult/2019-01"):
             else:
                 summary["prediction"]["result"]["smallBig"] = False
 
-
-        upPrediction = float(returnResult["upHalf"]+returnResult["upCount"])/float(returnResult["fileCount"])
-        downPrediction = float(returnResult["downWinHalf"]+returnResult["downCount"])/float(returnResult["fileCount"])
+        upPrediction = float(returnResult["upHalf"] + returnResult["upCount"]) / float(returnResult["fileCount"])
+        downPrediction = float(returnResult["downWinHalf"] + returnResult["downCount"]) / float(
+            returnResult["fileCount"])
         # print upPrediction
         # print downPrediction
         if upPrediction > 0.65 or downPrediction > 0.65:
@@ -271,10 +268,12 @@ for root, subdirs, files in os.walk("../matchDetailResult/2019-01"):
                 summary["prediction"]["result"]["handicap"] = False
 
         if summary["prediction"]["smallBig"] is not None or summary["prediction"]["handicap"] is not None:
-            print json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
+            print
+            json.dumps(summary, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False)
             testFileNameList.append(summary)
 
 fileName = "./%s.json" % "prediction201901"
 f = open(fileName, "w+")
-f.write(str(json.dumps(testFileNameList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False).encode('utf-8')))
+f.write(
+    str(json.dumps(testFileNameList, indent=4, sort_keys=False, encoding='UTF-8', ensure_ascii=False).encode('utf-8')))
 f.close()
