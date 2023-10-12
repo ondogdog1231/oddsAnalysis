@@ -15,7 +15,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsRegressor
 
-from xgboost import XGBClassifier
+# from xgboost import XGBClassifier
 
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
