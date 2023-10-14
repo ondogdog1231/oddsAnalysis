@@ -1,3 +1,6 @@
 .idea
 .idea/
 .idea/*
+config/__pycache__/
+predictionModels/
+.env
