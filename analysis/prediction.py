@@ -29,7 +29,6 @@ with open(league_model_precision_file_path, 'r') as json_file:
     league_model_json = json.load(json_file)
 record_start_time = datetime.datetime.now()
 
-
 print(f"start time: {record_start_time}")
 print(f"start time: {record_start_time.timestamp()}")
 
@@ -65,10 +64,6 @@ current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:00:00")
 unix_end_time = int(time.mktime(datetime.datetime.strptime(current_time, "%Y-%m-%d %H:%M:%S").timetuple()))
 
 league_id = args.leagueId
-# matchList = range(21661, 21911)
-# matchList = [4553, 4554]
-# matchDetails = c.getMatchDetailsAllByIdIn(matchList)
-# matchDetails = c.getMatchAllByInLeagueIdAndInSeason(league_id, ["2023-2024", "2023"])
 matchDetails = c.getMatchByBetweenTimeAndSeasonAndStarted(league_id, unix_end_time, ["2023-2024", "2023"])
 
 predictionMatchList = {}
@@ -79,6 +74,8 @@ matchList = [item[0] for item in matchDetails]
 for matchDetail in matchDetails:
     matchDetailsSet = {
         "last_handicap": None,
+        "outside_match_id": matchDetail[3],
+        "result": matchDetail[11],
         "league_id": matchDetail[5],
         "time": matchDetail[7],
         "home_team": matchDetail[8],
@@ -145,9 +142,33 @@ for matchId in oddSummaryList.keys():
     svmMatchList.append(_matchFibonacciKeyValue)
 
 # print(f"len: {len(matchList)}")
+# print(f"len: {len(predictionMatchList)}")
 # print(f"len: {len(oddSummaryList.keys())}")
+# print(f"len: {len(oddSummaryList.keys())}")
+#
+# print(matchList)
+# print("")
+# print(oddSummaryList.keys())
+#
 # print("Diff")
 # print(matchList - oddSummaryList.keys())
+#
+#
+#
+#
+# print(filtered_list)
+# exit()
+
+# print(predictionMatchList)
+keys_to_remove = matchList - oddSummaryList.keys()
+filtered_predictionMatchList = {k: v for k, v in predictionMatchList.items() if k not in keys_to_remove}
+# print(f"len: {len(filtered_predictionMatchList)}")
+# print(f"len: {len(oddSummaryList.keys())}")
+# # print(filtered_predictionMatchList)
+#
+# for index, match_id in enumerate(filtered_predictionMatchList):
+#     print(index)
+#     print(filtered_predictionMatchList[match_id])
 # exit()
 
 flattened_data = []
@@ -213,9 +234,8 @@ for model in prediction_fit_list:
 sample = [-1, 1]
 
 # for index in common_elements:
-for index, value in enumerate(matchIdList):
+for index, match_id in enumerate(filtered_predictionMatchList):
     print()
-
     for modelName, predictionDetails in predictionList.items():
         if predictionDetails["predict_proba"] is None:
             continue
@@ -224,25 +244,27 @@ for index, value in enumerate(matchIdList):
                                                                         -1 else predictionDetails[
             "predict_proba"][index][1]
 
-
-        confidence_level = next((item["confidence_level"] for item in league_model_json[str(league_id)] if item["name"] ==
-                                 modelName), None)
+        confidence_level = next(
+            (item["confidence_level"] for item in league_model_json[str(league_id)] if item["name"] ==
+             modelName), None)
         if predict_proba < confidence_level:
             continue
-        print(f"https://vip.titan007.com/AsianOdds_n.aspx?id={matchIdList[index]}")
+        print(f"https://vip.titan007.com/AsianOdds_n.aspx?id="
+              f"{filtered_predictionMatchList[match_id]['outside_match_id']}")
         print(f"Model: {modelName}, Contrary:{predictionDetails['contrary']}")
         print(f"predict_proba: {predict_proba}")
         print(predictionDetails["prediction"][index])
         print(predictionDetails["predict_proba"][index])
 
-        print(f"Last handicap: {predictionMatchList[matchDetails[index][0]]}")
-        score_split = matchDetails[index][11].split("-")
+        print(f"Last handicap: {filtered_predictionMatchList[match_id]['last_handicap']}")
+
+        score_split = filtered_predictionMatchList[match_id]['result'].split("-")
         net = None
         if len(score_split) > 1:
             net = int(score_split[0]) - int(score_split[1])
         insertParams = (
-            matchDetails[index][0],
-            predictionMatchList[matchDetails[index][0]]["last_handicap"],
+            match_id,
+            filtered_predictionMatchList[match_id]['last_handicap'],
             modelName,
             str(predictionDetails["prediction"][index]),
             predict_proba,
@@ -251,14 +273,15 @@ for index, value in enumerate(matchIdList):
             int(datetime.datetime.now().timestamp())
         )
         prediction_found = c.checkPrediction(matchDetails[index][0], modelName)
-        if matchDetails[index][0] == 30033:
-            print("matchDetails")
-            print(matchDetails[index][0])
-            print(f"{prediction_found[0][0]}")
-            print(f"Net: {net}")
-            exit()
+        # if matchDetails[index][0] == 30033:
+        #     print("matchDetails")
+        #     print(matchDetails[index][0])
+        #     print(f"{prediction_found[0][0]}")
+        #     print(f"Net: {net}")
+        #     exit()
         if prediction_found:
-            c.updatePredictionNet(prediction_found[0][0], net)
+            c.updatePredictionNet(prediction_found[0][0], str(predictionDetails["prediction"][index]), predict_proba,
+                                  net)
             continue
         c.insertPrediction(insertParams)
 

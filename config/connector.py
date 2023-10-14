@@ -4,7 +4,9 @@ import os
 from mysql import connector
 from dotenv import load_dotenv
 from contextlib2 import closing
+
 load_dotenv()
+
 
 class config:
 
@@ -16,13 +18,6 @@ class config:
             database='soccer',
             charset='utf8mb4',
         )
-
-    def getNewsContent(self, stockNo):
-        cursor = self.cnx.cursor()
-        sql = """select token,link from news where stock  = %s order by id desc;"""
-        cursor.execute(sql, (stockNo,))
-        results = cursor.fetchall()
-        return results
 
     def getMatch(self, outsideMatchID):
         cursor = self.cnx.cursor()
@@ -663,12 +658,14 @@ VALUES
             print(e.message)
             return False
 
-    def updatePredictionNet(self, id, net):
+    def updatePredictionNet(self, id, prediction, prediction_proba, net):
         updatedTime = int(time.time())
-        sql = """UPDATE `soccer`.`prediction` SET `net` = %s , `updated_time` = %s WHERE (`id` = %s);"""
+        sql = """UPDATE `soccer`.`prediction` SET `prediction` = %s, `predict_proba` = %s, `net` = %s , 
+        `updated_time` = %s WHERE (`id` = 
+        %s);"""
         try:
             with closing(self.cnx.cursor()) as cursor:
-                cursor.execute(sql, (net, updatedTime, id,))
+                cursor.execute(sql, (prediction, prediction_proba, net, updatedTime, id,))
             self.cnx.commit()
 
         except TypeError as e:
