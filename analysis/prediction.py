@@ -60,7 +60,7 @@ parser = argparse.ArgumentParser(description='New League')
 parser.add_argument('leagueId', type=int, help="League ID")
 args = parser.parse_args()
 
-current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:00:00")
+current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:59:59")
 unix_end_time = int(time.mktime(datetime.datetime.strptime(current_time, "%Y-%m-%d %H:%M:%S").timetuple()))
 
 league_id = args.leagueId
@@ -70,6 +70,7 @@ predictionMatchList = {}
 # print("matchDetails")
 # print(matchDetails)
 matchList = [item[0] for item in matchDetails]
+
 
 for matchDetail in matchDetails:
     matchDetailsSet = {
@@ -149,13 +150,8 @@ for matchId in oddSummaryList.keys():
 # print(matchList)
 # print("")
 # print(oddSummaryList.keys())
-#
 # print("Diff")
 # print(matchList - oddSummaryList.keys())
-#
-#
-#
-#
 # print(filtered_list)
 # exit()
 
@@ -248,6 +244,7 @@ for index, match_id in enumerate(filtered_predictionMatchList):
             (item["confidence_level"] for item in league_model_json[str(league_id)] if item["name"] ==
              modelName), None)
         if predict_proba < confidence_level:
+            print(f"Match: {filtered_predictionMatchList[match_id]['outside_match_id']} not fit")
             continue
         print(f"https://vip.titan007.com/AsianOdds_n.aspx?id="
               f"{filtered_predictionMatchList[match_id]['outside_match_id']}")
