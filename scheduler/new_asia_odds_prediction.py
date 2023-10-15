@@ -53,12 +53,14 @@ matchList = []
 # schedulerResult = c.findScheduleJobsByNameAndStatus("asianPrediction")
 
 works = c.findWorkBeforeTimeAndStatus(int(time.time()), 0)
+
 for work in works:
     print(work)
     matchList.append(work[2])
 if len(matchList) < 1:
     print("No match")
     exit()
+# matchList = [item[2] for item in matchList]
 # matchList = range(21661, 21911)
 # matchList = [4553, 4554]
 # matchDetails = c.getMatchDetailsAllByIdIn(matchList)
@@ -92,6 +94,7 @@ matchList = [item[0] for item in matchDetails]
 for matchDetail in matchDetails:
     matchDetailsSet = {
         "last_handicap": None,
+        "outside_match_id": matchDetail[3],
         "league_id": matchDetail[5],
         "time": matchDetail[7],
         "home_team": matchDetail[8],
@@ -163,12 +166,20 @@ for matchId in oddSummaryList.keys():
         # svmMatchList.append(_matchFibonacciKeyValue)
     svmTrainList[league_id].append(_matchFibonacciKeyValue)
     svmMatchIDList[league_id].append(matchId)
-
+# print("svmMatchIDList")
+# print(matchList)
+# print(svmMatchIDList[21])
 for league_id in svmTrainList.keys():
     print(league_id)
+    print(matchList)
+    print(svmMatchIDList[league_id])
+    keys_to_remove = list(set(matchList) - set(svmMatchIDList[league_id]))
+
+    filtered_predictionMatchList = {k: v for k, v in predictionMatchList.items() if k not in keys_to_remove}
+    print(f"filtered_predictionMatchList: {filtered_predictionMatchList}")
+
     flattened_data = []
     for svmTrainListItem in svmTrainList[league_id]:
-
         row = {}
         for time, betting_data in svmTrainListItem.items():
             for key, value in betting_data.items():
@@ -217,19 +228,27 @@ for league_id in svmTrainList.keys():
                                                                                                     for x in
                                                                                                     sublist)]
         # print("indices")
+        # print(f"LeagueID: {league_id}")
         # print(indices)
+        # exit()
         prediction_fit_list[modelName] = indices
     common_elements = set(prediction_fit_list[list(prediction_fit_list.keys())[0]])
     for model in prediction_fit_list:
         common_elements.intersection_update(prediction_fit_list[model])
-    for index in common_elements:
+    for index, match_id in enumerate(filtered_predictionMatchList):
         print()
-        print(f"matchIdList: {matchIdList}")
-        print(f"https://vip.titan007.com/AsianOdds_n.aspx?id={match_outside_id_list[str(matchIdList[index])]}")
+        print(f"filtered_predictionMatchList: {filtered_predictionMatchList}")
+        print(
+            f"https://vip.titan007.com/AsianOdds_n.aspx?id={filtered_predictionMatchList[match_id]['outside_match_id']}")
         messageArr = [f"{league_list[league_id]['tc_name']} -" \
-                      f" {team_list[predictionMatchList[matchIdList[index]]['home_team']]['tc_name']} vs " \
-                      f"{team_list[predictionMatchList[matchIdList[index]]['away_team']]['tc_name']} "]
+                      f" {team_list[filtered_predictionMatchList[match_id]['home_team']]['tc_name']} vs " \
+                      f"{team_list[filtered_predictionMatchList[match_id]['away_team']]['tc_name']} <br/>"]
         for modelName, predictionDetails in predictionList.items():
+            print(f"IN predictionList, league_id: {league_id}")
+            # print("predictionDetails['prediction']")
+            # print(predictionDetails['prediction'])
+            # print(f"filtered_predictionMatchList: {filtered_predictionMatchList}")
+            # print(f"match_id:{match_id}")
 
             if predictionDetails["predict_proba"] is None:
                 continue
@@ -242,14 +261,16 @@ for league_id in svmTrainList.keys():
             print(f"predict_proba: {predict_proba}")
             print(f"league_id: {league_id}")
             print(f"Index: {index}")
+            if predict_proba < predictionDetails["confidence_level"]:
+                continue
 
             # print(f"matchIdList[index]: {matchIdList[index]}")
             # print(f"Last handicap: {predictionMatchList[matchIdList[index]]}")
             # score_split = matchDetails[index][11].split("-")
             net = None
             insertParams = (
-                matchIdList[index],
-                predictionMatchList[matchIdList[index]]["last_handicap"],
+                match_id,
+                filtered_predictionMatchList[match_id]["last_handicap"],
                 modelName,
                 str(predictionDetails["prediction"][index]),
                 predict_proba,
@@ -261,21 +282,25 @@ for league_id in svmTrainList.keys():
             messageArr.append(
                 f"Model: {modelName}, Prediction:" \
                 f" {prediction_string}, " \
-                f"probability: {predict_proba}"
+                f"probability: {predict_proba} <br/>"
             )
 
             # print(f"svmMatchIDList[league_id]: {svmMatchIDList[league_id]}")
             # print(matchIdList[index])
-            if c.checkPrediction(matchIdList[index], modelName) is False:
+            print(f"c.checkPrediction(match_id, modelName): {c.checkPrediction(match_id, modelName)}")
+            if c.checkPrediction(match_id, modelName) is False:
+                print("already have record in prediction")
                 c.insertPrediction(insertParams)
-        work = c.findWorkByMatchId(matchIdList[index])
+            else:
+                c.updatePredictionNet(match_id, str(predictionDetails["prediction"][index]), predict_proba, net)
+        work = c.findWorkByMatchId(match_id)
         if len(work) == 0:
             continue
         if work[0][4] == 0:
             print(f"in work: {work[0][0]}, {' '.join(messageArr)}")
             c.updateSchedule(' '.join(messageArr), 4, work[0][0])
 
-        svmMatchIDList[league_id].remove(matchIdList[index])
+        svmMatchIDList[league_id].remove(match_id)
     for matchId in svmMatchIDList[league_id]:
         work = c.findWorkByMatchId(matchId)
         if len(work) == 0:
@@ -283,4 +308,3 @@ for league_id in svmTrainList.keys():
         if work[0][4] == 0:
             c.updateSchedule(None, 2, work[0][0])
         print(f"match delete to update status 2: {matchId}")
-
