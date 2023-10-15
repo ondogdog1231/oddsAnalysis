@@ -420,6 +420,22 @@ class config:
             return True
         else:
             return False
+    def queryPredictionIsNull(self, date_time):
+        cursor = self.cnx.cursor()
+        sql = """SELECT 
+    p.id, m.full_time_result, net
+FROM
+    prediction p
+        LEFT JOIN
+    matches m ON p.match_id = m.id
+WHERE
+    net IS NULL
+        AND m.date_time <= %s
+ORDER BY m.date_time DESC;"""
+        cursor.execute(sql, (date_time,))
+        results = cursor.fetchall()
+        return results
+
 
     def insertLeague(self, paraList):
         sql = """INSERT INTO `soccer`.`leagues`
@@ -692,6 +708,18 @@ VALUES
                 cursor.execute(sql, (status, updatedTime, id,))
             self.cnx.commit()
 
+        except TypeError as e:
+            print(e.message)
+            return False
+
+    def updatePrediction(self, param_list ):
+        updatedTime = int(time.time())
+        sql = """UPDATE `soccer`.`prediction` SET `net` = %s WHERE (`id` = %s);
+"""
+        try:
+            with closing(self.cnx.cursor()) as cursor:
+                cursor.execute(sql, param_list)
+            self.cnx.commit()
         except TypeError as e:
             print(e.message)
             return False
