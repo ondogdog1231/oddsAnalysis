@@ -238,11 +238,12 @@ for league_id in svmTrainList.keys():
     for index, match_id in enumerate(filtered_predictionMatchList):
         print()
         print(f"filtered_predictionMatchList: {filtered_predictionMatchList}")
-        print(
-            f"https://vip.titan007.com/AsianOdds_n.aspx?id={filtered_predictionMatchList[match_id]['outside_match_id']}")
-        messageArr = [f"{league_list[league_id]['tc_name']} -" \
+        match_url = f"https://vip.titan007.com/AsianOdds_n.aspx?id={filtered_predictionMatchList[match_id]['outside_match_id']}"
+        print(match_url)
+        messageArr = [f"{match_url} \n {league_list[league_id]['tc_name']} -" \
                       f" {team_list[filtered_predictionMatchList[match_id]['home_team']]['tc_name']} vs " \
-                      f"{team_list[filtered_predictionMatchList[match_id]['away_team']]['tc_name']} <br/>"]
+                      f"{team_list[filtered_predictionMatchList[match_id]['away_team']]['tc_name']} \n"]
+        prediction_model_success_count = 0
         for modelName, predictionDetails in predictionList.items():
             print(f"IN predictionList, league_id: {league_id}")
             # print("predictionDetails['prediction']")
@@ -282,7 +283,7 @@ for league_id in svmTrainList.keys():
             messageArr.append(
                 f"Model: {modelName}, Prediction:" \
                 f" {prediction_string}, " \
-                f"probability: {predict_proba} <br/>"
+                f"probability: {predict_proba} \n"
             )
 
             # print(f"svmMatchIDList[league_id]: {svmMatchIDList[league_id]}")
@@ -293,12 +294,14 @@ for league_id in svmTrainList.keys():
                 c.insertPrediction(insertParams)
             else:
                 c.updatePredictionNet(match_id, str(predictionDetails["prediction"][index]), predict_proba, net)
-        work = c.findWorkByMatchId(match_id)
-        if len(work) == 0:
-            continue
-        if work[0][4] == 0:
-            print(f"in work: {work[0][0]}, {' '.join(messageArr)}")
-            c.updateSchedule(' '.join(messageArr), 4, work[0][0])
+            prediction_model_success_count += 1
+        if prediction_model_success_count > 0:
+            work = c.findWorkByMatchId(match_id)
+            if len(work) == 0:
+                continue
+            if work[0][4] == 0:
+                print(f"in work: {work[0][0]}, {' '.join(messageArr)}")
+                c.updateSchedule(' '.join(messageArr), 4, work[0][0])
 
         svmMatchIDList[league_id].remove(match_id)
     for matchId in svmMatchIDList[league_id]:
