@@ -263,38 +263,35 @@ for league_id in svmTrainList.keys():
             print(f"league_id: {league_id}")
             print(f"Index: {index}")
             if predict_proba < predictionDetails["confidence_level"]:
-                continue
-
-            # print(f"matchIdList[index]: {matchIdList[index]}")
-            # print(f"Last handicap: {predictionMatchList[matchIdList[index]]}")
-            # score_split = matchDetails[index][11].split("-")
-            net = None
-            insertParams = (
-                match_id,
-                filtered_predictionMatchList[match_id]["last_handicap"],
-                modelName,
-                str(predictionDetails["prediction"][index]),
-                predict_proba,
-                net,
-                int(datetime.datetime.now().timestamp()),
-                int(datetime.datetime.now().timestamp())
-            )
-            prediction_string = "Away" if str(predictionDetails['prediction'][index]) == "-1" else "Home"
-            messageArr.append(
-                f"Model: {modelName}, Prediction:" \
-                f" {prediction_string}, " \
-                f"probability: {predict_proba} \n"
-            )
-
-            # print(f"svmMatchIDList[league_id]: {svmMatchIDList[league_id]}")
-            # print(matchIdList[index])
-            print(f"c.checkPrediction(match_id, modelName): {c.checkPrediction(match_id, modelName)}")
-            if c.checkPrediction(match_id, modelName) is False:
-                print("already have record in prediction")
-                c.insertPrediction(insertParams)
+                print("lower than confidence_level")
             else:
-                c.updatePredictionNet(match_id, str(predictionDetails["prediction"][index]), predict_proba, net)
-            prediction_model_success_count += 1
+                net = None
+                insertParams = (
+                    match_id,
+                    filtered_predictionMatchList[match_id]["last_handicap"],
+                    modelName,
+                    str(predictionDetails["prediction"][index]),
+                    predict_proba,
+                    net,
+                    int(datetime.datetime.now().timestamp()),
+                    int(datetime.datetime.now().timestamp())
+                )
+                prediction_string = "Away" if str(predictionDetails['prediction'][index]) == "-1" else "Home"
+                messageArr.append(
+                    f"Model: {modelName}, Prediction:" \
+                    f" {prediction_string}, " \
+                    f"probability: {predict_proba} \n"
+                )
+
+                # print(f"svmMatchIDList[league_id]: {svmMatchIDList[league_id]}")
+                # print(matchIdList[index])
+                print(f"c.checkPrediction(match_id, modelName): {c.checkPrediction(match_id, modelName)}")
+                if c.checkPrediction(match_id, modelName) is False:
+                    print("already have record in prediction")
+                    c.insertPrediction(insertParams)
+                else:
+                    c.updatePredictionNet(match_id, str(predictionDetails["prediction"][index]), predict_proba, net)
+                prediction_model_success_count += 1
         if prediction_model_success_count > 0:
             work = c.findWorkByMatchId(match_id)
             if len(work) == 0:
@@ -304,7 +301,7 @@ for league_id in svmTrainList.keys():
                 c.updateSchedule(' '.join(messageArr), 4, work[0][0])
 
         svmMatchIDList[league_id].remove(match_id)
-    for matchId in svmMatchIDList[league_id]:
+    for matchId in filtered_predictionMatchList.keys():
         work = c.findWorkByMatchId(matchId)
         if len(work) == 0:
             continue
