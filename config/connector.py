@@ -420,6 +420,14 @@ class config:
             return True
         else:
             return False
+
+    def getLeagueIdInMatch(self):
+        cursor = self.cnx.cursor()
+        sql = """select outside_league_id from matches group by outside_league_id;"""
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        return results
+
     def queryPredictionIsNull(self, date_time):
         cursor = self.cnx.cursor()
         sql = """SELECT 
