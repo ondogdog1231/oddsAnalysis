@@ -278,23 +278,27 @@ class getLeague:
 parser = argparse.ArgumentParser(description='New League')
 parser.add_argument('leagueId', type=int, help="League ID")
 parser.add_argument('seasonByYearOrRange', type=str, help="season or year")
-parser.add_argument('matchType', type=str, help="Match type")
+parser.add_argument('start_year', type=int, help="start year")
+parser.add_argument('end_year', type=int, help="end year")
+parser.add_argument('leagueType', type=str, help="Match type")
 
 args = parser.parse_args()
 
 league = args.leagueId
 seasonByYearOrRange = args.seasonByYearOrRange
-matchType = args.matchType
-
+start_year = args.start_year
+end_year = args.end_year
+leagueType = args.leagueType
+seasons = []
 if seasonByYearOrRange == "1":
-    seasons = [
-        "2023-2024",
-    ]
-else:
-    seasons = range(2023, 2023 + 1)
-    # seasons = range(2023,2024)
 
-leagueType = "league" if matchType == "1" else "Cup"
+    while start_year < end_year:
+        seasons.append(f"{start_year}-{start_year + 1}")
+        start_year += 1
+else:
+    seasons = range(start_year, end_year)
+
+leagueType = "league" if leagueType == "1" else "Cup"
 
 subClass = 0
 
