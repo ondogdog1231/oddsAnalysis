@@ -320,6 +320,22 @@
       "enable": true
     }
   ],
+  "273": [
+    {
+      "name": "LogisticRegression",
+      "precision": 51.88,
+      "contrary": false,
+      "confidence_level": 0.55,
+      "enable": true
+    },
+    {
+      "name": "RandomForestClassifier",
+      "precision": 45.98,
+      "contrary": false,
+      "confidence_level": 0.6,
+      "enable": true
+    }
+  ],
   "284": [
     {
       "name": "LogisticRegression",
