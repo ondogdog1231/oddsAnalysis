@@ -288,7 +288,7 @@ matchType = args.matchType
 
 if seasonByYearOrRange == "1":
     seasons = [
-        # "2017-2018",
+        "2017-2018",
         "2018-2019",
         "2019-2020",
         "2020-2021",
@@ -309,4 +309,6 @@ for season in seasons:
     crawler.main()
     time.sleep(5)
 odds_command = f"asian_odds.py"
+create_teams_command = f"teams.py"
+subprocess.run(["python", create_teams_command])
 subprocess.run(["python", odds_command, str(league)])

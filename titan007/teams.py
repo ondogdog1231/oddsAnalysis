@@ -90,7 +90,3 @@ for team in teamList:
 
     )
     c.insertTeams(list)
-
-
-
-exit()
