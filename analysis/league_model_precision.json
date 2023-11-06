@@ -31,6 +31,22 @@
       "enable": true
     }
   ],
+  "5": [
+    {
+      "name": "LogisticRegression",
+      "precision": 48.40,
+      "contrary": false,
+      "confidence_level": 0.55,
+      "enable": true
+    },
+    {
+      "name": "RandomForestClassifier",
+      "precision": 53.15,
+      "contrary": false,
+      "confidence_level": 0.6,
+      "enable": true
+    }
+  ],
   "7": [
     {
       "name": "LogisticRegression",
@@ -70,6 +86,22 @@
       "contrary": false,
       "confidence_level": 0.65,
       "enable": false
+    },
+    {
+      "name": "RandomForestClassifier",
+      "precision": 46.48,
+      "contrary": false,
+      "confidence_level": 0.7,
+      "enable": true
+    }
+  ],
+  "10": [
+    {
+      "name": "LogisticRegression",
+      "precision": 50.86,
+      "contrary": false,
+      "confidence_level": 0.55,
+      "enable": true
     },
     {
       "name": "RandomForestClassifier",
@@ -317,6 +349,22 @@
       "precision": 50.6,
       "contrary": false,
       "confidence_level": 0.8,
+      "enable": true
+    }
+  ],
+  "230": [
+    {
+      "name": "LogisticRegression",
+      "precision": 51.88,
+      "contrary": false,
+      "confidence_level": 0.55,
+      "enable": true
+    },
+    {
+      "name": "RandomForestClassifier",
+      "precision": 45.98,
+      "contrary": false,
+      "confidence_level": 0.6,
       "enable": true
     }
   ],
