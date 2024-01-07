@@ -137,6 +137,8 @@ xAsisDataSet = []
 
 
 """
+print("oddSummaryList.keys()")
+print(oddSummaryList.keys())
 svmTrainList = {}
 svmMatchIDList = {}
 svmMatchList = []
