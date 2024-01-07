@@ -199,6 +199,7 @@ for league_id in svmTrainList.keys():
     if (str(league_id) in league_model_json) is False:
         print(f"{str(league_id)} not in json")
         continue
+    print(f"Now processing leagueId: {league_id}")
     for model in league_model_json[str(league_id)]:
         predictionList[model['name']] = {
             "prediction": None,
