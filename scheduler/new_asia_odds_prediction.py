@@ -186,11 +186,11 @@ for league_id in svmTrainList.keys():
                 row[f'{time}_{key}'] = value
         flattened_data.append(row)
     print(f"leagueId:{league_id} len: {len(flattened_data)}")
-    # if league_id == 34:
-    #     print("In 34")
-    #     print(flattened_data)
-    #     print(flattened_data[1])
-    #     exit()
+    if league_id == 39:
+        print("In 34")
+        print(flattened_data)
+        print(flattened_data[1])
+        exit()
     if len(flattened_data) < 1:
         print(f"leagueID: {league_id} has 0 data")
         continue
