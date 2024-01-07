@@ -137,8 +137,8 @@ xAsisDataSet = []
 
 
 """
-print("oddSummaryList.keys()")
-print(oddSummaryList.keys())
+# print("oddSummaryList.keys()")
+# print(oddSummaryList.keys())
 svmTrainList = {}
 svmMatchIDList = {}
 svmMatchList = []
@@ -168,11 +168,11 @@ for matchId in oddSummaryList.keys():
         # svmMatchList.append(_matchFibonacciKeyValue)
     svmTrainList[league_id].append(_matchFibonacciKeyValue)
     svmMatchIDList[league_id].append(matchId)
-print("svmMatchIDList")
-print(svmTrainList)
-print("matchList")
-print(matchList)
-exit()
+# print("svmMatchIDList")
+# print(svmTrainList)
+# print("matchList")
+# print(matchList)
+
 # print(svmMatchIDList[21])
 for league_id in svmTrainList.keys():
     print(league_id)
