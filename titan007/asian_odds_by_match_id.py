@@ -15,7 +15,12 @@ import utils.handicap as h
 import argparse
 
 c = connector.config()
-match_id_list = range(49051,49062 +1)
+parser = argparse.ArgumentParser(description='Process an array of match ID.')
+parser.add_argument('integers', metavar='N', type=int, nargs='+',
+                    help='an integer for the accumulator')
+args = parser.parse_args()
+match_id_list = args.integers
+# input 1 2 3 4 5
 
 matchResult = c.getMatchByIdIn(match_id_list)
 print(matchResult)
