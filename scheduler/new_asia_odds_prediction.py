@@ -176,7 +176,6 @@ for matchId in oddSummaryList.keys():
 # print(svmMatchIDList[21])
 for league_id in svmTrainList.keys():
     print(league_id)
-    continue
     print(matchList)
     print(svmMatchIDList[league_id])
     keys_to_remove = list(set(matchList) - set(svmMatchIDList[league_id]))
