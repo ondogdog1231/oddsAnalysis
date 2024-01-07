@@ -166,8 +166,9 @@ for matchId in oddSummaryList.keys():
         # svmMatchList.append(_matchFibonacciKeyValue)
     svmTrainList[league_id].append(_matchFibonacciKeyValue)
     svmMatchIDList[league_id].append(matchId)
-# print("svmMatchIDList")
-# print(matchList)
+print("svmMatchIDList")
+print(matchList)
+exit()
 # print(svmMatchIDList[21])
 for league_id in svmTrainList.keys():
     print(league_id)
