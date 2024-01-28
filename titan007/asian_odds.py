@@ -20,8 +20,8 @@ args = parser.parse_args()
 
 c = connector.config()
 league_id = args.leagueId
-matchResult = c.getMatchByLeagueId(league_id)
-# matchResult = c.getMatchByLeagueIdAndSeason(league_id,"2023-2024")
+# matchResult = c.getMatchByLeagueId(league_id)
+matchResult = c.getMatchByLeagueIdAndSeason(league_id, "2024")
 headers = {
     'referer': "http://live.titan007.com/indexall_big.aspx",
     'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
@@ -29,6 +29,11 @@ headers = {
 
 for match in matchResult:
     print("match Date:", match[2], "match ID:", match[0])
+    converted_datetime = datetime.datetime.utcfromtimestamp(match[2])
+    formatted_date = converted_datetime.strftime("%Y-%m-%d %H:%M:%S")
+    # print(formatted_date)
+    # exit()
+
     matchYear = datetime.datetime.utcfromtimestamp(match[2]).strftime("%Y")
     matchMonth = datetime.datetime.utcfromtimestamp(match[2]).strftime("%m")
     season = match[3].split("-")

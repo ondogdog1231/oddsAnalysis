@@ -284,6 +284,7 @@ args = parser.parse_args()
 
 league = args.leagueId
 seasonByYearOrRange = args.seasonByYearOrRange
+# season = args.season
 matchType = args.matchType
 
 if seasonByYearOrRange == "1":
@@ -297,8 +298,7 @@ if seasonByYearOrRange == "1":
         "2023-2024",
     ]
 else:
-    seasons = range(2017, 2023 + 1)
-    # seasons = range(2023,2024)
+    seasons = range(2024, 2024 + 1)
 
 leagueType = "league" if matchType == "1" else "Cup"
 
