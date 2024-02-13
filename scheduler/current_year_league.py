@@ -282,7 +282,8 @@ for league_id_result in all_leagues_id:
     print(league_id)
     seasons = [
         "2023-2024",
-        "2023"
+        "2023",
+        "2024"
     ]
     for season in seasons:
         crawler = getLeague("league", league_id, season)
