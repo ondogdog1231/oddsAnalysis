@@ -32,6 +32,12 @@ class config:
         cursor.execute(sql, (id,))
         results = cursor.fetchall()
         return results
+    def getMatchAllByID(self, id):
+        cursor = self.cnx.cursor()
+        sql = """select * from matches where id = %s;"""
+        cursor.execute(sql, (id,))
+        results = cursor.fetchall()
+        return results
 
     def getMatchAllFieldsByID(self, id):
         cursor = self.cnx.cursor()

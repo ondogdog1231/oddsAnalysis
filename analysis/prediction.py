@@ -57,14 +57,18 @@ matchList = []
 #     exit()
 
 parser = argparse.ArgumentParser(description='New League')
-parser.add_argument('leagueId', type=int, help="League ID")
+# parser.add_argument('leagueId', type=int, help="League ID")
+parser.add_argument('matchId', type=int, help="meatch ID")
 args = parser.parse_args()
 
 current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:59:59")
 unix_end_time = int(time.mktime(datetime.datetime.strptime(current_time, "%Y-%m-%d %H:%M:%S").timetuple()))
 
-league_id = args.leagueId
-matchDetails = c.getMatchByBetweenTimeAndSeasonAndStarted(league_id, unix_end_time, ["2023-2024", "2023"])
+# league_id = args.leagueId
+matchId = args.matchId
+
+# matchDetails = c.getMatchByBetweenTimeAndSeasonAndStarted(league_id, unix_end_time, ["2023-2024", "2023"])
+matchDetails = c.getMatchAllByID(matchId)
 
 predictionMatchList = {}
 # print("matchDetails")
