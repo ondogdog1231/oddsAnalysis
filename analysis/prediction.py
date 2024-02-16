@@ -248,13 +248,15 @@ for index, match_id in enumerate(filtered_predictionMatchList):
             (item["confidence_level"] for item in league_model_json[str(league_id)] if item["name"] ==
              modelName), None)
         if predict_proba < confidence_level:
-            print(f"Match: {filtered_predictionMatchList[match_id]['outside_match_id']} not fit")
+            print(f"Match: {filtered_predictionMatchList[match_id]['outside_match_id']} not fit, predict_proba: {predict_proba} confidence_level:{confidence_level}")
+            print(f"predict_proba: {predict_proba}")
+            print(f'prediction: {predictionDetails["prediction"][index]}')
             continue
         print(f"https://vip.titan007.com/AsianOdds_n.aspx?id="
               f"{filtered_predictionMatchList[match_id]['outside_match_id']}")
         print(f"Model: {modelName}, Contrary:{predictionDetails['contrary']}")
         print(f"predict_proba: {predict_proba}")
-        print(predictionDetails["prediction"][index])
+        print(f'prediction: {predictionDetails["prediction"][index]}')
         print(predictionDetails["predict_proba"][index])
 
         print(f"Last handicap: {filtered_predictionMatchList[match_id]['last_handicap']}")
