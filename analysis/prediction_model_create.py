@@ -239,7 +239,7 @@ for model_name, clf in model_list.items():
     # # Check if the predictions are correct
     correct_preds = high_prob_preds == actual_values
     # Display results
-    print(f"Total samples with >55% probability: {len(high_prob_index)}")
+    print(f"Total samples with {model_confidence_list[model_name]} probability: {len(high_prob_index)}")
     print(f"Correct predictions among high-probability samples: {np.sum(correct_preds)}")
     print(f"Accuracy among high-probability samples: {np.mean(correct_preds) * 100:.2f}%")
     print("")

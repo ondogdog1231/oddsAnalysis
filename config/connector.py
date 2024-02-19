@@ -159,13 +159,6 @@ class config:
         results = cursor.fetchall()
         return results
 
-    def getMatchByBetweenTime(self, startTime, endTime):
-        cursor = self.cnx.cursor()
-        sql = """select id,outside_match_id,date_time,season from matches where date_time between %s and %s order by date_time asc;"""
-        cursor.execute(sql, (startTime, endTime,))
-        results = cursor.fetchall()
-        return results
-
     def getMatchByBetweenTimeAndSeason(self, league_id, end_time, seasons=[]):
         # Create a string of placeholders for the "IN" clause in the SQL query
         # e.g., if there are 3 seasons, create a string "%s, %s, %s"
@@ -212,7 +205,8 @@ class config:
 
     def getMatchBetweenTimeAndLeagueId(self, startTime, endTime, leagueId):
         cursor = self.cnx.cursor()
-        sql = """select id,outside_match_id,date_time,season,full_time_result from matches where date_time between %s and %s and outside_league_id = %s and full_time_result != '推迟|推遲|Delay';"""
+        sql = """select * from matches where date_time between %s and %s and outside_league_id = %s and 
+        full_time_result != '推迟|推遲|Delay';"""
         cursor.execute(sql, (startTime, endTime, leagueId,))
         results = cursor.fetchall()
         return results
@@ -306,6 +300,13 @@ class config:
         results = cursor.fetchall()
         return results
 
+    def findOverDownOddsByMatchID(self, matchId):
+        cursor = self.cnx.cursor()
+        sql = """select match_id, company_id, decimal_handicap, change_time from over_down_odds where match_id = %s;"""
+        cursor.execute(sql, (matchId,))
+        results = cursor.fetchall()
+        return results
+
     def findOddsByMatchIDAndCompanyId(self, matchId, companyId):
         cursor = self.cnx.cursor()
         sql = """select match_id, company_id, decimal_handicap, home_odd, away_odd,change_time from odds where match_id = %s and company_id = %s;"""
@@ -380,7 +381,31 @@ class config:
             return True
         else:
             return False
+    def checkMatchInOverDownExist(self, matchId):
+        cursor = self.cnx.cursor()
+        sql = """select id from over_down_odds where match_id = %s limit 1"""
+        cursor.execute(sql, (matchId,))
+        results = cursor.fetchall()
+        if results:
+            return True
+        else:
+            return False
 
+    def getPredictionModelByLeagueId(self, league_id):
+        cursor = self.cnx.cursor()
+        sql = """select * from handicap_prediction_model where league_id = %s"""
+        cursor.execute(sql, (league_id,))
+        result = cursor.fetchall()
+        return result
+    def checkOldHistoryPrediction(self, match_id, model_name):
+        cursor = self.cnx.cursor()
+        sql = """select * from old_history_prediction where match_id = %s and model = %s limit 1"""
+        cursor.execute(sql, (match_id, model_name,))
+        result = cursor.fetchall()
+        if len(result) > 0:
+            return result
+        else:
+            return False
     def checkPrediction(self, match_id, model_name):
         cursor = self.cnx.cursor()
         sql = """select * from prediction where match_id = %s and model = %s limit 1"""
@@ -390,7 +415,6 @@ class config:
             return result
         else:
             return False
-
     def checkNation(self, nation_name):
         cursor = self.cnx.cursor()
         sql = """select * from nations where chinese_name = %s limit 1"""
@@ -449,7 +473,6 @@ ORDER BY m.date_time DESC;"""
         cursor.execute(sql, (date_time,))
         results = cursor.fetchall()
         return results
-
 
     def insertLeague(self, paraList):
         sql = """INSERT INTO `soccer`.`leagues`
@@ -559,6 +582,36 @@ VALUES
             print(e.message)
             return False
 
+    def insertOverDownManyOdd(self, valueList):
+        sql = """
+            INSERT INTO `soccer`.`over_down_odds` (
+            `match_id`, 
+            `company_id`, 
+            `decimal_handicap`, 
+            `over_odd`, 
+            `down_odd`, 
+            `result`,
+            `change_time`,
+            `created_time`,
+            `updated_time`) VALUES (
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s
+            )
+        """
+        try:
+            with closing(self.cnx.cursor()) as cursor:
+                cursor.executemany(sql, valueList)
+                self.cnx.commit()
+        except TypeError as e:
+            print(e.message)
+            return False
     def insertManyOdd(self, valueList):
         sql = """INSERT INTO `soccer`.`odds`
     (
@@ -687,10 +740,53 @@ VALUES
         except TypeError as e:
             print(e.message)
             return False
+    def insertOldMatchPrediction(self, paraList):
+        sql = """INSERT INTO `soccer`.`old_history_prediction`
+                (
+                `match_id`,
+                `last_handicap`,
+                `model`,
+                `prediction`,
+                `predict_proba`,
+                `net`,
+                `created_time`,
+                `updated_time`)
+                VALUES
+                (
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s);
+    """
+        try:
+            with closing(self.cnx.cursor()) as cursor:
+                cursor.execute(sql, paraList)
+            self.cnx.commit()
+
+        except TypeError as e:
+            print(e.message)
+            return False
 
     def updatePredictionNet(self, id, prediction, prediction_proba, net):
         updatedTime = int(time.time())
         sql = """UPDATE `soccer`.`prediction` SET `prediction` = %s, `predict_proba` = %s, `net` = %s , 
+        `updated_time` = %s WHERE (`id` = 
+        %s);"""
+        try:
+            with closing(self.cnx.cursor()) as cursor:
+                cursor.execute(sql, (prediction, prediction_proba, net, updatedTime, id,))
+            self.cnx.commit()
+
+        except TypeError as e:
+            print(e.message)
+            return False
+    def updateOldMatchPredictionNet(self, id, prediction, prediction_proba, net):
+        updatedTime = int(time.time())
+        sql = """UPDATE `soccer`.`old_history_prediction` SET `prediction` = %s, `predict_proba` = %s, `net` = %s , 
         `updated_time` = %s WHERE (`id` = 
         %s);"""
         try:
@@ -726,7 +822,7 @@ VALUES
             print(e.message)
             return False
 
-    def updatePrediction(self, param_list ):
+    def updatePrediction(self, param_list):
         updatedTime = int(time.time())
         sql = """UPDATE `soccer`.`prediction` SET `net` = %s WHERE (`id` = %s);
 """
@@ -734,6 +830,33 @@ VALUES
             with closing(self.cnx.cursor()) as cursor:
                 cursor.execute(sql, param_list)
             self.cnx.commit()
+        except TypeError as e:
+            print(e.message)
+            return False
+
+    def insertPredictonModel(self, param_list):
+        sql = """INSERT INTO `soccer`.`handicap_prediction_model`
+(
+`league_id`,
+`model`,
+`precision`,
+`confidence_level`,
+`contrary`,
+`enable`)
+VALUES
+(
+%s,
+%s,
+%s,
+%s,
+%s,
+%s);
+"""
+        try:
+            with closing(self.cnx.cursor()) as cursor:
+                cursor.execute(sql, param_list)
+            self.cnx.commit()
+
         except TypeError as e:
             print(e.message)
             return False
