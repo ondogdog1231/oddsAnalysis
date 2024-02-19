@@ -298,7 +298,7 @@ if seasonByYearOrRange == "1":
         "2023-2024",
     ]
 else:
-    seasons = range(2024, 2024 + 1)
+    seasons = range(2018, 2024 + 1)
 
 leagueType = "league" if matchType == "1" else "Cup"
 
