@@ -278,27 +278,24 @@ class getLeague:
 parser = argparse.ArgumentParser(description='New League')
 parser.add_argument('leagueId', type=int, help="League ID")
 parser.add_argument('seasonByYearOrRange', type=str, help="season or year")
+parser.add_argument('start_year', type=int, help="start year")
+parser.add_argument('end_year', type=int, help="end year")
 parser.add_argument('matchType', type=str, help="Match type")
 
 args = parser.parse_args()
 
 league = args.leagueId
 seasonByYearOrRange = args.seasonByYearOrRange
+start_year = args.start_year
+end_year = args.end_year
 # season = args.season
 matchType = args.matchType
 
+years = list(range(start_year, end_year+1))
 if seasonByYearOrRange == "1":
-    seasons = [
-        "2017-2018",
-        "2018-2019",
-        "2019-2020",
-        "2020-2021",
-        "2021-2022",
-        "2022-2023",
-        "2023-2024",
-    ]
+    seasons = [f"{y}-{y+1}" for y in years[:-1]]
 else:
-    seasons = range(2024, 2024 + 1)
+    seasons = years
 
 leagueType = "league" if matchType == "1" else "Cup"
 
@@ -311,4 +308,4 @@ for season in seasons:
 odds_command = f"asian_odds.py"
 create_teams_command = f"teams.py"
 subprocess.run(["python", create_teams_command])
-subprocess.run(["python", odds_command, str(league)])
+subprocess.run(["python", odds_command, str(league)], seasons)

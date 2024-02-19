@@ -66,12 +66,19 @@ args = parser.parse_args()
 leagueId = args.leagueId
 
 seasons = ["2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023"]
-years = range(2018, 2022 + 1)
+years = range(2018, 2023 + 1)
 years_str = [str(year) for year in years]
 all_seasons = seasons + years_str
 
 # seasons = range(2018, 2022 + 1)
-matchDetails = c.getMatchAllByInLeagueIdAndInSeason(leagueId, all_seasons)
+# matchDetails = c.getMatchAllByInLeagueIdAndInSeason(leagueId, all_seasons)
+
+current_date = datetime.datetime.now()
+one_month_ago = current_date - datetime.timedelta(days=30)
+adjusted_date = one_month_ago.replace(hour=23, minute=59, second=59)
+unix_time = int(adjusted_date.timestamp())
+
+matchDetails = c.getMatchByBetweenTimeAndSeasonAndStarted(leagueId, unix_time, all_seasons)
 
 # exit(matchDetails)
 predictionMatchList = {}
@@ -213,7 +220,7 @@ model_list = {
 model_confidence_list = {
     "LogisticRegression": 0.6,
     # "DecisionTreeClassifier": DecisionTreeClassifier(random_state=42),
-    "RandomForestClassifier": 0.75,
+    "RandomForestClassifier": 0.6,
     # "SVC": SVC(kernel='linear', random_state=42, probability=True)
     # "Gaussian": GaussianNB()
 }
