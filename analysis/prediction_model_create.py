@@ -71,7 +71,14 @@ years_str = [str(year) for year in years]
 all_seasons = seasons + years_str
 
 # seasons = range(2018, 2022 + 1)
-matchDetails = c.getMatchAllByInLeagueIdAndInSeason(leagueId, all_seasons)
+# matchDetails = c.getMatchAllByInLeagueIdAndInSeason(leagueId, all_seasons)
+
+current_date = datetime.datetime.now()
+one_month_ago = current_date - datetime.timedelta(days=30)
+adjusted_date = one_month_ago.replace(hour=23, minute=59, second=59)
+unix_time = int(adjusted_date.timestamp())
+
+matchDetails = c.getMatchByBetweenTimeAndSeasonAndStarted(leagueId, unix_time, all_seasons)
 
 # exit(matchDetails)
 predictionMatchList = {}
