@@ -66,7 +66,7 @@ args = parser.parse_args()
 leagueId = args.leagueId
 
 seasons = ["2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023"]
-years = range(2018, 2022 + 1)
+years = range(2018, 2023 + 1)
 years_str = [str(year) for year in years]
 all_seasons = seasons + years_str
 
