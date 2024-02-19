@@ -220,7 +220,7 @@ model_list = {
 model_confidence_list = {
     "LogisticRegression": 0.6,
     # "DecisionTreeClassifier": DecisionTreeClassifier(random_state=42),
-    "RandomForestClassifier": 0.75,
+    "RandomForestClassifier": 0.6,
     # "SVC": SVC(kernel='linear', random_state=42, probability=True)
     # "Gaussian": GaussianNB()
 }
@@ -238,6 +238,10 @@ for model_name, clf in model_list.items():
     actual_values = np.array(y_test)[high_prob_index]
     # # Check if the predictions are correct
     correct_preds = high_prob_preds == actual_values
+    print("y prediction result")
+    print(f"y_pred {y_pred}")
+    print(f"actual_values {actual_values}")
+
     # Display results
     print(f"Total samples with >55% probability: {len(high_prob_index)}")
     print(f"Correct predictions among high-probability samples: {np.sum(correct_preds)}")
