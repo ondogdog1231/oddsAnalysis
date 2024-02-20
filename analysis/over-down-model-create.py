@@ -67,7 +67,7 @@ oddSummaryList = {}
 for oddRow in oddsResult:
     matchId, companyId, decimalHandicap, overOdd, downOdd, changeTime = oddRow
     oddSummaryList.setdefault(matchId,{})
-    oddSummaryList[currentId][changeTime] = {
+    oddSummaryList[matchId][changeTime] = {
         "decimalHandicap": decimalHandicap,
         "overOdd": overOdd,
         "downOdd": downOdd
