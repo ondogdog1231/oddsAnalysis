@@ -114,9 +114,9 @@ for matchId in oddSummaryList.keys():
         fibonacciTimeKey = f"minutes_before_match_{fibonacciTime}"
         print(f"fibonacciTimeKey: {fibonacciTimeKey}")
         _matchFibonacciKeyValue[fibonacciTimeKey] = {
-            "decimalHandicap": float(currentOddSummary[str(nearNumber)]["decimalHandicap"]),
-            "over_odd": float(currentOddSummary[str(nearNumber)]["overOdd"]),
-            "down_odd": float(currentOddSummary[str(nearNumber)]["downOdd"])
+            "decimalHandicap": float(currentOddSummary[nearNumber]["decimalHandicap"]),
+            "over_odd": float(currentOddSummary[nearNumber]["overOdd"]),
+            "down_odd": float(currentOddSummary[nearNumber]["downOdd"])
         }
     svmMatchList.append(_matchFibonacciKeyValue)
 
