@@ -98,6 +98,7 @@ for matchId in oddSummaryList.keys():
     league_id = predictionMatchList[matchId]["league_id"]
     currentOddSummary = oddSummaryList[matchId]
     convertedTime = {int(v) for v in currentOddSummary.keys()}
+    print(f"converted_time: {convertedTime}")
     matchTime = predictionMatchList[matchId]["time"]
     # print("matchId")
     # print(matchId)
@@ -109,7 +110,7 @@ for matchId in oddSummaryList.keys():
         nearNumber = min(convertedTime, key=lambda x: abs(x - int(findTimeTarget)))
 
         fibonacciTimeKey = f"minutes_before_match_{fibonacciTime}"
-
+        print(f"fibonacciTimeKey: {fibonacciTimeKey}")
         _matchFibonacciKeyValue[fibonacciTimeKey] = {
             "decimalHandicap": float(currentOddSummary[str(nearNumber)]["decimalHandicap"]),
             "over_odd": float(currentOddSummary[str(nearNumber)]["overOdd"]),
@@ -139,6 +140,8 @@ for matchId in match_to_delete:
 
 net_result_label_dict = [value['net_result_label'] for key, value in predictionMatchList.items()]
 print("net_result_label_dict")
+print(net_result_label_dict)
+exit()
 
 
 flattened_data = []
