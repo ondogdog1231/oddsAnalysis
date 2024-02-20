@@ -75,6 +75,8 @@ for oddRow in oddsResult:
     predictionMatchList[matchId]["last_handicap"] = decimalHandicap
 # last_item_key, last_item_value = list(oddSummaryList[1915].items())[-1]
 print(predictionMatchList)
+print("oddSummaryList")
+print(oddSummaryList)
 exit()
 # fibonacciList = [5, 10, 15, 25, 40, 65, 105, 170, 275, 445, 720]
 fibonacciList = [10, 15, 25, 40, 65, 105, 170, 275, 445, 720]
