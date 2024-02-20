@@ -169,6 +169,8 @@ df = pd.DataFrame(flattened_data)
 
 
 predictionList = {}
+#@todo remove
+league_id = 36
 for model in league_model_json[str(league_id)]:
     predictionList[model['name']] = {
         "prediction": None,
