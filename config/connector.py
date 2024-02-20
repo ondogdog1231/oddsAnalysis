@@ -326,6 +326,18 @@ class config:
         cursor.execute(sql, tuple(params))
         results = cursor.fetchall()
         return results
+    def findOverDownOddsByIdInAndCompanyId(self, companyId, matchId=[]):
+        in_p = ', '.join(list(map(lambda x: '%s', matchId)))
+        # sql = """select match_id, company_id, decimal_handicap, home_odd, away_odd, change_time from odds where company_id = %s and match_id in (%s) and match_id between 382 and 650 and result is null order by match_id asc, change_time asc;"""
+        sql = """select match_id, company_id, decimal_handicap, over_odd, down_odd, change_time from over_down_odds where company_id = %s and match_id in (%s) and result is null order by match_id asc, change_time asc;"""
+        sql = sql % ('%s', in_p)
+        params = []
+        params.append(companyId)
+        params.extend(matchId)
+        cursor = self.cnx.cursor()
+        cursor.execute(sql, tuple(params))
+        results = cursor.fetchall()
+        return results
 
     def checkNewsExist(self, token):
         cursor = self.cnx.cursor()
