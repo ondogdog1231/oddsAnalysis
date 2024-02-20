@@ -72,7 +72,7 @@ for oddRow in oddsResult:
         "overOdd": overOdd,
         "downOdd": downOdd
     }
-    predictionMatchList[currentId]["last_handicap"] = decimalHandicap
+    predictionMatchList[matchId]["last_handicap"] = decimalHandicap
 # last_item_key, last_item_value = list(oddSummaryList[1915].items())[-1]
 print(predictionMatchList)
 exit()
