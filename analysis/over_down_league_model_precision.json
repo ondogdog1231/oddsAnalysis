@@ -262,7 +262,7 @@
       "precision": 51.81,
       "contrary": false,
       "confidence_level": 0.55,
-      "enable": true
+      "enable": false
     },
     {
       "name": "RandomForestClassifier",

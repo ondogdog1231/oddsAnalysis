@@ -30,8 +30,6 @@ with open(league_model_precision_file_path, 'r') as json_file:
 record_start_time = datetime.datetime.now()
 
 print(f"start time: {record_start_time}")
-print(f"start time: {record_start_time.timestamp()}")
-
 asian_odd_config_classifiers = asianOddsConfig.config().model_list()
 
 # print(asian_odd_config)
@@ -57,13 +55,22 @@ matchList = []
 #     exit()
 
 parser = argparse.ArgumentParser(description='New League')
-parser.add_argument('matchId', type=int, help="meatch ID")
+parser.add_argument('league_id', type=int, help="match ID")
+parser.add_argument('start_date', type=str, help="start_date")
+parser.add_argument('end_date', type=str, help="end_date")
 args = parser.parse_args()
 
 current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:59:59")
-unix_end_time = int(time.mktime(datetime.datetime.strptime(current_time, "%Y-%m-%d %H:%M:%S").timetuple()))
-matchId = args.matchId
-matchDetails = c.getMatchAllByID(matchId)
+
+league_id = args.league_id
+
+start_time = datetime.datetime.now().strftime(f"{args.start_date} 00:00:00")
+end_time = datetime.datetime.now().strftime(f"{args.end_date} 23:59:59")
+unix_start_time = int(time.mktime(datetime.datetime.strptime(start_time, "%Y-%m-%d %H:%M:%S").timetuple()))
+unix_end_time = int(time.mktime(datetime.datetime.strptime(end_time, "%Y-%m-%d %H:%M:%S").timetuple()))
+
+print(f"league_id: {args.league_id}, startDate: {unix_start_time}, startDate: {unix_end_time}")
+matchDetails = c.getMatchBetweenTimeAndLeagueId(unix_start_time, unix_end_time, league_id)
 
 predictionMatchList = {}
 # print("matchDetails")
@@ -216,10 +223,18 @@ for model in prediction_fit_list:
     common_elements.intersection_update(prediction_fit_list[model])
 
 # for index in common_elements:
+matchResult = []
 for index, match_id in enumerate(filtered_predictionMatchList):
     print()
-    print(f"https://vip.titan007.com/AsianOdds_n.aspx?id="
-          f"{filtered_predictionMatchList[match_id]['outside_match_id']}")
+    matchUrl = f"https://vip.titan007.com/AsianOdds_n.aspx?id={filtered_predictionMatchList[match_id]['outside_match_id']}"
+    print(matchUrl)
+    matchPredictionResult = {}
+    net_result = filtered_predictionMatchList[match_id]['result'].split("-")
+    matchPredictionResult.setdefault(matchUrl,{
+        "net": int(net_result[0]) + int(net_result[1]),
+        "overDown": float(filtered_predictionMatchList[match_id]['last_handicap']),
+        "model": {}
+    })
     for modelName, predictionDetails in predictionList.items():
         if predictionDetails["predict_proba"] is None:
             continue
@@ -243,6 +258,8 @@ for index, match_id in enumerate(filtered_predictionMatchList):
               f': {predictionDetails["predict_proba"][index]}')
 
         print(f"Last handicap: {filtered_predictionMatchList[match_id]['last_handicap']}")
+        matchPredictionResult[matchUrl]["model"][modelName] = predictionDetails["prediction"][index]
+        matchResult.append(matchPredictionResult)
 
         score_split = filtered_predictionMatchList[match_id]['result'].split("-")
         net = None
@@ -272,6 +289,63 @@ for index, match_id in enumerate(filtered_predictionMatchList):
 
     # print()
     # print(f"matchId {matchDetails[index]}")
+
+
+print("matchResult")
+
+# print(matchResult)
+# Assuming 'data' is your list of dictionaries
+
+# Filter and transform the data according to the new criteria
+output_data = []
+
+for item in matchResult:
+    for url, details in item.items():
+        model_results = details["model"].values()
+
+        # Check if there's only one model or if all models have the same result
+        if len(set(model_results)) == 1:
+            prediction = next(iter(model_results))  # Get the single prediction value
+            output_data.append({url: {"net": details["net"], "overDown": details["overDown"], "prediction": prediction}})
+
+# Initialize a count variable
+over_true_count = 0
+over_false_count = 0
+down_true_count = 0
+down_false_count = 0
+
+# Iterate through the data
+
+for item in output_data:
+    for key, value in item.items():
+        # Check conditions for counting as true
+        if prediction == 1 and value['net'] >= value['overDown']:
+            over_true_count += 1
+        elif prediction == -1 and value['net'] < value['overDown']:
+            down_true_count += 1
+        elif prediction == 1 and value['net'] < value[
+            'overDown']:
+            over_false_count += 1
+        elif prediction == -1 and value['net'] > value[
+            'overDown']:
+            down_false_count += 1
+        else:
+            print("refund")
+            # print(value['LogisticRegression'] == -1 , value['RandomForestClassifier'] == -1 , value['net'] , value[
+            #     'overDown'])
+
+
+print(f"over_true_count count: {over_true_count}")
+print(f"down_true_count count: {down_true_count}")
+
+print(f"over_false_count count: {over_false_count}")
+print(f"down_false_count count: {down_false_count}")
+
+
+
+
+
+# 'filtered_data' will now contain only the dictionaries where the results of both classifiers match
 
 exit("finished")
 

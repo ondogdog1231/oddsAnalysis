@@ -81,7 +81,7 @@ oddSummaryList = {}
 for oddRow in oddsResult:
     matchId, companyId, decimalHandicap, overOdd, downOdd, changeTime = oddRow
     oddSummaryList.setdefault(matchId,{})
-    oddSummaryList[matchId][changeTime] = {
+    oddSummaryList[matchId][str(changeTime)] = {
         "decimalHandicap": decimalHandicap,
         "overOdd": overOdd,
         "downOdd": downOdd
@@ -103,10 +103,11 @@ for matchId in oddSummaryList.keys():
     for fibonacciTime in fibonacciList:
         adjustedFibonacciTime = fibonacciTime * 60
         findTimeTarget = int(matchTime) - int(adjustedFibonacciTime)
-        nearNumber = min(convertedTime, key=lambda x: abs(x - int(findTimeTarget)))
+        nearNumber = str(min(convertedTime, key=lambda x: abs(x - int(findTimeTarget))))
 
         fibonacciTimeKey = f"minutes_before_match_{fibonacciTime}"
-
+        # print(f"matchID: {matchId}")
+        # print(currentOddSummary)
         _matchFibonacciKeyValue[fibonacciTimeKey] = {
             "decimalHandicap": float(currentOddSummary[nearNumber]["decimalHandicap"]),
             "over_odd": float(currentOddSummary[nearNumber]["overOdd"]),
@@ -166,12 +167,17 @@ for model_name, clf in model_list.items():
     joblib.dump(clf, f"../over-down-prediction-models/{leagueId}_{model_name}_model.pkl")
     # Evaluate the model
     y_pred = clf.predict(X_test)
+
     # Obtain probability estimates
     y_prob = clf.predict_proba(X_test)
 
     high_prob_index = np.where(np.max(y_prob, axis=1) >= model_confidence_list[model_name])[0]
     high_prob_preds = y_pred[high_prob_index]
+    print(f"y_pred 1 : {list(high_prob_preds).count(1)}")
+    print(f"y_pred -1 : {list(high_prob_preds).count(-1)}")
     actual_values = np.array(y_test)[high_prob_index]
+    print(f"actual_values 1: {list(actual_values).count(1)}")
+    print(f"actual_values -1: {list(actual_values).count(-1)}")
     # # Check if the predictions are correct
     correct_preds = high_prob_preds == actual_values
     # Display results

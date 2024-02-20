@@ -20,7 +20,8 @@ args = parser.parse_args()
 
 c = connector.config()
 league_id = args.leagueId
-matchResult = c.getMatchByLeagueIdAndInSeason(league_id,["2017-2018", "2018-2019", "2019-2020", "2020-2021", "2021-2022","2022-2023"])
+# matchResult = c.getMatchByLeagueIdAndInSeason(league_id,["2017-2018", "2018-2019", "2019-2020", "2020-2021","2021-2022","2022-2023","2023-2024"])
+matchResult = c.getMatchByLeagueIdAndInSeason(league_id,["2023-2024"])
 # matchResult = c.getMatchByID(25352)
 
 headers = {
@@ -125,6 +126,7 @@ for match in matchResult:
         oddKey = f"{match[0]}_{companyId}_{str('%.2f' % handicapSpilt).replace('.', '')}_{unixOddUpdateDateTime}"
         print(oddKey)
         print(previousOddList)
+        result = None if len(dataResult[1]) > 0 else dataResult[1]
         if oddKey in previousOddList:
             continue
         rowData = (
@@ -133,7 +135,7 @@ for match in matchResult:
             handicapSpilt,  # handicap
             dataResult[2],  # over odds
             dataResult[4],  # down odds
-            dataResult[1], # match result
+            result, # match result
             unixOddUpdateDateTime,
             int(time.time()),
             int(time.time())
