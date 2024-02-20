@@ -41,8 +41,8 @@ adjusted_date = one_month_ago.replace(hour=23, minute=59, second=59)
 unix_time = int(adjusted_date.timestamp())
 
 # matchDetails = c.getMatchByBetweenTimeAndSeasonAndStarted(leagueId, unix_time, all_seasons)
-# matchDetails = c.getMatchAllByInLeagueIdAndInSeason(leagueId, all_seasons)
-matchDetails = c.getMatchAllByID(leagueId)
+matchDetails = c.getMatchAllByInLeagueIdAndInSeason(leagueId, all_seasons)
+# matchDetails = c.getMatchAllByID(leagueId)
 
 matchList = [item[0] for item in matchDetails]
 predictionMatchList = {}
@@ -98,21 +98,15 @@ for matchId in oddSummaryList.keys():
     league_id = predictionMatchList[matchId]["league_id"]
     currentOddSummary = oddSummaryList[matchId]
     convertedTime = {int(v) for v in currentOddSummary.keys()}
-    print(f"converted_time: {convertedTime}")
     matchTime = predictionMatchList[matchId]["time"]
-    # print("matchId")
-    # print(matchId)
-    # print(currentOddSummary.keys())
-    print("currentOddSummary")
-    print(currentOddSummary)
     _matchFibonacciKeyValue = {}
     for fibonacciTime in fibonacciList:
         adjustedFibonacciTime = fibonacciTime * 60
         findTimeTarget = int(matchTime) - int(adjustedFibonacciTime)
         nearNumber = min(convertedTime, key=lambda x: abs(x - int(findTimeTarget)))
-        print(f"nearNumber:{nearNumber}")
+
         fibonacciTimeKey = f"minutes_before_match_{fibonacciTime}"
-        print(f"fibonacciTimeKey: {fibonacciTimeKey}")
+
         _matchFibonacciKeyValue[fibonacciTimeKey] = {
             "decimalHandicap": float(currentOddSummary[nearNumber]["decimalHandicap"]),
             "over_odd": float(currentOddSummary[nearNumber]["overOdd"]),
@@ -141,9 +135,7 @@ for matchId in match_to_delete:
     del predictionMatchList[matchId]
 
 net_result_label_dict = [value['net_result_label'] for key, value in predictionMatchList.items()]
-print("net_result_label_dict")
-print(net_result_label_dict)
-exit()
+
 
 
 flattened_data = []
