@@ -156,7 +156,7 @@ model_list = {
     "RandomForestClassifier": RandomForestClassifier(random_state=42),
 }
 model_confidence_list = {
-    "LogisticRegression": 0.6,
+    "LogisticRegression": 0.55,
     "RandomForestClassifier": 0.6,
 }
 
