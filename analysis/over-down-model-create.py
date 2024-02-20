@@ -157,7 +157,7 @@ model_list = {
 }
 model_confidence_list = {
     "LogisticRegression": 0.55,
-    "RandomForestClassifier": 0.6,
+    "RandomForestClassifier": 0.65,
 }
 
 for model_name, clf in model_list.items():
