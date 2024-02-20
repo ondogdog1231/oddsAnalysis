@@ -123,7 +123,7 @@ for matchId, matchItem in predictionMatchList.items():
             continue
         if max_error >= 10:
             exit(f"Please check last ID: {matchId}")
-        net = matchItem["net_result"] + matchItem["last_handicap"]
+        net = matchItem["net_result"] - matchItem["last_handicap"]
         predictionMatchList[matchId]["net_result_label"] = 1 if net > 0 else -1
     except Exception as e:
         print("In error")
