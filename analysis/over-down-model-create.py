@@ -103,12 +103,14 @@ for matchId in oddSummaryList.keys():
     # print("matchId")
     # print(matchId)
     # print(currentOddSummary.keys())
+    print("currentOddSummary")
+    print(currentOddSummary)
     _matchFibonacciKeyValue = {}
     for fibonacciTime in fibonacciList:
         adjustedFibonacciTime = fibonacciTime * 60
         findTimeTarget = int(matchTime) - int(adjustedFibonacciTime)
         nearNumber = min(convertedTime, key=lambda x: abs(x - int(findTimeTarget)))
-
+        print(f"nearNumber:{nearNumber}")
         fibonacciTimeKey = f"minutes_before_match_{fibonacciTime}"
         print(f"fibonacciTimeKey: {fibonacciTimeKey}")
         _matchFibonacciKeyValue[fibonacciTimeKey] = {
