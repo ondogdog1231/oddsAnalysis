@@ -8,6 +8,16 @@ from contextlib2 import closing
 load_dotenv()
 
 
+def connection_init():
+    return connector.connect(
+        user=os.environ.get('MYSQL_USER'),
+        password=os.environ.get('MYSQL_PASSWORD'),
+        host='127.0.0.1',
+        database='soccer',
+        charset='utf8mb4',
+    )
+
+
 class config:
 
     def __init__(self):
@@ -206,7 +216,7 @@ class config:
     def getMatchBetweenTimeAndLeagueId(self, startTime, endTime, leagueId):
         cursor = self.cnx.cursor()
         sql = """select * from matches where date_time between %s and %s and outside_league_id = %s and 
-        full_time_result != '推迟|推遲|Delay';"""
+        full_time_result not like '%腰斩|腰斬%';"""
         cursor.execute(sql, (startTime, endTime, leagueId,))
         results = cursor.fetchall()
         return results
@@ -328,7 +338,6 @@ class config:
         return results
     def findOverDownOddsByIdInAndCompanyId(self, companyId, matchId=[]):
         in_p = ', '.join(list(map(lambda x: '%s', matchId)))
-        # sql = """select match_id, company_id, decimal_handicap, home_odd, away_odd, change_time from odds where company_id = %s and match_id in (%s) and match_id between 382 and 650 and result is null order by match_id asc, change_time asc;"""
         sql = """select match_id, company_id, decimal_handicap, over_odd, down_odd, change_time from over_down_odds where company_id = %s and match_id in (%s) and result is null order by match_id asc, change_time asc;"""
         sql = sql % ('%s', in_p)
         params = []
