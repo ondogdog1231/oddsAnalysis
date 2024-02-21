@@ -57,7 +57,7 @@ matchList = []
 #     exit()
 
 parser = argparse.ArgumentParser(description='New League')
-parser.add_argument('matchId', type=int, help="meatch ID")
+parser.add_argument('matchId', type=int, help="match ID")
 args = parser.parse_args()
 
 current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:59:59")
@@ -247,7 +247,7 @@ for index, match_id in enumerate(filtered_predictionMatchList):
         score_split = filtered_predictionMatchList[match_id]['result'].split("-")
         net = None
         if len(score_split) > 1:
-            net = int(score_split[0]) - int(score_split[1])
+            net = int(score_split[0]) + int(score_split[1])
         insertParams = (
             match_id,
             filtered_predictionMatchList[match_id]['last_handicap'],

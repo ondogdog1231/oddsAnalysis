@@ -1,4 +1,5 @@
 # coding=utf-8
+import math
 import sys
 import os
 
@@ -177,7 +178,7 @@ df = pd.DataFrame(flattened_data)
 
 predictionList = {}
 # todo remove
-league_id = 36
+
 for model in league_model_json[str(league_id)]:
     predictionList[model['name']] = {
         "prediction": None,
@@ -223,16 +224,15 @@ for model in prediction_fit_list:
     common_elements.intersection_update(prediction_fit_list[model])
 
 # for index in common_elements:
-matchResult = []
+# matchResult =
+matchPredictionResult = {}
 for index, match_id in enumerate(filtered_predictionMatchList):
-    print()
     matchUrl = f"https://vip.titan007.com/AsianOdds_n.aspx?id={filtered_predictionMatchList[match_id]['outside_match_id']}"
-    print(matchUrl)
-    matchPredictionResult = {}
+    # matchPredictionResult = {}
     net_result = filtered_predictionMatchList[match_id]['result'].split("-")
     matchPredictionResult.setdefault(matchUrl,{
         "net": int(net_result[0]) + int(net_result[1]),
-        "overDown": float(filtered_predictionMatchList[match_id]['last_handicap']),
+        "overDown": str(float(filtered_predictionMatchList[match_id]['last_handicap'])),
         "model": {}
     })
     for modelName, predictionDetails in predictionList.items():
@@ -253,14 +253,12 @@ for index, match_id in enumerate(filtered_predictionMatchList):
                   f"{predict_proba},"
                   f"confidence_level: {confidence_level}")
             continue
-        print(f"Model: {modelName}, Contrary:{predictionDetails['contrary']}")
-        print(f'predict_proba: {predict_proba}, prediction: {predictionDetails["prediction"][index]}, predict_proba'
-              f': {predictionDetails["predict_proba"][index]}')
-
-        print(f"Last handicap: {filtered_predictionMatchList[match_id]['last_handicap']}")
-        matchPredictionResult[matchUrl]["model"][modelName] = predictionDetails["prediction"][index]
-        matchResult.append(matchPredictionResult)
-
+        # print(f"Model: {modelName}, Contrary:{predictionDetails['contrary']}")
+        # print(f'predict_proba: {predict_proba}, prediction: {predictionDetails["prediction"][index]}, predict_proba'
+        #       f': {predictionDetails["predict_proba"][index]}')
+        #
+        # print(f"Last handicap: {filtered_predictionMatchList[match_id]['last_handicap']}")
+        matchPredictionResult[matchUrl]["model"][modelName] = str(predictionDetails["prediction"][index])
         score_split = filtered_predictionMatchList[match_id]['result'].split("-")
         net = None
         if len(score_split) > 1:
@@ -291,78 +289,98 @@ for index, match_id in enumerate(filtered_predictionMatchList):
     # print(f"matchId {matchDetails[index]}")
 
 
-print("matchResult")
-
-# print(matchResult)
 # Assuming 'data' is your list of dictionaries
 
 # Filter and transform the data according to the new criteria
 output_data = []
 
-for item in matchResult:
-    for url, details in item.items():
-        model_results = details["model"].values()
 
-        # Check if there's only one model or if all models have the same result
-        if len(set(model_results)) == 1:
-            prediction = next(iter(model_results))  # Get the single prediction value
-            output_data.append({url: {"net": details["net"], "overDown": details["overDown"], "prediction": prediction}})
+for url, details in matchPredictionResult.items():
+    model_results = details["model"].values()
+
+    # Check if there's only one model or if all models have the same result
+    if len(set(model_results)) == 1:
+        prediction = next(iter(model_results))  # Get the single prediction value
+        output_data.append({url: {"net": details["net"], "overDown": details["overDown"], "prediction": prediction}})
 
 # Initialize a count variable
 over_true_count = 0
 over_false_count = 0
 down_true_count = 0
 down_false_count = 0
+refund = 0
+refund_count = 0
+
+win_count = 0.0
+lose_count = 0.0
+
 
 # Iterate through the data
 
 for item in output_data:
     for key, value in item.items():
         # Check conditions for counting as true
-        if prediction == 1 and value['net'] >= value['overDown']:
+        afterHandicapNet = int(value['net']) - float(float(value['overDown']))
+        prediction = "Big" if int(value['prediction']) == 1 else "Small"
+        # prediction = "Small"
+        # if int(value['prediction']) == -1:
+        #     prediction = "Big"
+        # elif int(value['prediction']) == 1:
+        #     prediction = "Big"
+
+        # print(f"key: {key} ,net :{int(value['net']) }, overDown: "
+        #       f"{float(float(value['overDown']))},"
+        #       f"afterHandicapNet:{afterHandicapNet},prediction: {prediction} ")
+        if prediction == "Big" and afterHandicapNet > 0.0:
+            win_count += 0.5 if afterHandicapNet == 0.25 else 1
+            refund += 0.5 if afterHandicapNet == 0.25 else 0
+        elif prediction == "Small" and afterHandicapNet < 0.0:
+            # print(f'in small: {afterHandicapNet - math.floor(afterHandicapNet)}')
+            win_count += 0.5 if afterHandicapNet == -0.25 else 1
+            refund += 0.5 if afterHandicapNet == -0.25 else 0
+        elif prediction == "Small" and afterHandicapNet > 0.0:
+            lose_count += 0.5 if afterHandicapNet == 0.25 else 1
+            refund += 0.5 if afterHandicapNet == 0.25 else 0
+        elif prediction == "Big" and afterHandicapNet < 0.0:
+            lose_count += 0.5 if afterHandicapNet == -0.25 else 1
+            refund += 0.5 if afterHandicapNet == -0.25 else 0
+        else:
+            refund += 1
+            # lose_count += 0.5 if afterHandicapNet - math.floor(afterHandicapNet) == 0.25 else 1
+
+        # if int(value['prediction']) == 1 and int(value['net']) > float(float(value['overDown'])):
+        #     over_true_count += 1
+        # elif int(value['prediction']) == -1 and int(value['net']) < float(float(value['overDown'])):
+        #     down_true_count += 1
+        # elif int(value['prediction']) == 1 and int(value['net']) < float(value['overDown']):
+        #     over_false_count += 1
+        # elif int(value['prediction']) == -1 and int(value['net']) > float(value['overDown']):
+        #     down_false_count += 1
+        # else:
+        #     refund_count += 1
+        #     print("refund")
+
+        if prediction == "Big" and afterHandicapNet > 0.0:
             over_true_count += 1
-        elif prediction == -1 and value['net'] < value['overDown']:
+        elif prediction == "Small" and afterHandicapNet < 0.0:
             down_true_count += 1
-        elif prediction == 1 and value['net'] < value[
-            'overDown']:
+        elif prediction == "Big" and afterHandicapNet < 0.0:
             over_false_count += 1
-        elif prediction == -1 and value['net'] > value[
-            'overDown']:
+        elif prediction == "Small" and afterHandicapNet > 0.0:
             down_false_count += 1
         else:
+            refund_count += 1
             print("refund")
-            # print(value['LogisticRegression'] == -1 , value['RandomForestClassifier'] == -1 , value['net'] , value[
-            #     'overDown'])
 
 
-print(f"over_true_count count: {over_true_count}")
-print(f"down_true_count count: {down_true_count}")
+print(f'over_true_count: {over_true_count}')
+print(f'down_true_count: {down_true_count}')
+print(f'over_false_count: {over_false_count}')
+print(f'down_false_count: {down_false_count}')
+print(f'refund_count: {refund_count}')
 
-print(f"over_false_count count: {over_false_count}")
-print(f"down_false_count count: {down_false_count}")
+print(f"win: {win_count}")
+print(f"lose: {lose_count}")
+print(f"refund: {refund}")
 
 
-
-
-
-# 'filtered_data' will now contain only the dictionaries where the results of both classifiers match
-
-exit("finished")
-
-for index, value in enumerate(matchIdList):
-    print()
-    print(index)
-    print(f"https://vip.titan007.com/AsianOdds_n.aspx?id={value}")
-    for modelName, predictionDetails in predictionList.items():
-        print(modelName)
-        if predictionDetails['contrary']:
-            if predictionDetails["prediction"][index] == 1:
-                print(f"Contrary Prediction: {-1}")
-            elif predictionDetails["prediction"][index] == -1:
-                print(f"Contrary Prediction: {1}")
-            else:
-                print(f"Prediction: {predictionDetails['prediction'][index]}")
-        else:
-            print(f"Prediction: {predictionDetails['prediction'][index]}")
-        print(predictionDetails["predict_proba"][index])
-        print()

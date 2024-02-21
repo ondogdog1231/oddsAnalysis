@@ -30,10 +30,12 @@ parser.add_argument('leagueId', type=int, help="League ID")
 args = parser.parse_args()
 leagueId = args.leagueId
 
-seasons = ["2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023"]
-years = range(2018, 2023 + 1)
-years_str = [str(year) for year in years]
-all_seasons = seasons + years_str
+start_year = 2018
+end_year = 2023
+years = list(range(start_year, end_year+1))
+year_ranges = [f"{y}-{y+1}" for y in years[:-1]]
+all_years = [str(y) for y in years]
+all_seasons = year_ranges + all_years
 
 current_date = datetime.datetime.now()
 one_month_ago = current_date - datetime.timedelta(days=30)
@@ -155,10 +157,14 @@ X_train, X_test, y_train, y_test = train_test_split(df, net_result_label_dict, t
 model_list = {
     "LogisticRegression": LogisticRegression(max_iter=1000),
     "RandomForestClassifier": RandomForestClassifier(random_state=42),
+    "DecisionTreeClassifier": DecisionTreeClassifier(random_state=42),
+    "SVC": SVC(kernel='linear', random_state=42, probability=True)
 }
 model_confidence_list = {
-    "LogisticRegression": 0.55,
-    "RandomForestClassifier": 0.65,
+    "LogisticRegression": 0,
+    "RandomForestClassifier": 0,
+    "DecisionTreeClassifier": 0,
+    "SVC": 0,
 }
 
 for model_name, clf in model_list.items():
@@ -173,6 +179,7 @@ for model_name, clf in model_list.items():
 
     high_prob_index = np.where(np.max(y_prob, axis=1) >= model_confidence_list[model_name])[0]
     high_prob_preds = y_pred[high_prob_index]
+    # print(high_prob_preds)
     print(f"y_pred 1 : {list(high_prob_preds).count(1)}")
     print(f"y_pred -1 : {list(high_prob_preds).count(-1)}")
     actual_values = np.array(y_test)[high_prob_index]
