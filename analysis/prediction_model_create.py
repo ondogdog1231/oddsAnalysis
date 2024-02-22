@@ -30,6 +30,7 @@ import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from sklearn.preprocessing import StandardScaler
 
 record_start_time = datetime.datetime.now()
 
@@ -214,6 +215,10 @@ df = pd.DataFrame(flattened_data)
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(df, net_result_label_dict, test_size=0.2, random_state=42)
 
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
 model_list = {
     "LogisticRegression": LogisticRegression(max_iter=1000),
     # "DecisionTreeClassifier": DecisionTreeClassifier(random_state=42),
@@ -230,12 +235,12 @@ model_confidence_list = {
 }
 for model_name, clf in model_list.items():
     print(model_name)
-    clf.fit(X_train, y_train)
+    clf.fit(X_train_scaled, y_train)
     joblib.dump(clf, f"../predictionModels/{leagueId}_{model_name}_model.pkl")
     # Evaluate the model
-    y_pred = clf.predict(X_test)
+    y_pred = clf.predict(X_test_scaled)
     # Obtain probability estimates
-    y_prob = clf.predict_proba(X_test)
+    y_prob = clf.predict_proba(X_test_scaled)
 
     high_prob_index = np.where(np.max(y_prob, axis=1) >= model_confidence_list[model_name])[0]
     high_prob_preds = y_pred[high_prob_index]
