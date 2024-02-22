@@ -61,14 +61,18 @@ matchList = []
 
 parser = argparse.ArgumentParser(description='New League')
 parser.add_argument('leagueId', type=int, help="League ID")
+parser.add_argument('start_year', type=int, help="start_year")
+parser.add_argument('end_year', type=int, help="end_year")
 args = parser.parse_args()
 
 leagueId = args.leagueId
+start_year = args.start_year
+end_year = args.end_year
 
-seasons = ["2018-2019", "2019-2020", "2020-2021", "2021-2022", "2022-2023"]
-years = range(2018, 2023 + 1)
-years_str = [str(year) for year in years]
-all_seasons = seasons + years_str
+years = list(range(start_year, end_year+1))
+year_ranges = [f"{y}-{y+1}" for y in years[:-1]]
+all_years = [str(y) for y in years]
+all_seasons = year_ranges + all_years
 
 # seasons = range(2018, 2022 + 1)
 # matchDetails = c.getMatchAllByInLeagueIdAndInSeason(leagueId, all_seasons)
