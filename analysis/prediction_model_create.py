@@ -31,6 +31,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.preprocessing import StandardScaler
+from sklearn.neural_network import MLPClassifier
 
 record_start_time = datetime.datetime.now()
 
@@ -225,11 +226,13 @@ model_list = {
     "RandomForestClassifier": RandomForestClassifier(random_state=42),
     # "SVC": SVC(kernel='linear', random_state=42, probability=True)
     # "Gaussian": GaussianNB()
+    "MLP": MLPClassifier(hidden_layer_sizes=(100,), max_iter=300, activation='relu', solver='adam', random_state=42)
 }
 model_confidence_list = {
     "LogisticRegression": 0.6,
     # "DecisionTreeClassifier": DecisionTreeClassifier(random_state=42),
     "RandomForestClassifier": 0.6,
+    "MLP": 0,
     # "SVC": SVC(kernel='linear', random_state=42, probability=True)
     # "Gaussian": GaussianNB()
 }
