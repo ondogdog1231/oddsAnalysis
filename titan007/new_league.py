@@ -281,6 +281,7 @@ parser.add_argument('seasonByYearOrRange', type=str, help="season or year")
 parser.add_argument('start_year', type=int, help="start year")
 parser.add_argument('end_year', type=int, help="end year")
 parser.add_argument('matchType', type=str, help="Match type")
+parser.add_argument('need_odds_and_team', type=int, help="need_odds_and_team")
 
 args = parser.parse_args()
 
@@ -290,10 +291,12 @@ start_year = args.start_year
 end_year = args.end_year
 # season = args.season
 matchType = args.matchType
+need_odds_and_team = args.need_odds_and_team
 
-years = list(range(start_year, end_year+1))
+
+years = list(range(start_year, end_year + 1))
 if seasonByYearOrRange == "1":
-    seasons = [f"{y}-{y+1}" for y in years[:-1]]
+    seasons = [f"{y}-{y + 1}" for y in years[:-1]]
 else:
     seasons = years
 
@@ -305,7 +308,8 @@ for season in seasons:
     crawler = getLeague(leagueType, league, season)
     crawler.main()
     time.sleep(5)
-odds_command = f"asian_odds.py"
-create_teams_command = f"teams.py"
-subprocess.run(["python", create_teams_command])
-subprocess.run(["python", odds_command, str(league)], seasons)
+if need_odds_and_team == 1:
+    odds_command = f"asian_odds.py"
+    create_teams_command = f"teams.py"
+    subprocess.run(["python", create_teams_command])
+    subprocess.run(["python", odds_command, str(league)], seasons)
