@@ -221,12 +221,12 @@ X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
 model_list = {
-    "LogisticRegression": LogisticRegression(max_iter=1000),
+    # "LogisticRegression": LogisticRegression(max_iter=1000),
     # "DecisionTreeClassifier": DecisionTreeClassifier(random_state=42),
-    "RandomForestClassifier": RandomForestClassifier(random_state=42),
+    # "RandomForestClassifier": RandomForestClassifier(random_state=42),
     # "SVC": SVC(kernel='linear', random_state=42, probability=True)
     # "Gaussian": GaussianNB()
-    "MLP": MLPClassifier(hidden_layer_sizes=(100,), max_iter=300, activation='relu', solver='adam', random_state=42)
+    "MLP": MLPClassifier(hidden_layer_sizes=(100,), max_iter=1000, activation='relu', solver='adam', random_state=42)
 }
 model_confidence_list = {
     "LogisticRegression": 0.6,
