@@ -70,13 +70,14 @@ predictionMatchList = {}
 # print(matchDetails)
 matchList = [item[0] for item in matchDetails]
 
-
+league_id = None
 for matchDetail in matchDetails:
+    league_id = matchDetail[5]
     matchDetailsSet = {
         "last_handicap": None,
         "outside_match_id": matchDetail[3],
         "result": matchDetail[11],
-        "league_id": matchDetail[5],
+        "league_id": league_id,
         "time": matchDetail[7],
         "home_team": matchDetail[8],
         "away_team": matchDetail[9],
@@ -169,8 +170,7 @@ df = pd.DataFrame(flattened_data)
 
 
 predictionList = {}
-# todo remove
-league_id = 36
+print(f"League ID: {league_id}")
 for model in league_model_json[str(league_id)]:
     predictionList[model['name']] = {
         "prediction": None,
