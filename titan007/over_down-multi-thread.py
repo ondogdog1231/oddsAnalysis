@@ -20,12 +20,15 @@ from contextlib2 import closing
 
 parser = argparse.ArgumentParser(description='Asian Odds')
 parser.add_argument('leagueId', type=int, help="League ID")
+parser.add_argument('start_year', type=int, help="start_year")
+parser.add_argument('end_year', type=int, help="end_year")
 args = parser.parse_args()
 
 c = connector.config()
 league_id = args.leagueId
-start_year = 2018
-end_year = 2024
+start_year = args.start_year
+end_year = args.end_year
+
 years = list(range(start_year, end_year+1))
 year_ranges = [f"{y}-{y+1}" for y in years[:-1]]
 all_years = [str(y) for y in years]
