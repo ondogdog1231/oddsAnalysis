@@ -497,14 +497,14 @@
       "name": "LogisticRegression",
       "precision": 63.53,
       "contrary": false,
-      "confidence_level": 0.55,
+      "confidence_level": 0,
       "enable": true
     },
     {
       "name": "RandomForestClassifier",
       "precision": 53.47,
       "contrary": false,
-      "confidence_level": 0.55,
+      "confidence_level": 0,
       "enable": true
     }
   ],
