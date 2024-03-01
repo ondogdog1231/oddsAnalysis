@@ -147,7 +147,7 @@
       "precision": 51.58,
       "contrary": true,
       "confidence_level": 0.58,
-      "enable": false
+      "enable": true
     },
     {
       "name": "RandomForestClassifier",
