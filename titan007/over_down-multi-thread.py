@@ -179,6 +179,7 @@ def fetch_odds(url, delay):
 def process_urls(matchUrls):
     with ThreadPoolExecutor(max_workers=20) as executor:
         urls = matchUrls.keys()
+        print(f"url: {urls}")
         # Create a future to URL mapping
         future_to_url = {
             executor.submit(fetch_odds, url, delay_between_requests): url for index, url in
