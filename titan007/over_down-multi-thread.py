@@ -36,6 +36,7 @@ seasons = year_ranges + all_years
 matchResult = c.getMatchByLeagueIdAndInSeason(league_id,seasons)
 # matchResult = c.getMatchByLeagueIdAndInSeason(league_id,["2023-2024"])
 # matchResult = c.getMatchByID(58624)
+print(matchResult)
 
 headers = {
     'referer': "http://live.titan007.com/indexall_big.aspx",
