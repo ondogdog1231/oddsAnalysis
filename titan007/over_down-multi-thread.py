@@ -65,8 +65,8 @@ for match in matchResult:
 delay_between_requests = 5
 
 def fetch_odds(url, delay):
-    # print(f'url: {url}')
-    # print(f'matchID: {matchUrls[url]["id"]}')
+    print(f'url: {url}')
+    print(f'matchID: {matchUrls[url]["id"]}')
 
     result = requests.get(url, headers=headers)
     oddsRegex = r"<TR align=center .*?>(.*?)<\/tr>"
