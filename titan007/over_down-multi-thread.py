@@ -63,6 +63,8 @@ for match in matchResult:
         'previousOddList': previousOddList
     })
 delay_between_requests = 5
+print("matchUrls")
+print(matchUrls)
 
 def fetch_odds(url, delay):
     print(f'url: {url}')
