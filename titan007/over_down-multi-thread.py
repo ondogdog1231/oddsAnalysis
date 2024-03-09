@@ -177,7 +177,9 @@ def fetch_odds(url, delay):
     time.sleep(delay)
 
 def process_urls(matchUrls):
+    print("Start 1")
     with ThreadPoolExecutor(max_workers=20) as executor:
+        print("Start 2")
         urls = matchUrls.keys()
         print(f"url: {urls}")
         # Create a future to URL mapping
@@ -193,5 +195,6 @@ def process_urls(matchUrls):
             except Exception as exc:
                 print(f'{url} generated an exception: {exc}')
 
-
+print("Start")
 process_urls(matchUrls)
+print("Start 3")
