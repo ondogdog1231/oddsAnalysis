@@ -54,7 +54,11 @@ for match in matchResult:
     matchMonth = datetime_hkt.month
     season = match[3].split("-")
     previousOddList = []
+    print("matchUrl")
+    print(matchUrl)
     previousOddResult = c.findOverDownOddsByMatchID(match[0])
+    print("previousOddResult")
+    print(previousOddResult)
     previousOddList = [f"{x[0]}_{x[1]}_{str(x[2]).replace('.', '')}_{x[3]}" for x in previousOddResult]
     matchUrls.setdefault(matchUrl, {
         'id': match[0],
