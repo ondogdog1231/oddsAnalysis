@@ -30,7 +30,7 @@ parser.add_argument('leagueId', type=int, help="League ID")
 args = parser.parse_args()
 leagueId = args.leagueId
 
-start_year = 2018
+start_year = 2017
 end_year = 2023
 years = list(range(start_year, end_year+1))
 year_ranges = [f"{y}-{y+1}" for y in years[:-1]]

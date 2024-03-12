@@ -244,20 +244,20 @@ for index, match_id in enumerate(filtered_predictionMatchList):
 
         print(f"Last handicap: {filtered_predictionMatchList[match_id]['last_handicap']}")
 
-        score_split = filtered_predictionMatchList[match_id]['result'].split("-")
-        net = None
-        if len(score_split) > 1:
-            net = int(score_split[0]) + int(score_split[1])
-        insertParams = (
-            match_id,
-            filtered_predictionMatchList[match_id]['last_handicap'],
-            modelName,
-            str(predictionDetails["prediction"][index]),
-            predict_proba,
-            net,
-            int(datetime.datetime.now().timestamp()),
-            int(datetime.datetime.now().timestamp())
-        )
+        # score_split = filtered_predictionMatchList[match_id]['result'].split("-")
+        # net = None
+        # if len(score_split) > 1:
+        #     net = int(score_split[0]) + int(score_split[1])
+        # insertParams = (
+        #     match_id,
+        #     filtered_predictionMatchList[match_id]['last_handicap'],
+        #     modelName,
+        #     str(predictionDetails["prediction"][index]),
+        #     predict_proba,
+        #     net,
+        #     int(datetime.datetime.now().timestamp()),
+        #     int(datetime.datetime.now().timestamp())
+        # )
         # @Todo Update over down prediction
 
         # prediction_found = c.checkPrediction(match_id, modelName)

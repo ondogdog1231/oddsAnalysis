@@ -248,10 +248,10 @@ for index, match_id in enumerate(filtered_predictionMatchList):
              modelName), None)
 
         if predict_proba < confidence_level:
-            print(f"Match: {filtered_predictionMatchList[match_id]['outside_match_id']}, model {modelName} not fit, "
-                  f'prediction:{predictionDetails["prediction"][index]} predict_proba: '
-                  f"{predict_proba},"
-                  f"confidence_level: {confidence_level}")
+            # print(f"Match: {filtered_predictionMatchList[match_id]['outside_match_id']}, model {modelName} not fit, "
+            #       f'prediction:{predictionDetails["prediction"][index]} predict_proba: '
+            #       f"{predict_proba},"
+            #       f"confidence_level: {confidence_level}")
             continue
         # print(f"Model: {modelName}, Contrary:{predictionDetails['contrary']}")
         # print(f'predict_proba: {predict_proba}, prediction: {predictionDetails["prediction"][index]}, predict_proba'
@@ -294,15 +294,35 @@ for index, match_id in enumerate(filtered_predictionMatchList):
 # Filter and transform the data according to the new criteria
 output_data = []
 
-
 for url, details in matchPredictionResult.items():
     model_results = details["model"].values()
+    # print(url)
+    # print(details)
+
+    # print(model_results)
+    # print(len(model_results))
+    # continue
+
+    # print(unique_values)
 
     # Check if there's only one model or if all models have the same result
-    if len(set(model_results)) == 1:
-        prediction = next(iter(model_results))  # Get the single prediction value
-        output_data.append({url: {"net": details["net"], "overDown": details["overDown"], "prediction": prediction}})
-
+    if len(model_results) > 1:
+        same_values_arrays = [arr for arr in model_results if len(set(arr)) == 1]
+        if len(set(model_results)) == 1:  #same result
+            prediction = next(iter(model_results))
+            output_data.append({url: {"net": details["net"], "overDown": details["overDown"], "prediction": prediction}})
+        # print(url)
+        # print(details)
+        # print(model_results)
+        # print(len(set(model_results)))
+        # print(set(model_results))
+        #
+        # same_values_arrays = [arr for arr in model_results if len(set(arr)) == 1]
+        # print(same_values_arrays)
+    #     prediction = next(iter(model_results))  # Get the single prediction value
+    #     output_data.append({url: {"net": details["net"], "overDown": details["overDown"], "prediction": prediction}})
+# print(output_data)
+# exit()
 # Initialize a count variable
 over_true_count = 0
 over_false_count = 0
@@ -316,7 +336,7 @@ lose_count = 0.0
 
 
 # Iterate through the data
-
+# print(json.dumps(output_data))
 for item in output_data:
     for key, value in item.items():
         # Check conditions for counting as true
@@ -370,8 +390,55 @@ for item in output_data:
             down_false_count += 1
         else:
             refund_count += 1
-            print("refund")
 
+final_result = {}
+# print(json.dumps(output_data,sort_keys=True,indent=4))
+# Iterate through the data
+for item in output_data:
+    for url, values in item.items():
+        over_down = values["overDown"]
+        net = values["net"]
+        prediction = values["prediction"]
+
+        # Calculate afterHandicapNet
+        after_handicap_net = net - float(over_down)
+
+        # Initialize counts
+        big_win_count = 0
+        big_lose_count = 0
+        small_win_count = 0
+        small_lose_count = 0
+        refund_count_for_handicap_summary = 0
+
+        # Apply rules to calculate counts
+        if prediction == "1" and after_handicap_net > 0.0:
+            big_win_count += 1
+        elif prediction == "-1" and after_handicap_net < 0.0:
+            small_win_count += 1
+        elif prediction == "-1" and after_handicap_net > 0.0:
+            small_lose_count += 1
+        elif prediction == "1" and after_handicap_net < 0.0:
+            big_lose_count += 1
+        else:
+            refund_count_for_handicap_summary += 1
+
+        # Update final_result dictionary
+        key = f"overDown_{over_down}"
+        if key not in final_result:
+            final_result[key] = {
+                "big_win_count": 0,
+                "big_lose_count": 0,
+                "small_win_count": 0,
+                "small_lose_count": 0,
+                "refund": 0
+            }
+        final_result[key]["big_win_count"] += big_win_count
+        final_result[key]["big_lose_count"] += big_lose_count
+        final_result[key]["small_win_count"] += small_win_count
+        final_result[key]["small_lose_count"] += small_lose_count
+        final_result[key]["refund"] += refund_count_for_handicap_summary
+
+print(json.dumps(final_result, sort_keys=True, indent=4))
 
 print(f'over_true_count: {over_true_count}')
 print(f'down_true_count: {down_true_count}')

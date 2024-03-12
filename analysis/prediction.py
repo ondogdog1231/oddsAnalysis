@@ -58,7 +58,7 @@ matchList = []
 
 parser = argparse.ArgumentParser(description='New League')
 # parser.add_argument('leagueId', type=int, help="League ID")
-parser.add_argument('matchId', type=int, help="meatch ID")
+parser.add_argument('matchId', type=int, help="match ID")
 args = parser.parse_args()
 
 current_time = datetime.datetime.now().strftime(f"%Y-%m-%d %H:59:59")

@@ -216,7 +216,7 @@ class config:
     def getMatchBetweenTimeAndLeagueId(self, startTime, endTime, leagueId):
         cursor = self.cnx.cursor()
         sql = """select * from matches where date_time between %s and %s and outside_league_id = %s and 
-        full_time_result not like '%腰斩|腰斬%';"""
+        full_time_result not like '%腰斩|腰斬%' and full_time_result not like '%推迟|推遲|Delay%' ;"""
         cursor.execute(sql, (startTime, endTime, leagueId,))
         results = cursor.fetchall()
         return results
@@ -881,7 +881,38 @@ VALUES
         except TypeError as e:
             print(e.message)
             return False
+    def insertOverDownModel(self, param_list):
+        sql = """INSERT INTO `soccer`.`over_down_prediction_model`
+(
+`league_id`,
+`model`,
+`precision`,
+`confidence_level`,
+`contrary`,
+`enable`)
+VALUES
+(
+%s,
+%s,
+%s,
+%s,
+%s,
+%s);
+"""
+        try:
+            with closing(self.cnx.cursor())as cursor:
+                cursor.execute(sql, param_list)
+            self.cnx.commit()
+        except TypeError as e:
+            print(e.message)
+            return False
 
+    def getOverDownModel(self, league_id, enable):
+        cursor = self.cnx.cursor()
+        sql = """select * from over_down_prediction_model where league_id = %s and enable = %s """
+        cursor.execute(sql, (league_id,enable))
+        result = cursor.fetchall()
+        return result
 
 if __name__ == '__main__':
     print("This is main")
