@@ -3,4 +3,5 @@
 .idea/*
 config/__pycache__/
 predictionModels/
+over-down-prediction-models/
 .env
